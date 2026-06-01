@@ -43,8 +43,8 @@
     <div id="roomOverlay" class="room-overlay"><div class="room-panel"><div class="room-panel-head"><div class="room-title-wrap"><div id="roomIcon" class="room-icon">🏠</div><div><div id="roomTitle" class="room-title">Room</div><div id="roomSubtitle" class="room-subtitle">portfolio room</div></div></div><button class="room-close" onclick="closeRoom()">×</button></div><div class="room-section"><h4 id="roomMainHeading">요약</h4><p id="roomMainText" class="room-text">내용이 여기에 표시됩니다.</p><div id="roomTags" class="room-tags"></div></div><div class="room-section"><h4>첨부파일 / 자료 확인</h4><p id="roomFileGuide" class="room-text">CV, PDF, PPT, Excel, 이미지 파일을 확인할 수 있습니다.</p><input id="roomFileInput" class="room-file-input admin-only" type="file" multiple onchange="handleRoomFiles(event)" /><div id="attachmentList" class="attachment-list"></div><div id="roomNote" class="room-note admin-only">현재 업로드한 파일은 브라우저 안에서만 임시로 열립니다. 실제 배포 단계에서는 GitHub, Google Drive, 서버 저장소 링크로 연결하면 됩니다.</div></div><div class="room-actions"><button class="room-action primary" onclick="toast.textContent='다음 단계에서 실제 상세 페이지로 연결하면 됩니다.'">상세 페이지 열기</button><button class="room-action ghost" onclick="closeRoom()">마을로 돌아가기</button></div></div></div>
   </div></section></main>
   <aside class="side">
-    <h2>관리자 패널</h2><p class="small"><b>방문자 주소:</b> index.html<br><b>관리자 주소:</b> index.html?admin=1<br><br>방향키/WASD 이동 · 빈 땅 드래그로 화면 회전 · 휠 줌 · Enter 입장 · Esc 복귀 · F 낚기 · Q 놓기</p>
-    <div class="panel"><h3>0. 저장 / 공개 반영</h3><p class="small">건물 크기·위치·색·도로·연못 설정은 이 브라우저에 즉시 저장됩니다. 다른 사람에게도 보이게 하려면 village-data.js를 다운로드한 뒤 GitHub에 덮어쓰기 업로드하세요.</p><div class="btn-row"><button class="btn good" onclick="saveLocalVillageData(true)">브라우저 저장</button><button class="btn primary" onclick="downloadVillageData()">village-data.js 다운로드</button><button class="btn danger" onclick="clearLocalVillageData()">브라우저 저장 삭제</button></div></div>
+    <h2>관리자 패널</h2><p class="small"><b>방문자 주소:</b> index.html<br><b>관리자 주소:</b> admin.html<br><br>방향키/WASD 이동 · 빈 땅 드래그로 화면 회전 · 휠 줌 · Enter 입장 · Esc 복귀 · F 낚기 · Q 놓기</p>
+    <div class="panel"><h3>0. 실시간 저장 / 공개 반영</h3><p class="small">건물 크기·위치·색·도로·연못 설정은 Firebase에 저장됩니다. 저장 후 방문자 페이지에도 자동 반영됩니다.</p><div class="btn-row"><button class="btn good" onclick="saveFirebaseVillageData(true)">Firebase 저장</button><button class="btn primary" onclick="reloadVillageDataFromFirebase()">Firebase 다시 불러오기</button><button class="btn ghost" onclick="downloadVillageData()">백업 다운로드</button></div></div>
     <div class="panel"><h3>1. 선택 항목 편집</h3><label>선택된 항목</label><input id="selectedLabel" readonly placeholder="아직 선택 없음" /><div class="row"><div><label>X</label><input id="selectedX" type="number" step="0.1" /></div><div><label>Z</label><input id="selectedZ" type="number" step="0.1" /></div></div><div class="row"><div><label>크기</label><input id="selectedScale" type="number" min="0.4" max="2.5" step="0.05" /></div><div><label>회전 보정</label><input id="selectedRot" type="number" step="5" /></div></div><label>건물 지붕색</label><input id="selectedRoofColor" type="color" value="#e48643" /><label><input id="selectedLocked" type="checkbox" style="width:auto" /> 위치 고정</label><div class="btn-row"><button class="btn primary" onclick="applySelected()">적용</button><button class="btn good" onclick="saveBuildingDesign()">건물 디자인 저장</button><button class="btn danger" onclick="deleteSelected()">삭제</button></div></div>
     <div class="panel"><h3>2. 도로 / 중앙 연못</h3><label>도로 재질</label><select id="roadMaterial"><option value="asphalt">아스팔트</option><option value="stone">돌길</option><option value="gravel">자갈길</option><option value="grass">잔디길</option></select><div class="row"><div><label>도로색 1</label><input id="roadColor1" type="color" /></div><div><label>도로색 2</label><input id="roadColor2" type="color" /></div></div><div class="row"><div><label>물고기 수</label><input id="fishCount" type="number" min="0" max="12" /></div><div><label>물고기 속도</label><input id="fishSpeed" type="number" min="0.2" max="3" step="0.1" /></div></div><div class="btn-row"><button class="btn primary" onclick="applyRoadSettings()">도로 적용</button><button class="btn good" onclick="applyPondSettings()">연못 적용</button></div></div>
     <div class="panel"><h3>3. 건물 추가</h3><label>건물 종류</label><select id="newBuildingType"><option value="lab">흰색 연구소</option><option value="school">로고형 학교/의대</option><option value="house">집</option><option value="gallery">전시관</option><option value="post">우체국</option></select><label>건물 이름</label><input id="newBuildingName" placeholder="예: New Lab" /><div class="btn-row"><button class="btn good" onclick="addBuilding()">건물 추가</button></div></div>
@@ -53,12 +53,32 @@
     <div class="panel"><h3>6. 상태</h3><div class="status-grid"><div class="pill" id="fpsPill">FPS: -</div><div class="pill" id="posPill">Avatar: -</div><div class="pill" id="skyPill">Sky: -</div><div class="pill" id="camPill">Camera: -</div><div class="pill" id="carryPill">Carry: none</div></div></div>
   </aside>
 </div>
-<script src="village-data.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 <script>
 'use strict';
 
 const ADMIN_PASSWORD='19140004'; // 관리자 비밀번호
+
+const firebaseConfig={
+  apiKey:'AIzaSyAHzvpqyXgQkwhT_ZQUMu_PKDeMogSiAvw',
+  authDomain:'portfolio-village.firebaseapp.com',
+  databaseURL:'https://portfolio-village-default-rtdb.firebaseio.com',
+  projectId:'portfolio-village',
+  storageBucket:'portfolio-village.firebasestorage.app',
+  messagingSenderId:'210729152642',
+  appId:'1:210729152642:web:46bf156999002f4e47c49b',
+  measurementId:'G-34FZJ4XT9D'
+};
+const VILLAGE_DB_PATH='villageData';
+let villageDb=null;
+let firebaseReady=false;
+let firebaseListenStarted=false;
+let remoteApplyInProgress=false;
+let pendingSaveTimer=null;
+let lastRemoteJson='';
+
 let isAdminMode=false;
 
 function detectAdminMode(){
@@ -132,9 +152,6 @@ const BUILDING_Y=0.13;
 const POND_CENTER={x:0,z:0.05,rx:1.82,rz:1.20};
 const viewer=document.getElementById('viewer'),preview=document.getElementById('preview'),toast=document.getElementById('toast');
 
-const VILLAGE_STORAGE_KEY='portfolioVillageStateV1';
-let initialVillageDataApplied=false;
-
 function clonePlain(obj){
   return JSON.parse(JSON.stringify(obj));
 }
@@ -160,55 +177,147 @@ function getVillageDataSnapshot(){
     lamps:state.lamps
   });
 }
-function applyInitialVillageData(){
+function initializeFirebaseVillage(){
+  if(firebaseReady) return true;
+  if(!window.firebase){
+    console.warn('Firebase SDK를 불러오지 못했습니다.');
+    return false;
+  }
+  try{
+    if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    villageDb=firebase.database();
+    firebaseReady=true;
+    return true;
+  }catch(err){
+    console.error('Firebase 초기화 실패:', err);
+    return false;
+  }
+}
+async function applyInitialVillageData(){
   if(initialVillageDataApplied) return;
   initialVillageDataApplied=true;
   if(window.VILLAGE_DATA) deepMerge(state, window.VILLAGE_DATA);
-  const saved=localStorage.getItem(VILLAGE_STORAGE_KEY);
-  if(saved){
-    try{deepMerge(state, JSON.parse(saved));}
-    catch(err){console.warn('저장 데이터 불러오기 실패:', err);}
+  initializeFirebaseVillage();
+  if(!firebaseReady) return;
+  try{
+    const snap=await villageDb.ref(VILLAGE_DB_PATH).get();
+    if(snap.exists()){
+      const data=snap.val();
+      lastRemoteJson=JSON.stringify(data);
+      deepMerge(state, data);
+    }else if(isAdminMode){
+      await villageDb.ref(VILLAGE_DB_PATH).set(getVillageDataSnapshot());
+      lastRemoteJson=JSON.stringify(getVillageDataSnapshot());
+    }
+  }catch(err){
+    console.error('Firebase 데이터 불러오기 실패:', err);
   }
 }
-function saveLocalVillageData(showMessage=false){
-  localStorage.setItem(VILLAGE_STORAGE_KEY, JSON.stringify(getVillageDataSnapshot()));
-  if(showMessage && typeof toast!=='undefined') toast.textContent='이 브라우저에 저장했습니다. 공개 반영은 village-data.js 다운로드 후 GitHub에 업로드하세요.';
+function applyVillageDataToScene(data, message){
+  if(!data) return;
+  remoteApplyInProgress=true;
+  deepMerge(state, data);
+  if(objectRoot){
+    renderAllObjects();
+    fillRoadForm();
+    fillPondForm();
+    rebuildRoads();
+    rebuildCenterPond();
+    if(roomMode && roomBuilding){
+      const updated=state.buildings.find(b=>b.id===roomBuilding.id);
+      if(updated){roomBuilding=updated;renderRoomPanel(updated);}
+    }
+  }
+  remoteApplyInProgress=false;
+  if(message && typeof toast!=='undefined') toast.textContent=message;
 }
-function clearLocalVillageData(){
-  if(!confirm('이 브라우저에 저장된 편집 내용을 지울까요? GitHub에 올라간 village-data.js는 지워지지 않습니다.')) return;
-  localStorage.removeItem(VILLAGE_STORAGE_KEY);
-  alert('브라우저 저장을 삭제했습니다. 새로고침하면 GitHub의 village-data.js 기준으로 열립니다.');
+function startFirebaseVillageListener(){
+  if(firebaseListenStarted || !firebaseReady) return;
+  firebaseListenStarted=true;
+  villageDb.ref(VILLAGE_DB_PATH).on('value', snap=>{
+    if(!snap.exists()) return;
+    const data=snap.val();
+    const json=JSON.stringify(data);
+    if(json===lastRemoteJson) return;
+    lastRemoteJson=json;
+    applyVillageDataToScene(data, isAdminMode?'Firebase 데이터가 동기화되었습니다.':'포트폴리오 정보가 업데이트되었습니다.');
+  }, err=>{
+    console.error('Firebase 실시간 동기화 실패:', err);
+    if(typeof toast!=='undefined') toast.textContent='Firebase 실시간 동기화에 실패했습니다. Rules를 확인하세요.';
+  });
+}
+async function saveFirebaseVillageData(showMessage=false){
+  if(!isAdminMode){
+    if(typeof toast!=='undefined') toast.textContent='관리자 모드에서만 저장할 수 있습니다.';
+    return;
+  }
+  initializeFirebaseVillage();
+  if(!firebaseReady){
+    if(typeof toast!=='undefined') toast.textContent='Firebase 연결에 실패했습니다.';
+    return;
+  }
+  try{
+    const data=getVillageDataSnapshot();
+    lastRemoteJson=JSON.stringify(data);
+    await villageDb.ref(VILLAGE_DB_PATH).set(data);
+    if(showMessage && typeof toast!=='undefined') toast.textContent='Firebase에 저장했습니다. 방문자 페이지에도 반영됩니다.';
+  }catch(err){
+    console.error('Firebase 저장 실패:', err);
+    if(typeof toast!=='undefined') toast.textContent='Firebase 저장 실패. Database Rules를 확인하세요.';
+  }
+}
+async function reloadVillageDataFromFirebase(){
+  initializeFirebaseVillage();
+  if(!firebaseReady){toast.textContent='Firebase 연결에 실패했습니다.';return;}
+  try{
+    const snap=await villageDb.ref(VILLAGE_DB_PATH).get();
+    if(snap.exists()){
+      const data=snap.val();
+      lastRemoteJson=JSON.stringify(data);
+      applyVillageDataToScene(data,'Firebase 데이터를 다시 불러왔습니다.');
+    }else toast.textContent='Firebase에 아직 저장된 데이터가 없습니다.';
+  }catch(err){
+    console.error(err);
+    toast.textContent='Firebase 데이터 불러오기 실패. Rules를 확인하세요.';
+  }
 }
 function downloadVillageData(){
-  saveLocalVillageData(false);
   const data=getVillageDataSnapshot();
   const content='window.VILLAGE_DATA = '+JSON.stringify(data,null,2)+';\n';
   const blob=new Blob([content],{type:'application/javascript;charset=utf-8'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
-  a.download='village-data.js';
+  a.download='village-data-backup.js';
   document.body.appendChild(a);
   a.click();
   setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},0);
-  if(typeof toast!=='undefined') toast.textContent='village-data.js가 다운로드되었습니다. 이 파일을 GitHub에 덮어쓰기 업로드하면 방문자에게 반영됩니다.';
+  if(typeof toast!=='undefined') toast.textContent='백업 파일을 다운로드했습니다. 실시간 반영은 Firebase 저장으로 처리됩니다.';
+}
+function saveLocalVillageData(showMessage=false){
+  return saveFirebaseVillageData(showMessage);
+}
+function clearLocalVillageData(){
+  return reloadVillageDataFromFirebase();
 }
 function autoSaveAfterEdit(){
-  if(isAdminMode) saveLocalVillageData(false);
+  if(!isAdminMode || remoteApplyInProgress) return;
+  clearTimeout(pendingSaveTimer);
+  pendingSaveTimer=setTimeout(()=>saveFirebaseVillageData(false),400);
 }
 
-function init(){
+async function init(){
   runSelfTests();
-  applyInitialVillageData();
   const adminRequested=detectAdminMode();
   const adminAllowed=adminRequested && authorizeAdminAccess();
   setMode(adminAllowed);
   if(adminRequested && !adminAllowed){setTimeout(()=>{toast.textContent='관리자 비밀번호가 맞지 않습니다. 방문자 모드로 열었습니다.';},0);}
+  await applyInitialVillageData();
   if(!window.THREE){toast.textContent='Three.js를 불러오지 못했습니다. 인터넷 연결을 확인하세요.';return;}
   scene=new THREE.Scene();scene.background=new THREE.Color(0xaee8ff);scene.fog=new THREE.Fog(0xaee8ff,26,48);
   const w=viewer.clientWidth,h=viewer.clientHeight;camera=new THREE.PerspectiveCamera(42,w/h,.1,100);applyCameraOrbit();
   renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));renderer.setSize(w,h);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.domElement.id='threeCanvas';viewer.prepend(renderer.domElement);
   raycaster=new THREE.Raycaster();pointer=new THREE.Vector2();groundPlane=new THREE.Plane(new THREE.Vector3(0,1,0),0);
-  addLights();root=new THREE.Group();scene.add(root);createSky();createClouds();createWorld();renderAllObjects();fillRoadForm();fillPondForm();setupEvents();updateSkyByKST();setInterval(updateSkyByKST,60000);animate();toast.textContent='준비 완료 · 빈 땅 드래그로 각도 조절 · 건물 근처 Enter';
+  addLights();root=new THREE.Group();scene.add(root);createSky();createClouds();createWorld();renderAllObjects();fillRoadForm();fillPondForm();setupEvents();updateSkyByKST();setInterval(updateSkyByKST,60000);startFirebaseVillageListener();animate();toast.textContent=firebaseReady?'준비 완료 · Firebase 실시간 동기화 연결됨':'준비 완료 · Firebase 연결 실패, Rules 또는 인터넷을 확인하세요.';
 }
 
 function addLights(){scene.add(new THREE.HemisphereLight(0xffffff,0xb6d6a3,2.7));const sun=new THREE.DirectionalLight(0xffffff,2.5);sun.position.set(6,10,8);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.near=.5;sun.shadow.camera.far=35;sun.shadow.camera.left=-12;sun.shadow.camera.right=12;sun.shadow.camera.top=12;sun.shadow.camera.bottom=-12;scene.add(sun);const front=new THREE.DirectionalLight(0xffffff,.9);front.position.set(0,4,8);scene.add(front);}
@@ -435,17 +544,17 @@ function getItem(kind,id){if(kind==='building')return state.buildings.find(x=>x.
 function selectItem(kind,id){selected={kind,id};fillSelectedPanel();highlightSelected();renderLists();toast.textContent=`${kind==='building'?'건물':kind==='lamp'?'가로등':'나무'} 선택됨`;}
 function fillSelectedPanel(){if(!selected){['selectedLabel','selectedX','selectedZ','selectedScale','selectedRot'].forEach(id=>document.getElementById(id).value='');document.getElementById('selectedRoofColor').value='#e48643';document.getElementById('selectedLocked').checked=false;return;}const item=getItem(selected.kind,selected.id);if(!item)return;document.getElementById('selectedLabel').value=`${selected.kind==='building'?'건물':selected.kind==='lamp'?'가로등':'나무'} · ${item.name||item.type||item.id}`;document.getElementById('selectedX').value=item.x.toFixed(2);document.getElementById('selectedZ').value=item.z.toFixed(2);document.getElementById('selectedScale').value=item.scale??1;document.getElementById('selectedRot').value=Math.round((item.rot||0)*180/Math.PI);document.getElementById('selectedRoofColor').value=item.roofColor||'#'+new THREE.Color(buildingColors(item.type||'house').roof).getHexString();document.getElementById('selectedLocked').checked=!!item.locked;}
 function highlightSelected(){objectRoot.traverse(o=>{if(o.userData?.ref){const active=selected&&o.userData.kind===selected.kind&&o.userData.id===selected.id;o.traverse(child=>{if(child.isMesh&&child.material?.emissive)child.material.emissive.setHex(active?0x15345f:0x000000);});}});}
-function applySelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('먼저 항목을 선택하세요.');const item=getItem(selected.kind,selected.id);if(!item)return;item.x=Number(document.getElementById('selectedX').value||item.x);item.z=Number(document.getElementById('selectedZ').value||item.z);item.scale=Number(document.getElementById('selectedScale').value||item.scale||1);item.rot=Number(document.getElementById('selectedRot').value||0)*Math.PI/180;if(selected.kind==='tree'){const p=clampDecorationSpot(item.x,item.z,'tree');item.x=p.x;item.z=p.z;}if(selected.kind==='lamp'){const p=clampDecorationSpot(item.x,item.z,'lamp');item.x=p.x;item.z=p.z;}if(selected.kind==='building'){const p=clampToIsland(item.x,item.z,1.05);item.x=p.x;item.z=p.z;item.roofColor=document.getElementById('selectedRoofColor').value;}item.locked=document.getElementById('selectedLocked').checked;renderAllObjects();autoSaveAfterEdit();toast.textContent='선택 항목 적용 완료 · 브라우저 저장됨';}
+function applySelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('먼저 항목을 선택하세요.');const item=getItem(selected.kind,selected.id);if(!item)return;item.x=Number(document.getElementById('selectedX').value||item.x);item.z=Number(document.getElementById('selectedZ').value||item.z);item.scale=Number(document.getElementById('selectedScale').value||item.scale||1);item.rot=Number(document.getElementById('selectedRot').value||0)*Math.PI/180;if(selected.kind==='tree'){const p=clampDecorationSpot(item.x,item.z,'tree');item.x=p.x;item.z=p.z;}if(selected.kind==='lamp'){const p=clampDecorationSpot(item.x,item.z,'lamp');item.x=p.x;item.z=p.z;}if(selected.kind==='building'){const p=clampToIsland(item.x,item.z,1.05);item.x=p.x;item.z=p.z;item.roofColor=document.getElementById('selectedRoofColor').value;}item.locked=document.getElementById('selectedLocked').checked;renderAllObjects();autoSaveAfterEdit();toast.textContent='선택 항목 적용 완료 · Firebase 저장 중';}
 function saveBuildingDesign(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected||selected.kind!=='building')return alert('건물을 먼저 선택하세요.');applySelected();saveLocalVillageData(true);}
 function deleteSelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('삭제할 항목을 선택하세요.');if(!confirm('선택한 항목을 삭제할까요?'))return;if(selected.kind==='building')state.buildings=state.buildings.filter(x=>x.id!==selected.id);else if(selected.kind==='lamp')state.lamps=state.lamps.filter(x=>x.id!==selected.id);else state.trees=state.trees.filter(x=>x.id!==selected.id);selected=null;renderAllObjects();autoSaveAfterEdit();}
 function addBuilding(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newBuildingType').value,name=document.getElementById('newBuildingName').value||'New Building',iconMap={lab:'🧪',school:'🎓',house:'🏡',gallery:'🖼️',post:'✉️'};const p=clampToIsland(0,5.3,1.05);state.buildings.push({id:'b'+Date.now(),type,name,icon:iconMap[type],desc:'새로 추가한 건물입니다.',x:p.x,z:p.z,scale:.9,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();}
-function addTree(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newTreeType').value;const p=findTreeSpot();state.trees.push({id:'t'+Date.now(),type,x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();toast.textContent='나무를 건물 옆쪽에 추가했습니다. · 브라우저 저장됨';}
-function addLamp(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const rawX=Number(document.getElementById('newLampX').value||0),rawZ=Number(document.getElementById('newLampZ').value||0);const manual=Math.hypot(rawX,rawZ)>.05;const p=manual?snapLampSpot(rawX,rawZ):findLampSpot();state.lamps.push({id:'l'+Date.now(),x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();toast.textContent=manual?'가로등을 가까운 도로/건물 옆으로 보정해 추가했습니다. · 브라우저 저장됨':'가로등을 도로 근처에 추가했습니다. · 브라우저 저장됨';}
+function addTree(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newTreeType').value;const p=findTreeSpot();state.trees.push({id:'t'+Date.now(),type,x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();toast.textContent='나무를 건물 옆쪽에 추가했습니다. · Firebase 저장 중';}
+function addLamp(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const rawX=Number(document.getElementById('newLampX').value||0),rawZ=Number(document.getElementById('newLampZ').value||0);const manual=Math.hypot(rawX,rawZ)>.05;const p=manual?snapLampSpot(rawX,rawZ):findLampSpot();state.lamps.push({id:'l'+Date.now(),x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();toast.textContent=manual?'가로등을 가까운 도로/건물 옆으로 보정해 추가했습니다. · Firebase 저장 중':'가로등을 도로 근처에 추가했습니다. · Firebase 저장 중';}
 function clearLamps(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!confirm('가로등을 모두 삭제할까요?'))return;state.lamps=[];renderAllObjects();autoSaveAfterEdit();}
 function fillRoadForm(){document.getElementById('roadMaterial').value=state.road.material;document.getElementById('roadColor1').value=state.road.color1;document.getElementById('roadColor2').value=state.road.color2;}
-function applyRoadSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.road.material=document.getElementById('roadMaterial').value;state.road.color1=document.getElementById('roadColor1').value;state.road.color2=document.getElementById('roadColor2').value;rebuildRoads();autoSaveAfterEdit();toast.textContent='도로 설정 적용 완료 · 브라우저 저장됨';}
+function applyRoadSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.road.material=document.getElementById('roadMaterial').value;state.road.color1=document.getElementById('roadColor1').value;state.road.color2=document.getElementById('roadColor2').value;rebuildRoads();autoSaveAfterEdit();toast.textContent='도로 설정 적용 완료 · Firebase 저장 중';}
 function fillPondForm(){document.getElementById('fishCount').value=state.pond.fishCount;document.getElementById('fishSpeed').value=state.pond.fishSpeed;}
-function applyPondSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.pond.fishCount=Number(document.getElementById('fishCount').value||state.pond.fishCount);state.pond.fishSpeed=Number(document.getElementById('fishSpeed').value||state.pond.fishSpeed);rebuildCenterPond();autoSaveAfterEdit();toast.textContent='중앙 연못 설정 적용 완료 · 브라우저 저장됨';}
+function applyPondSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.pond.fishCount=Number(document.getElementById('fishCount').value||state.pond.fishCount);state.pond.fishSpeed=Number(document.getElementById('fishSpeed').value||state.pond.fishSpeed);rebuildCenterPond();autoSaveAfterEdit();toast.textContent='중앙 연못 설정 적용 완료 · Firebase 저장 중';}
 
 function setupEvents(){window.addEventListener('resize',onResize);window.addEventListener('keydown',e=>{keyState[e.key.toLowerCase()]=true;if(['arrowup','arrowdown','arrowleft','arrowright','enter','escape',' ','f','q'].includes(e.key.toLowerCase()))e.preventDefault();if(e.key==='Enter'&&activeBuilding&&!roomMode)openBuilding(activeBuilding.id);if(e.key==='Escape'&&roomMode)closeRoom();if(e.key.toLowerCase()==='f')tryFishing();if(e.key.toLowerCase()==='q'){state.avatar.carry='none';updateCarryVisual();toast.textContent='낚시대에서 내려놓았습니다.';}});window.addEventListener('keyup',e=>keyState[e.key.toLowerCase()]=false);renderer.domElement.addEventListener('pointerdown',onPointerDown);renderer.domElement.addEventListener('pointermove',onPointerMove);renderer.domElement.addEventListener('pointerup',onPointerUp);renderer.domElement.addEventListener('wheel',onWheel,{passive:false});renderer.domElement.addEventListener('contextmenu',e=>e.preventDefault());}
 function onResize(){const w=viewer.clientWidth,h=viewer.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);}
