@@ -359,7 +359,76 @@ function getKoreanTimeParts(){const parts=new Intl.DateTimeFormat('en-GB',{timeZ
 function updateSkyByKST(){const{hour,total}=getKoreanTimeParts();const day=total>=6&&total<18,twilight=(total>=5&&total<6)||(total>=18&&total<19),night=!day&&!twilight;let baseColor;if(day)baseColor=new THREE.Color(0xaedfff);else if(twilight)baseColor=new THREE.Color(0xf0b184);else baseColor=new THREE.Color(0x243451);const pulse=.5+.5*Math.sin(performance.now()*.00015);const brightColor=baseColor.clone().lerp(new THREE.Color(0xffffff),day?.18*pulse:twilight?.08*pulse:.03*pulse);const darkColor=baseColor.clone().lerp(new THREE.Color(0x000000),night?.10*(1-pulse):.04*(1-pulse));const finalSky=brightColor.lerp(darkColor,.25);scene.background=finalSky;scene.fog.color.copy(finalSky);sunMesh.visible=day||twilight;moonMesh.visible=night||twilight;stars.forEach((s,i)=>{s.visible=night;if(night)s.material.opacity=.35+.45*(.5+.5*Math.sin(performance.now()*.0015+i));});const tDay=Math.min(1,Math.max(0,(total-6)/12)),tNight=total>=18?(total-18)/12:(total+6)/12;sunMesh.position.set(-8+tDay*16,8+Math.sin(tDay*Math.PI)*5,-16);moonMesh.position.set(8-tNight*16,8+Math.sin(tNight*Math.PI)*4.5,-16);document.getElementById('skyPill').textContent=`Sky: ${night?'night':twilight?'twilight':'day'} · KST ${String(hour).padStart(2,'0')}`;}
 
 function createWorld(){createSea();const island=new THREE.Group();root.add(island);const base=new THREE.Mesh(new THREE.CylinderGeometry(7.6,8.0,.78,96),mat(0x857f73));base.position.y=-.42;base.scale.z=.82;base.receiveShadow=true;island.add(base);const grass=new THREE.Mesh(new THREE.CylinderGeometry(7.45,7.45,.35,96),mat(0x86d56e));grass.position.y=0;grass.scale.z=.82;grass.receiveShadow=true;island.add(grass);const edge=new THREE.Mesh(new THREE.TorusGeometry(6.15,.05,10,120),mat(0xb8e983));edge.rotation.x=Math.PI/2;edge.scale.x=1.2;edge.scale.y=.98;edge.position.y=.2;island.add(edge);createEdgeFence();roadRoot=new THREE.Group();root.add(roadRoot);rebuildRoads();pondRoot=new THREE.Group();root.add(pondRoot);rebuildCenterPond();objectRoot=new THREE.Group();root.add(objectRoot);}
-function createEdgeFence(){const fenceGroup=new THREE.Group();root.add(fenceGroup);const total=72,gapStart=-0.18,gapEnd=0.52;for(let i=0;i<total;i++){const a=i/total*Math.PI*2-Math.PI;if(a>gapStart&&a<gapEnd)continue;const x=Math.cos(a)*6.72,z=Math.sin(a)*5.34;const post=new THREE.Mesh(new THREE.CylinderGeometry(.045,.05,.54,10),mat(0x8b5a2b,.82));post.position.set(x,.44,z);post.castShadow=true;fenceGroup.add(post);const nextA=(i+1)/total*Math.PI*2-Math.PI;if(!(nextA>gapStart&&nextA<gapEnd)){const midA=(a+nextA)/2;const midX=Math.cos(midA)*6.70,midZ=Math.sin(midA)*5.32;const rail1=new THREE.Mesh(new THREE.BoxGeometry(.62,.045,.05),mat(0xc89b5f,.82));rail1.position.set(midX,.54,midZ);rail1.rotation.y=-midA;rail1.castShadow=true;const rail2=rail1.clone();rail2.position.y=.34;fenceGroup.add(rail1,rail2);}}const sign=new THREE.Group();const board=new THREE.Mesh(new THREE.BoxGeometry(.78,.18,.05),mat(0xf8f1da,.75));board.position.y=.62;const poleL=new THREE.Mesh(new THREE.CylinderGeometry(.025,.03,.36,8),mat(0x8b5a2b,.82));poleL.position.set(-.22,.36,0);const poleR=poleL.clone();poleR.position.x=.22;sign.add(board,poleL,poleR);sign.position.set(6.58,.12,1.18);sign.rotation.y=-Math.PI/2;fenceGroup.add(sign);}
+function createFenceRail(parent,startA,endA,y,radiusX,radiusZ,color){
+  const pts=[];
+  const steps=96;
+  for(let i=0;i<=steps;i++){
+    const a=startA+(endA-startA)*i/steps;
+    pts.push(new THREE.Vector3(Math.cos(a)*radiusX,y,Math.sin(a)*radiusZ));
+  }
+  const curve=new THREE.CatmullRomCurve3(pts,false);
+  const rail=new THREE.Mesh(new THREE.TubeGeometry(curve,steps,.032,8,false),mat(color,.72));
+  rail.castShadow=true;
+  rail.receiveShadow=true;
+  parent.add(rail);
+}
+
+function createEdgeFence(){
+  const fenceGroup=new THREE.Group();
+  root.add(fenceGroup);
+  const radiusX=6.70,radiusZ=5.28;
+  const gapStart=-0.24,gapEnd=0.58; // 배가 있는 쪽은 비워둠
+  const picketColor=0xe0b16a,shadowColor=0xc8944f,railColor=0xd8a55f;
+  const total=102;
+  let prevPos=null;
+  for(let i=0;i<=total;i++){
+    const a=-Math.PI+(Math.PI*2)*i/total;
+    if(a>gapStart&&a<gapEnd){ prevPos=null; continue; }
+    const x=Math.cos(a)*radiusX,z=Math.sin(a)*radiusZ;
+    const tangent=a+Math.PI/2;
+
+    if(prevPos){
+      const mx=(prevPos.x+x)/2,mz=(prevPos.z+z)/2;
+      const dx=x-prevPos.x,dz=z-prevPos.z;
+      const len=Math.hypot(dx,dz);
+      const railBack=new THREE.Mesh(new THREE.BoxGeometry(len,.05,.045),mat(railColor,.8));
+      railBack.position.set(mx,.56,mz);
+      railBack.rotation.y=-Math.atan2(dz,dx);
+      railBack.castShadow=true;
+      fenceGroup.add(railBack);
+      const railLow=railBack.clone();
+      railLow.position.y=.36;
+      fenceGroup.add(railLow);
+    }
+
+    const picket=new THREE.Group();
+    const board=new THREE.Mesh(new THREE.BoxGeometry(.09,.46,.05),mat(picketColor,.78));
+    board.position.y=.30;
+    board.castShadow=true;
+    picket.add(board);
+    const tip=new THREE.Mesh(new THREE.ConeGeometry(.05,.10,5),mat(shadowColor,.78));
+    tip.position.y=.58;
+    tip.rotation.y=Math.PI/5;
+    tip.castShadow=true;
+    picket.add(tip);
+    picket.position.set(x,.18,z);
+    picket.rotation.y=-tangent;
+    fenceGroup.add(picket);
+    prevPos={x,z};
+  }
+
+  [gapStart,gapEnd].forEach(a=>{
+    const x=Math.cos(a)*radiusX,z=Math.sin(a)*radiusZ;
+    const endPicket=new THREE.Group();
+    const board=new THREE.Mesh(new THREE.BoxGeometry(.11,.56,.06),mat(0xd09a58,.78));
+    board.position.y=.34;board.castShadow=true;endPicket.add(board);
+    const tip=new THREE.Mesh(new THREE.ConeGeometry(.06,.12,5),mat(0xc58643,.78));
+    tip.position.y=.68;tip.rotation.y=Math.PI/5;tip.castShadow=true;endPicket.add(tip);
+    endPicket.position.set(x,.18,z);
+    endPicket.rotation.y=-(a+Math.PI/2);
+    fenceGroup.add(endPicket);
+  });
+}
 function createSea(){seaRoot=new THREE.Group();root.add(seaRoot);const sea=new THREE.Mesh(new THREE.CylinderGeometry(18,18,.14,140),new THREE.MeshStandardMaterial({color:0x6fd3ff,roughness:.18,metalness:.04,transparent:true,opacity:.96}));sea.position.y=-.78;sea.receiveShadow=true;seaRoot.add(sea);const seaInner=new THREE.Mesh(new THREE.CylinderGeometry(14.8,14.8,.04,140),new THREE.MeshStandardMaterial({color:0x4fc3f7,roughness:.20,metalness:.05,transparent:true,opacity:.55}));seaInner.position.y=-.70;seaRoot.add(seaInner);const foam=new THREE.Mesh(new THREE.RingGeometry(7.55,8.15,140),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.35,side:THREE.DoubleSide}));foam.rotation.x=-Math.PI/2;foam.scale.z=.82;foam.position.y=-.60;seaRoot.add(foam);boatGroup=createBoat();seaRoot.add(boatGroup);}
 function createBoat(){const g=new THREE.Group();const hull=new THREE.Mesh(new THREE.BoxGeometry(.90,.22,.36),mat(0x8b5a2b));hull.castShadow=true;g.add(hull);const bow=new THREE.Mesh(new THREE.ConeGeometry(.18,.26,4),mat(0x9a6337));bow.rotation.z=Math.PI/2;bow.position.set(.52,.01,0);g.add(bow);const stern=bow.clone();stern.position.set(-.52,.01,0);stern.rotation.z=-Math.PI/2;g.add(stern);const seat=new THREE.Mesh(new THREE.BoxGeometry(.28,.08,.20),mat(0xd1a46c));seat.position.set(-.05,.14,0);g.add(seat);const mast=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.75,10),mat(0x6b4f2c));mast.position.set(.08,.42,0);g.add(mast);const sail=new THREE.Mesh(new THREE.PlaneGeometry(.42,.34),new THREE.MeshStandardMaterial({color:0xfff7e6,roughness:.7,side:THREE.DoubleSide}));sail.position.set(.22,.48,0);sail.rotation.y=-.25;g.add(sail);g.position.set(8.8,-.60,1.6);g.rotation.y=-.8;return g;}
 function updateBoat(){if(!boatGroup)return;const t=performance.now()*.001;boatGroup.position.y=-.60+Math.sin(t*1.8)*.06;boatGroup.rotation.z=Math.sin(t*1.8)*.04;boatGroup.rotation.x=Math.cos(t*1.4)*.015;boatGroup.position.x=8.8+Math.sin(t*.45)*.18;boatGroup.position.z=1.6+Math.cos(t*.50)*.12;}
