@@ -29,8 +29,18 @@
     .preview{position:absolute;left:50%;top:26px;transform:translateX(-50%);width:min(390px,calc(100% - 32px));background:rgba(255,255,255,.95);border:1px solid rgba(203,213,225,.95);border-radius:22px;padding:13px 14px;box-shadow:0 24px 50px rgba(15,23,42,.18);display:none;z-index:5;backdrop-filter:blur(10px)}
     .preview.open{display:block}.preview-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}.preview-icon{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(180deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;font-size:22px}.preview-title{font-size:16px;font-weight:900}.preview-kind{font-size:12px;color:var(--sub);margin-top:2px}.preview-desc{font-size:13px;line-height:1.45;color:#475569;background:#f8fafc;border-radius:14px;padding:9px 10px;margin-bottom:8px}.preview-hint{font-size:12px;font-weight:900;color:#2563eb}
     .toast{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:rgba(15,23,42,.86);color:#fff;border-radius:999px;padding:10px 15px;font-size:13px;font-weight:800;z-index:5;box-shadow:0 12px 28px rgba(15,23,42,.18)}
-    .room-overlay{position:absolute;inset:0;z-index:7;display:none;pointer-events:none;background:linear-gradient(90deg,rgba(15,23,42,.06),rgba(15,23,42,0))}.room-overlay.open{display:block}.room-panel{position:absolute;right:28px;top:50%;transform:translateY(-50%);width:min(330px,calc(100% - 56px));max-height:min(430px,calc(100% - 56px));overflow:auto;pointer-events:auto;background:rgba(255,255,255,.70);border:1px solid rgba(255,255,255,.88);border-radius:24px;box-shadow:0 22px 55px rgba(15,23,42,.22);backdrop-filter:blur(18px);padding:14px}.room-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}.room-title-wrap{display:flex;align-items:center;gap:12px}.room-icon{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(180deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;font-size:22px}.room-title{font-size:17px;font-weight:950}.room-subtitle{margin-top:3px;font-size:12px;color:#64748b;font-weight:800}.room-close{width:34px;height:34px;border-radius:999px;border:1px solid #cbd5e1;background:rgba(255,255,255,.86);font-weight:950;color:#334155}.room-section{margin-top:10px;background:rgba(248,250,252,.72);border:1px solid rgba(226,232,240,.75);border-radius:16px;padding:10px}.room-section h4{margin:0 0 7px;font-size:13px;color:#334155}.room-text{font-size:12px;line-height:1.48;color:#475569;margin:0}.room-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.room-tag{border-radius:999px;background:#eaf3ff;color:#2563eb;padding:6px 9px;font-size:12px;font-weight:900}.attachment-list{display:grid;gap:8px;margin-top:10px}.attachment-card{display:grid;grid-template-columns:38px 1fr auto;gap:9px;align-items:center;border:1px solid rgba(203,213,225,.9);border-radius:15px;background:rgba(255,255,255,.72);padding:9px}.attachment-icon{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:#eef4ff;font-size:19px}.attachment-name{font-size:13px;font-weight:900;color:#334155;word-break:break-word}.attachment-meta{font-size:11px;color:#64748b;margin-top:2px}.attachment-open{border:0;border-radius:10px;padding:8px 10px;background:#4f8cff;color:white;font-size:12px;font-weight:900}.attachment-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.attachment-actions .attachment-open{padding:7px 9px}.attachment-actions .danger{background:#ef4444}.attachment-actions .ghost{background:#fff;color:#334155;border:1px solid #cbd5e1}.room-file-input{margin-top:10px;background:rgba(255,255,255,.82)}.room-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.room-action{border:0;border-radius:13px;padding:10px 12px;font-size:13px;font-weight:950;background:#e9f0fb;color:#1f2937}.room-action.primary{background:#4f8cff;color:white}.room-action.ghost{background:rgba(255,255,255,.75);border:1px solid #cbd5e1}.room-note{margin-top:10px;font-size:11px;line-height:1.45;color:#64748b}
-    .side{position:sticky;top:0;height:100vh;overflow:auto;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-left:1px solid var(--line);padding:16px}.side h2{margin:0 0 5px;font-size:23px}.small{margin:0 0 12px;color:var(--sub);font-size:13px;line-height:1.45}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:12px;box-shadow:0 10px 24px rgba(79,140,255,.04)}.panel h3{margin:0 0 10px;font-size:16px}label{display:block;margin:9px 0 5px;font-size:13px;font-weight:900;color:#334155}input,select,textarea{width:100%;border:1px solid #d7e3f0;border-radius:12px;padding:9px 10px;background:#fff;color:#1f2937;font-size:14px}textarea{min-height:72px;resize:vertical;line-height:1.45}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btn{border:0;border-radius:12px;padding:10px 12px;font-weight:900;background:#e9f0fb;color:#1f2937}.btn.primary{background:var(--blue);color:#fff}.btn.good{background:var(--green);color:#fff}.btn.danger{background:var(--red);color:#fff}.btn.ghost{background:#fff;border:1px solid #d7e3f0}.list{display:grid;gap:8px;max-height:230px;overflow:auto;margin-top:8px}.mini-card{background:#fff;border:1px solid #dce7f2;border-radius:14px;padding:10px;font-size:13px;cursor:pointer}.mini-card.active{outline:3px solid #fde68a}.mini-card strong{display:block;margin-bottom:4px}.mini-card span{color:#64748b;line-height:1.35}.status-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:#64748b}.pill{border-radius:999px;background:#f1f5f9;padding:7px 10px;font-weight:800;color:#475569}
+    .room-overlay{position:absolute;inset:0;z-index:7;display:none;pointer-events:none;background:linear-gradient(90deg,rgba(15,23,42,.06),rgba(15,23,42,0))}.room-overlay.open{display:block}.room-panel{position:absolute;right:28px;top:50%;transform:translateY(-50%);width:min(330px,calc(100% - 56px));max-height:min(430px,calc(100% - 56px));overflow:auto;pointer-events:auto;background:rgba(255,255,255,.70);border:1px solid rgba(255,255,255,.88);border-radius:24px;box-shadow:0 22px 55px rgba(15,23,42,.22);backdrop-filter:blur(18px);padding:14px}.room-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}.room-title-wrap{display:flex;align-items:center;gap:12px}.room-icon{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(180deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;font-size:22px}.room-title{font-size:17px;font-weight:950}.room-subtitle{margin-top:3px;font-size:12px;color:#64748b;font-weight:800}.room-close{width:34px;height:34px;border-radius:999px;border:1px solid #cbd5e1;background:rgba(255,255,255,.86);font-weight:950;color:#334155}.room-section{margin-top:10px;background:rgba(248,250,252,.72);border:1px solid rgba(226,232,240,.75);border-radius:16px;padding:10px}.room-section h4{margin:0 0 7px;font-size:13px;color:#334155}.room-text{font-size:12px;line-height:1.48;color:#475569;margin:0}.room-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.room-tag{border-radius:999px;background:#eaf3ff;color:#2563eb;padding:6px 9px;font-size:12px;font-weight:900}.attachment-list{display:grid;gap:8px;margin-top:10px}.attachment-card{display:grid;grid-template-columns:38px 1fr auto;gap:9px;align-items:center;border:1px solid rgba(203,213,225,.9);border-radius:15px;background:rgba(255,255,255,.72);padding:9px}.attachment-icon{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:#eef4ff;font-size:19px}.attachment-name{font-size:13px;font-weight:900;color:#334155;word-break:break-word}.attachment-meta{font-size:11px;color:#64748b;margin-top:2px}.attachment-open{border:0;border-radius:10px;padding:8px 10px;background:#4f8cff;color:white;font-size:12px;font-weight:900}.room-file-input{margin-top:10px;background:rgba(255,255,255,.82)}.room-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.room-action{border:0;border-radius:13px;padding:10px 12px;font-size:13px;font-weight:950;background:#e9f0fb;color:#1f2937}.room-action.primary{background:#4f8cff;color:white}.room-action.ghost{background:rgba(255,255,255,.75);border:1px solid #cbd5e1}.room-note{margin-top:10px;font-size:11px;line-height:1.45;color:#64748b}
+    .side{position:sticky;top:0;height:100vh;overflow:auto;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-left:1px solid var(--line);padding:16px}.side h2{margin:0 0 5px;font-size:23px}.small{margin:0 0 12px;color:var(--sub);font-size:13px;line-height:1.45}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:12px;box-shadow:0 10px 24px rgba(79,140,255,.04)}.panel h3{margin:0 0 10px;font-size:16px}label{display:block;margin:9px 0 5px;font-size:13px;font-weight:900;color:#334155}input,select{width:100%;border:1px solid #d7e3f0;border-radius:12px;padding:9px 10px;background:#fff;color:#1f2937;font-size:14px}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btn{border:0;border-radius:12px;padding:10px 12px;font-weight:900;background:#e9f0fb;color:#1f2937}.btn.primary{background:var(--blue);color:#fff}.btn.good{background:var(--green);color:#fff}.btn.danger{background:var(--red);color:#fff}.btn.ghost{background:#fff;border:1px solid #d7e3f0}.list{display:grid;gap:8px;max-height:230px;overflow:auto;margin-top:8px}.mini-card{background:#fff;border:1px solid #dce7f2;border-radius:14px;padding:10px;font-size:13px;cursor:pointer}.mini-card.active{outline:3px solid #fde68a}.mini-card strong{display:block;margin-bottom:4px}.mini-card span{color:#64748b;line-height:1.35}.status-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:#64748b}.pill{border-radius:999px;background:#f1f5f9;padding:7px 10px;font-weight:800;color:#475569}
+
+    #viewer{touch-action:none}
+    .mobile-controls{position:absolute;left:12px;right:12px;bottom:14px;z-index:9;display:none;align-items:flex-end;justify-content:space-between;gap:10px;pointer-events:none}
+    .mobile-dpad{display:grid;grid-template-columns:52px 52px 52px;grid-template-rows:52px 52px;gap:8px;pointer-events:auto}
+    .mobile-dpad .up{grid-column:2;grid-row:1}.mobile-dpad .left{grid-column:1;grid-row:2}.mobile-dpad .down{grid-column:2;grid-row:2}.mobile-dpad .right{grid-column:3;grid-row:2}
+    .mobile-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;max-width:230px;pointer-events:auto}
+    .mobile-btn{border:1px solid rgba(203,213,225,.95);background:rgba(255,255,255,.90);color:#1f2937;border-radius:16px;min-width:52px;height:52px;padding:0 10px;font-size:18px;font-weight:950;box-shadow:0 12px 28px rgba(15,23,42,.16);backdrop-filter:blur(10px);touch-action:none;user-select:none}
+    .mobile-btn.text{font-size:13px;min-width:64px}.mobile-btn.primary{background:rgba(79,140,255,.94);color:#fff;border-color:#4f8cff}.mobile-btn.good{background:rgba(34,197,94,.92);color:#fff;border-color:#22c55e}.mobile-btn.warn{background:rgba(245,158,11,.92);color:#fff;border-color:#f59e0b}
+    @media (max-width:760px){.mobile-controls{display:flex}.toast{bottom:92px}.preview{top:16px}.room-panel{right:14px;width:min(340px,calc(100% - 28px))}body.admin-mode .mobile-controls{bottom:18px}}
+
     @media (max-width:1160px){.app{grid-template-columns:1fr}.side{position:relative;height:auto;border-left:0;border-top:1px solid var(--line)}#viewer{height:680px}body.visitor-mode #viewer{height:680px}}
   </style>
 </head>
@@ -38,17 +48,30 @@
 <div class="app">
   <main class="main"><section class="viewer-wrap"><div id="viewer">
     <div id="modeBadge" class="mode-badge"><span id="modeText">방문자 모드</span><button id="modeButton" type="button" onclick="toggleAdminMode()">관리자</button></div>
+
+    <div id="mobileControls" class="mobile-controls">
+      <div class="mobile-dpad" aria-label="모바일 이동 버튼">
+        <button class="mobile-btn up" data-key="arrowup" type="button">▲</button>
+        <button class="mobile-btn left" data-key="arrowleft" type="button">◀</button>
+        <button class="mobile-btn down" data-key="arrowdown" type="button">▼</button>
+        <button class="mobile-btn right" data-key="arrowright" type="button">▶</button>
+      </div>
+      <div class="mobile-actions" aria-label="모바일 동작 버튼">
+        <button class="mobile-btn primary text" data-action="enter" type="button">입장</button>
+        <button class="mobile-btn good text" data-action="fish" type="button">낚기</button>
+        <button class="mobile-btn warn text" data-action="drop" type="button">놓기</button>
+        <button class="mobile-btn" data-action="zoomIn" type="button">＋</button>
+        <button class="mobile-btn" data-action="zoomOut" type="button">－</button>
+      </div>
+    </div>
     <div id="preview" class="preview"><div class="preview-head"><div id="previewIcon" class="preview-icon">🏠</div><div><div id="previewTitle" class="preview-title">건물 이름</div><div id="previewKind" class="preview-kind">building</div></div></div><div id="previewDesc" class="preview-desc">설명</div><div class="preview-hint">Enter를 누르면 건물 앞 시점으로 이동하고 자료창이 열립니다.</div></div>
     <div id="toast" class="toast">3D 마을 로딩 중...</div>
-    <div id="roomOverlay" class="room-overlay"><div class="room-panel"><div class="room-panel-head"><div class="room-title-wrap"><div id="roomIcon" class="room-icon">🏠</div><div><div id="roomTitle" class="room-title">Room</div><div id="roomSubtitle" class="room-subtitle">portfolio room</div></div></div><button class="room-close" onclick="closeRoom()">×</button></div><div class="room-section"><h4 id="roomMainHeading">요약</h4><p id="roomMainText" class="room-text">내용이 여기에 표시됩니다.</p><div id="roomTags" class="room-tags"></div></div><div class="room-section"><h4>첨부파일 / 자료 확인</h4><p id="roomFileGuide" class="room-text">PDF, PPT, 이미지, 외부 링크를 확인할 수 있습니다.</p><input id="roomFileInput" class="room-file-input admin-only" type="file" multiple onchange="handleRoomFiles(event)" /><div id="attachmentList" class="attachment-list"></div><div id="roomNote" class="room-note admin-only">로컬 파일 업로드는 현재 브라우저에서만 임시 확인됩니다. 방문자에게도 보이게 하려면 GitHub assets, Google Drive, Notion 등 공개 링크를 등록하세요.</div></div><div class="room-actions"><button class="room-action primary" onclick="toast.textContent='다음 단계에서 실제 상세 페이지로 연결하면 됩니다.'">상세 페이지 열기</button><button class="room-action ghost" onclick="closeRoom()">마을로 돌아가기</button></div></div></div>
+    <div id="roomOverlay" class="room-overlay"><div class="room-panel"><div class="room-panel-head"><div class="room-title-wrap"><div id="roomIcon" class="room-icon">🏠</div><div><div id="roomTitle" class="room-title">Room</div><div id="roomSubtitle" class="room-subtitle">portfolio room</div></div></div><button class="room-close" onclick="closeRoom()">×</button></div><div class="room-section"><h4 id="roomMainHeading">요약</h4><p id="roomMainText" class="room-text">내용이 여기에 표시됩니다.</p><div id="roomTags" class="room-tags"></div></div><div class="room-section"><h4>첨부파일 / 자료 확인</h4><p id="roomFileGuide" class="room-text">CV, PDF, PPT, Excel, 이미지 파일을 확인할 수 있습니다.</p><input id="roomFileInput" class="room-file-input admin-only" type="file" multiple onchange="handleRoomFiles(event)" /><div id="attachmentList" class="attachment-list"></div><div id="roomNote" class="room-note admin-only">현재 업로드한 파일은 브라우저 안에서만 임시로 열립니다. 실제 배포 단계에서는 GitHub, Google Drive, 서버 저장소 링크로 연결하면 됩니다.</div></div><div class="room-actions"><button class="room-action primary" onclick="toast.textContent='다음 단계에서 실제 상세 페이지로 연결하면 됩니다.'">상세 페이지 열기</button><button class="room-action ghost" onclick="closeRoom()">마을로 돌아가기</button></div></div></div>
   </div></section></main>
   <aside class="side">
     <h2>관리자 패널</h2><p class="small"><b>방문자 주소:</b> index.html<br><b>관리자 주소:</b> admin.html<br><br>방향키/WASD 이동 · 빈 땅 드래그로 화면 회전 · 휠 줌 · Enter 입장 · Esc 복귀 · F 낚기 · Q 놓기</p>
     <div class="panel"><h3>0. 실시간 저장 / 공개 반영</h3><p class="small">건물 크기·위치·색·도로·연못 설정은 Firebase에 저장됩니다. 저장 후 방문자 페이지에도 자동 반영됩니다.</p><div class="btn-row"><button class="btn good" onclick="saveFirebaseVillageData(true)">Firebase 저장</button><button class="btn primary" onclick="reloadVillageDataFromFirebase()">Firebase 다시 불러오기</button><button class="btn ghost" onclick="downloadVillageData()">백업 다운로드</button></div></div>
-    <div class="panel"><h3>1. 선택 항목 편집</h3><label>선택된 항목</label><input id="selectedLabel" readonly placeholder="아직 선택 없음" /><label>표시 이름</label><input id="selectedName" placeholder="건물 이름" /><label>아이콘</label><input id="selectedIcon" placeholder="예: 🧪" maxlength="4" /><label>짧은 설명</label><textarea id="selectedDesc" placeholder="방문자가 건물 근처에 갔을 때 보이는 설명"></textarea><div class="row"><div><label>X</label><input id="selectedX" type="number" step="0.1" /></div><div><label>Z</label><input id="selectedZ" type="number" step="0.1" /></div></div><div class="row"><div><label>크기</label><input id="selectedScale" type="number" min="0.4" max="2.5" step="0.05" /></div><div><label>회전 보정</label><input id="selectedRot" type="number" step="5" /></div></div><label>건물 지붕색</label><input id="selectedRoofColor" type="color" value="#e48643" /><label><input id="selectedLocked" type="checkbox" style="width:auto" /> 위치 고정</label><div class="btn-row"><button class="btn primary" onclick="applySelected()">적용 + 실시간 저장</button><button class="btn good" onclick="saveBuildingDesign()">Firebase 저장</button><button class="btn danger" onclick="deleteSelected()">삭제</button></div></div>
-    <div class="panel"><h3>1-2. 방 내용 / 자료 링크</h3><p class="small">건물을 선택한 뒤 상세 설명과 방문자에게 보일 자료 링크를 등록하세요.</p><label>방 제목</label><input id="roomHeadingInput" placeholder="예: Research / Projects" /><label>방 본문</label><textarea id="roomTextInput" placeholder="상세 설명"></textarea><label>태그 / 키워드</label><input id="roomTagsInput" placeholder="ECMO, BIA, Sepsis" /><div class="btn-row"><button class="btn primary" onclick="applyRoomInfo()">방 내용 저장</button></div><hr style="border:0;border-top:1px solid #e2e8f0;margin:14px 0;" /><label>자료 이름</label><input id="attachNameInput" placeholder="예: CV, Poster, GitHub" /><label>자료 링크 URL</label><input id="attachUrlInput" placeholder="https://... 또는 assets/CV.pdf · 텍스트 자료면 비워도 됨" /><div class="row"><div><label>종류</label><input id="attachTypeInput" placeholder="PDF / PPT / Link" /></div><div><label>설명 / 텍스트 내용</label><input id="attachSizeInput" placeholder="링크 설명 또는 짧은 텍스트" /></div></div><div class="btn-row"><button class="btn good" onclick="addAttachmentLink()">링크 자료 추가</button><button class="btn ghost" onclick="openSelectedRoom()">선택 건물 방 열기</button></div><p class="small">PDF/PPT 파일을 방문자에게 보여주려면 먼저 GitHub에 올리고, URL에 <b>assets/파일명.pdf</b>처럼 적으면 됩니다.</p></div>
-    <div class="panel"><h3>1-3. 아바타 프로필</h3><p class="small">이 내용은 About House 안에 공개됩니다. 공개해도 괜찮은 정보만 적으세요.</p><div class="row"><div><label>이름</label><input id="profileName" placeholder="김률희" /></div><div><label>출생연도</label><input id="profileBirthYear" placeholder="예: 2000" /></div></div><div class="row"><div><label>출생/지역</label><input id="profileBirthplace" placeholder="예: 광주" /></div><div><label>성별/정체성</label><input id="profileGender" placeholder="예: 여성" /></div></div><label>역할 / 소속</label><input id="profileRole" placeholder="예: 의과학과 석사과정생" /><label>자기소개</label><textarea id="profileIntro" placeholder="아바타를 통해 보여줄 소개 문구"></textarea><div class="btn-row"><button class="btn primary" onclick="saveProfileInfo()">프로필 저장</button></div></div>
-    <div class="panel"><h3>0. Firebase 관리</h3><p class="small">실수로 데이터가 비어 보이면 아래 버튼으로 현재 화면의 기본값을 다시 Firebase에 저장할 수 있습니다.</p><div class="btn-row"><button class="btn good" onclick="saveFirebaseVillageData(true)">현재 상태 Firebase 저장</button><button class="btn ghost" onclick="reloadVillageDataFromFirebase()">Firebase 다시 불러오기</button><button class="btn danger" onclick="resetFirebaseToDefaults()">기본값으로 복구 저장</button><button class="btn ghost" onclick="deleteSampleAttachmentsAll()">샘플 자료 삭제</button></div></div>
+    <div class="panel"><h3>1. 선택 항목 편집</h3><label>선택된 항목</label><input id="selectedLabel" readonly placeholder="아직 선택 없음" /><div class="row"><div><label>X</label><input id="selectedX" type="number" step="0.1" /></div><div><label>Z</label><input id="selectedZ" type="number" step="0.1" /></div></div><div class="row"><div><label>크기</label><input id="selectedScale" type="number" min="0.4" max="2.5" step="0.05" /></div><div><label>회전 보정</label><input id="selectedRot" type="number" step="5" /></div></div><label>건물 지붕색</label><input id="selectedRoofColor" type="color" value="#e48643" /><label><input id="selectedLocked" type="checkbox" style="width:auto" /> 위치 고정</label><div class="btn-row"><button class="btn primary" onclick="applySelected()">적용</button><button class="btn good" onclick="saveBuildingDesign()">건물 디자인 저장</button><button class="btn danger" onclick="deleteSelected()">삭제</button></div></div>
     <div class="panel"><h3>2. 도로 / 중앙 연못</h3><label>도로 재질</label><select id="roadMaterial"><option value="asphalt">아스팔트</option><option value="stone">돌길</option><option value="gravel">자갈길</option><option value="grass">잔디길</option></select><div class="row"><div><label>도로색 1</label><input id="roadColor1" type="color" /></div><div><label>도로색 2</label><input id="roadColor2" type="color" /></div></div><div class="row"><div><label>물고기 수</label><input id="fishCount" type="number" min="0" max="12" /></div><div><label>물고기 속도</label><input id="fishSpeed" type="number" min="0.2" max="3" step="0.1" /></div></div><div class="btn-row"><button class="btn primary" onclick="applyRoadSettings()">도로 적용</button><button class="btn good" onclick="applyPondSettings()">연못 적용</button></div></div>
     <div class="panel"><h3>3. 건물 추가</h3><label>건물 종류</label><select id="newBuildingType"><option value="lab">흰색 연구소</option><option value="school">로고형 학교/의대</option><option value="house">집</option><option value="gallery">전시관</option><option value="post">우체국</option></select><label>건물 이름</label><input id="newBuildingName" placeholder="예: New Lab" /><div class="btn-row"><button class="btn good" onclick="addBuilding()">건물 추가</button></div></div>
     <div class="panel"><h3>4. 나무 / 가로등 추가</h3><label>나무 종류</label><select id="newTreeType"><option value="round">둥근 나무</option><option value="fruit">과일나무</option><option value="pine">침엽수</option></select><div class="btn-row"><button class="btn good" onclick="addTree()">나무 추가</button></div><hr style="border:0;border-top:1px solid #e2e8f0;margin:14px 0;" /><label>가로등 위치</label><div class="row"><div><label>X</label><input id="newLampX" type="number" step="0.1" value="0" /></div><div><label>Z</label><input id="newLampZ" type="number" step="0.1" value="0" /></div></div><div class="btn-row"><button class="btn good" onclick="addLamp()">가로등 추가</button><button class="btn danger" onclick="clearLamps()">가로등 전체 삭제</button></div></div>
@@ -81,7 +104,6 @@ let firebaseListenStarted=false;
 let remoteApplyInProgress=false;
 let pendingSaveTimer=null;
 let lastRemoteJson='';
-let initialVillageDataApplied=false;
 
 let isAdminMode=false;
 
@@ -123,7 +145,7 @@ function toggleAdminMode(){
 
 const state={
   road:{material:'asphalt',color1:'#6b7280',color2:'#4b5563'},pond:{visible:true,fishCount:6,fishSpeed:1.0},
-  cat:{x:-2.2,z:3.9,targetX:2.0,targetZ:2.0,speed:0.75,mode:'idle',timer:1.5},avatar:{x:0.2,z:3.45,carry:'none'},profile:{name:'김률희',birthYear:'',birthplace:'',gender:'',role:'의과학과 석사과정생',intro:'연구, 프로젝트, 발표 자료를 3D 포트폴리오 빌리지에 정리하고 있습니다.'},
+  cat:{x:-2.2,z:3.9,targetX:2.0,targetZ:2.0,speed:0.75,mode:'idle',timer:1.5},avatar:{x:0.2,z:3.45,carry:'none'},
   buildings:[
     {id:'lab',type:'lab',name:'Research Lab',icon:'🧪',desc:'연구 프로젝트, 논문, 발표 자료를 담아두는 공간입니다.',x:-3.6,z:-1.9,scale:1.05,rot:0,locked:false},
     {id:'school',type:'school',name:'Medical School',icon:'🎓',desc:'학력, 전공, 연구실 이력을 보여주는 공간입니다.',x:3.6,z:-1.8,scale:1.08,rot:0,locked:false},
@@ -132,11 +154,11 @@ const state={
     {id:'post',type:'post',name:'Contact Post',icon:'✉️',desc:'이메일, GitHub, Scholar, ORCID 등의 링크를 담는 공간입니다.',x:4.9,z:2.9,scale:0.90,rot:0,locked:false}
   ],
   rooms:{
-    lab:{heading:'Research / Projects',text:'진행 중인 연구, 실험 설계, 논문, 발표자료를 정리하는 공간입니다. 프로젝트별 폴더, PPT, Excel, 코드 파일을 연결할 수 있습니다.',tags:['ECMO','BIA','Sepsis','Python','PPT'],attachments:[]},
-    school:{heading:'Education / Academic History',text:'학력, 전공, 연구실 소속, 지도교수, 학위 과정 정보를 정리하는 공간입니다.',tags:['Master course','Biomedical Science','Medical School'],attachments:[]},
-    gallery:{heading:'Posters / Figures / Slides',text:'학회 포스터, 발표 슬라이드, Figure, 이미지 자료를 전시하는 공간입니다.',tags:['Poster','Figure','Presentation'],attachments:[]},
-    house:{heading:'About Me',text:'자기소개, 관심 분야, 취미, 연구 외 활동을 담는 공간입니다.',tags:['About','Interests','Profile'],attachments:[]},
-    post:{heading:'Contact / Links',text:'이메일, GitHub, Google Scholar, ORCID, LinkedIn 등 외부 링크를 모아두는 공간입니다.',tags:['Email','GitHub','Scholar','ORCID'],attachments:[]}
+    lab:{heading:'Research / Projects',text:'진행 중인 연구, 실험 설계, 논문, 발표자료를 정리하는 공간입니다. 프로젝트별 폴더, PPT, Excel, 코드 파일을 연결할 수 있습니다.',tags:['ECMO','BIA','Sepsis','Python','PPT'],attachments:[{name:'Research_Project_Summary.pdf',type:'PDF',size:'sample'},{name:'Experiment_Data_Template.xlsx',type:'Excel',size:'sample'}]},
+    school:{heading:'Education / Academic History',text:'학력, 전공, 연구실 소속, 지도교수, 학위 과정 정보를 정리하는 공간입니다.',tags:['Master course','Biomedical Science','Medical School'],attachments:[{name:'Academic_CV.pdf',type:'PDF',size:'sample'}]},
+    gallery:{heading:'Posters / Figures / Slides',text:'학회 포스터, 발표 슬라이드, Figure, 이미지 자료를 전시하는 공간입니다.',tags:['Poster','Figure','Presentation'],attachments:[{name:'Conference_Poster.pptx',type:'PPT',size:'sample'}]},
+    house:{heading:'About Me',text:'자기소개, 관심 분야, 취미, 연구 외 활동을 담는 공간입니다.',tags:['About','Interests','Profile'],attachments:[{name:'Short_Bio.txt',type:'Text',size:'sample'}]},
+    post:{heading:'Contact / Links',text:'이메일, GitHub, Google Scholar, ORCID, LinkedIn 등 외부 링크를 모아두는 공간입니다.',tags:['Email','GitHub','Scholar','ORCID'],attachments:[{name:'Contact_Links.url',type:'Link',size:'sample'}]}
   },
   trees:[
     {id:'t1',type:'round',x:-4.95,z:-1.75,scale:.95,rot:0,locked:false},{id:'t2',type:'round',x:-2.55,z:-2.35,scale:.92,rot:0,locked:false},{id:'t3',type:'fruit',x:2.35,z:-2.30,scale:.92,rot:0,locked:false},{id:'t4',type:'round',x:4.85,z:-1.65,scale:.95,rot:0,locked:false},
@@ -178,26 +200,8 @@ function getVillageDataSnapshot(){
     buildings:state.buildings,
     rooms:state.rooms,
     trees:state.trees,
-    lamps:state.lamps,
-    profile:state.profile
+    lamps:state.lamps
   });
-}
-function cleanupLegacySampleAttachments(){
-  const sampleNames=new Set(['Research_Project_Summary.pdf','Experiment_Data_Template.xlsx','Academic_CV.pdf','Conference_Poster.pptx','Short_Bio.txt','Contact_Links.url']);
-  let changed=false;
-  Object.values(state.rooms||{}).forEach(room=>{
-    if(!room)return;
-    if(!Array.isArray(room.attachments)){room.attachments=[];changed=true;return;}
-    const before=room.attachments.length;
-    room.attachments=room.attachments.filter(file=>{
-      if(!file)return false;
-      const name=String(file.name||'');
-      const isSample=file.size==='sample'||sampleNames.has(name)||(!file.url&&sampleNames.has(name));
-      return !isSample;
-    });
-    if(room.attachments.length!==before)changed=true;
-  });
-  return changed;
 }
 function initializeFirebaseVillage(){
   if(firebaseReady) return true;
@@ -228,15 +232,8 @@ async function applyInitialVillageData(){
       lastRemoteJson=JSON.stringify(data);
       deepMerge(state, data);
     }else if(isAdminMode){
-      cleanupLegacySampleAttachments();
       await villageDb.ref(VILLAGE_DB_PATH).set(getVillageDataSnapshot());
       lastRemoteJson=JSON.stringify(getVillageDataSnapshot());
-    }
-    const cleaned=cleanupLegacySampleAttachments();
-    if(cleaned&&isAdminMode){
-      const cleanedData=getVillageDataSnapshot();
-      lastRemoteJson=JSON.stringify(cleanedData);
-      await villageDb.ref(VILLAGE_DB_PATH).set(cleanedData);
     }
   }catch(err){
     console.error('Firebase 데이터 불러오기 실패:', err);
@@ -246,7 +243,6 @@ function applyVillageDataToScene(data, message){
   if(!data) return;
   remoteApplyInProgress=true;
   deepMerge(state, data);
-  cleanupLegacySampleAttachments();
   if(objectRoot){
     renderAllObjects();
     fillRoadForm();
@@ -347,7 +343,7 @@ async function init(){
   const w=viewer.clientWidth,h=viewer.clientHeight;camera=new THREE.PerspectiveCamera(42,w/h,.1,100);applyCameraOrbit();
   renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));renderer.setSize(w,h);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.domElement.id='threeCanvas';viewer.prepend(renderer.domElement);
   raycaster=new THREE.Raycaster();pointer=new THREE.Vector2();groundPlane=new THREE.Plane(new THREE.Vector3(0,1,0),0);
-  addLights();root=new THREE.Group();scene.add(root);createSky();createClouds();createWorld();renderAllObjects();fillRoadForm();fillPondForm();setupEvents();updateSkyByKST();setInterval(updateSkyByKST,60000);startFirebaseVillageListener();animate();toast.textContent=firebaseReady?'준비 완료 · Firebase 실시간 동기화 연결됨':'준비 완료 · Firebase 연결 실패, Rules 또는 인터넷을 확인하세요.';
+  addLights();root=new THREE.Group();scene.add(root);createSky();createClouds();createWorld();renderAllObjects();fillRoadForm();fillPondForm();setupEvents();setupMobileControls();updateSkyByKST();setInterval(updateSkyByKST,60000);startFirebaseVillageListener();animate();toast.textContent=firebaseReady?'준비 완료 · Firebase 실시간 동기화 연결됨':'준비 완료 · Firebase 연결 실패, Rules 또는 인터넷을 확인하세요.';
 }
 
 function addLights(){scene.add(new THREE.HemisphereLight(0xffffff,0xb6d6a3,2.7));const sun=new THREE.DirectionalLight(0xffffff,2.5);sun.position.set(6,10,8);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.near=.5;sun.shadow.camera.far=35;sun.shadow.camera.left=-12;sun.shadow.camera.right=12;sun.shadow.camera.top=12;sun.shadow.camera.bottom=-12;scene.add(sun);const front=new THREE.DirectionalLight(0xffffff,.9);front.position.set(0,4,8);scene.add(front);}
@@ -358,77 +354,8 @@ function updateClouds(dt){if(!cloudRoot)return;const t=performance.now()*.001;cl
 function getKoreanTimeParts(){const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Seoul',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());let hour=12,minute=0;parts.forEach(p=>{if(p.type==='hour')hour=Number(p.value);if(p.type==='minute')minute=Number(p.value);});return{hour,minute,total:hour+minute/60};}
 function updateSkyByKST(){const{hour,total}=getKoreanTimeParts();const day=total>=6&&total<18,twilight=(total>=5&&total<6)||(total>=18&&total<19),night=!day&&!twilight;let baseColor;if(day)baseColor=new THREE.Color(0xaedfff);else if(twilight)baseColor=new THREE.Color(0xf0b184);else baseColor=new THREE.Color(0x243451);const pulse=.5+.5*Math.sin(performance.now()*.00015);const brightColor=baseColor.clone().lerp(new THREE.Color(0xffffff),day?.18*pulse:twilight?.08*pulse:.03*pulse);const darkColor=baseColor.clone().lerp(new THREE.Color(0x000000),night?.10*(1-pulse):.04*(1-pulse));const finalSky=brightColor.lerp(darkColor,.25);scene.background=finalSky;scene.fog.color.copy(finalSky);sunMesh.visible=day||twilight;moonMesh.visible=night||twilight;stars.forEach((s,i)=>{s.visible=night;if(night)s.material.opacity=.35+.45*(.5+.5*Math.sin(performance.now()*.0015+i));});const tDay=Math.min(1,Math.max(0,(total-6)/12)),tNight=total>=18?(total-18)/12:(total+6)/12;sunMesh.position.set(-8+tDay*16,8+Math.sin(tDay*Math.PI)*5,-16);moonMesh.position.set(8-tNight*16,8+Math.sin(tNight*Math.PI)*4.5,-16);document.getElementById('skyPill').textContent=`Sky: ${night?'night':twilight?'twilight':'day'} · KST ${String(hour).padStart(2,'0')}`;}
 
-function createWorld(){createSea();const island=new THREE.Group();root.add(island);const base=new THREE.Mesh(new THREE.CylinderGeometry(7.6,8.0,.78,96),mat(0x857f73));base.position.y=-.42;base.scale.z=.82;base.receiveShadow=true;island.add(base);const grass=new THREE.Mesh(new THREE.CylinderGeometry(7.45,7.45,.35,96),mat(0x86d56e));grass.position.y=0;grass.scale.z=.82;grass.receiveShadow=true;island.add(grass);const edge=new THREE.Mesh(new THREE.TorusGeometry(6.15,.05,10,120),mat(0xb8e983));edge.rotation.x=Math.PI/2;edge.scale.x=1.2;edge.scale.y=.98;edge.position.y=.2;island.add(edge);createEdgeFence();roadRoot=new THREE.Group();root.add(roadRoot);rebuildRoads();pondRoot=new THREE.Group();root.add(pondRoot);rebuildCenterPond();objectRoot=new THREE.Group();root.add(objectRoot);}
-function createFenceRail(parent,startA,endA,y,radiusX,radiusZ,color){
-  const pts=[];
-  const steps=96;
-  for(let i=0;i<=steps;i++){
-    const a=startA+(endA-startA)*i/steps;
-    pts.push(new THREE.Vector3(Math.cos(a)*radiusX,y,Math.sin(a)*radiusZ));
-  }
-  const curve=new THREE.CatmullRomCurve3(pts,false);
-  const rail=new THREE.Mesh(new THREE.TubeGeometry(curve,steps,.032,8,false),mat(color,.72));
-  rail.castShadow=true;
-  rail.receiveShadow=true;
-  parent.add(rail);
-}
-
-function createEdgeFence(){
-  const fenceGroup=new THREE.Group();
-  root.add(fenceGroup);
-  const radiusX=6.70,radiusZ=5.28;
-  const gapStart=-0.24,gapEnd=0.58; // 배가 있는 쪽은 비워둠
-  const picketColor=0xe0b16a,shadowColor=0xc8944f,railColor=0xd8a55f;
-  const total=102;
-  let prevPos=null;
-  for(let i=0;i<=total;i++){
-    const a=-Math.PI+(Math.PI*2)*i/total;
-    if(a>gapStart&&a<gapEnd){ prevPos=null; continue; }
-    const x=Math.cos(a)*radiusX,z=Math.sin(a)*radiusZ;
-    const tangent=a+Math.PI/2;
-
-    if(prevPos){
-      const mx=(prevPos.x+x)/2,mz=(prevPos.z+z)/2;
-      const dx=x-prevPos.x,dz=z-prevPos.z;
-      const len=Math.hypot(dx,dz);
-      const railBack=new THREE.Mesh(new THREE.BoxGeometry(len,.05,.045),mat(railColor,.8));
-      railBack.position.set(mx,.56,mz);
-      railBack.rotation.y=-Math.atan2(dz,dx);
-      railBack.castShadow=true;
-      fenceGroup.add(railBack);
-      const railLow=railBack.clone();
-      railLow.position.y=.36;
-      fenceGroup.add(railLow);
-    }
-
-    const picket=new THREE.Group();
-    const board=new THREE.Mesh(new THREE.BoxGeometry(.09,.46,.05),mat(picketColor,.78));
-    board.position.y=.30;
-    board.castShadow=true;
-    picket.add(board);
-    const tip=new THREE.Mesh(new THREE.ConeGeometry(.05,.10,5),mat(shadowColor,.78));
-    tip.position.y=.58;
-    tip.rotation.y=Math.PI/5;
-    tip.castShadow=true;
-    picket.add(tip);
-    picket.position.set(x,.18,z);
-    picket.rotation.y=-tangent;
-    fenceGroup.add(picket);
-    prevPos={x,z};
-  }
-
-  [gapStart,gapEnd].forEach(a=>{
-    const x=Math.cos(a)*radiusX,z=Math.sin(a)*radiusZ;
-    const endPicket=new THREE.Group();
-    const board=new THREE.Mesh(new THREE.BoxGeometry(.11,.56,.06),mat(0xd09a58,.78));
-    board.position.y=.34;board.castShadow=true;endPicket.add(board);
-    const tip=new THREE.Mesh(new THREE.ConeGeometry(.06,.12,5),mat(0xc58643,.78));
-    tip.position.y=.68;tip.rotation.y=Math.PI/5;tip.castShadow=true;endPicket.add(tip);
-    endPicket.position.set(x,.18,z);
-    endPicket.rotation.y=-(a+Math.PI/2);
-    fenceGroup.add(endPicket);
-  });
-}
+function createWorld(){createSea();const island=new THREE.Group();root.add(island);const base=new THREE.Mesh(new THREE.CylinderGeometry(7.6,8.0,.78,96),mat(0x857f73));base.position.y=-.42;base.scale.z=.82;base.receiveShadow=true;island.add(base);const grass=new THREE.Mesh(new THREE.CylinderGeometry(7.45,7.45,.35,96),mat(0x86d56e));grass.position.y=0;grass.scale.z=.82;grass.receiveShadow=true;island.add(grass);const edge=new THREE.Mesh(new THREE.TorusGeometry(6.15,.05,10,120),mat(0xb8e983));edge.rotation.x=Math.PI/2;edge.scale.x=1.2;edge.scale.y=.98;edge.position.y=.2;island.add(edge);createEdgeGrass();roadRoot=new THREE.Group();root.add(roadRoot);rebuildRoads();pondRoot=new THREE.Group();root.add(pondRoot);rebuildCenterPond();objectRoot=new THREE.Group();root.add(objectRoot);}
+function createEdgeGrass(){for(let i=0;i<80;i++){const a=i/80*Math.PI*2,x=Math.cos(a)*(6.45+(Math.random()-.5)*.18),z=Math.sin(a)*(5.2+(Math.random()-.5)*.16),tuft=new THREE.Group();for(let k=0;k<4;k++){const blade=new THREE.Mesh(new THREE.BoxGeometry(.035,.22+Math.random()*.12,.02),mat(0x7fd65d,.95));blade.position.set((Math.random()-.5)*.08,.15,(Math.random()-.5)*.06);blade.rotation.z=(Math.random()-.5)*.45;tuft.add(blade);}tuft.position.set(x,.18,z);root.add(tuft);}}
 function createSea(){seaRoot=new THREE.Group();root.add(seaRoot);const sea=new THREE.Mesh(new THREE.CylinderGeometry(18,18,.14,140),new THREE.MeshStandardMaterial({color:0x6fd3ff,roughness:.18,metalness:.04,transparent:true,opacity:.96}));sea.position.y=-.78;sea.receiveShadow=true;seaRoot.add(sea);const seaInner=new THREE.Mesh(new THREE.CylinderGeometry(14.8,14.8,.04,140),new THREE.MeshStandardMaterial({color:0x4fc3f7,roughness:.20,metalness:.05,transparent:true,opacity:.55}));seaInner.position.y=-.70;seaRoot.add(seaInner);const foam=new THREE.Mesh(new THREE.RingGeometry(7.55,8.15,140),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.35,side:THREE.DoubleSide}));foam.rotation.x=-Math.PI/2;foam.scale.z=.82;foam.position.y=-.60;seaRoot.add(foam);boatGroup=createBoat();seaRoot.add(boatGroup);}
 function createBoat(){const g=new THREE.Group();const hull=new THREE.Mesh(new THREE.BoxGeometry(.90,.22,.36),mat(0x8b5a2b));hull.castShadow=true;g.add(hull);const bow=new THREE.Mesh(new THREE.ConeGeometry(.18,.26,4),mat(0x9a6337));bow.rotation.z=Math.PI/2;bow.position.set(.52,.01,0);g.add(bow);const stern=bow.clone();stern.position.set(-.52,.01,0);stern.rotation.z=-Math.PI/2;g.add(stern);const seat=new THREE.Mesh(new THREE.BoxGeometry(.28,.08,.20),mat(0xd1a46c));seat.position.set(-.05,.14,0);g.add(seat);const mast=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.75,10),mat(0x6b4f2c));mast.position.set(.08,.42,0);g.add(mast);const sail=new THREE.Mesh(new THREE.PlaneGeometry(.42,.34),new THREE.MeshStandardMaterial({color:0xfff7e6,roughness:.7,side:THREE.DoubleSide}));sail.position.set(.22,.48,0);sail.rotation.y=-.25;g.add(sail);g.position.set(8.8,-.60,1.6);g.rotation.y=-.8;return g;}
 function updateBoat(){if(!boatGroup)return;const t=performance.now()*.001;boatGroup.position.y=-.60+Math.sin(t*1.8)*.06;boatGroup.rotation.z=Math.sin(t*1.8)*.04;boatGroup.rotation.x=Math.cos(t*1.4)*.015;boatGroup.position.x=8.8+Math.sin(t*.45)*.18;boatGroup.position.z=1.6+Math.cos(t*.50)*.12;}
@@ -443,7 +370,7 @@ function animateFish(){const now=performance.now()*.001;fishList.forEach(fish=>{
 function createTree(t){const group=new THREE.Group();group.name=t.id;group.userData={kind:'tree',id:t.id,ref:t};group.position.set(t.x,GROUND_Y,t.z);group.rotation.y=t.rot||0;group.scale.setScalar(t.scale||1);const trunk=new THREE.Mesh(new THREE.CylinderGeometry(.08,.11,.65,14),mat(0x9a6337));trunk.position.y=.32;trunk.castShadow=true;group.add(trunk);if(t.type==='pine'){const c1=new THREE.Mesh(new THREE.ConeGeometry(.45,.78,18),mat(0x3f8f56));c1.position.y=.78;const c2=new THREE.Mesh(new THREE.ConeGeometry(.34,.6,18),mat(0x4ca363));c2.position.y=1.12;c1.castShadow=c2.castShadow=true;group.add(c1,c2);}else{const crown1=new THREE.Mesh(new THREE.SphereGeometry(.43,24,18),mat(t.type==='fruit'?0x64bf5f:0x58b85d));crown1.position.y=.85;crown1.scale.y=.84;crown1.castShadow=true;const crown2=crown1.clone();crown2.position.set(-.25,.72,.02);crown2.scale.set(.78,.64,.78);const crown3=crown1.clone();crown3.position.set(.25,.72,-.02);crown3.scale.set(.78,.64,.78);group.add(crown1,crown2,crown3);if(t.type==='fruit'){[[-.18,.9,.33],[.22,.82,.32],[.05,1.05,.26]].forEach(p=>{const fruit=new THREE.Mesh(new THREE.SphereGeometry(.055,12,8),mat(0xff7c4a));fruit.position.set(...p);group.add(fruit);});}}return group;}
 function createLamp(l){const lamp=new THREE.Group();lamp.name=l.id;lamp.userData={kind:'lamp',id:l.id,ref:l};lamp.position.set(l.x,GROUND_Y,l.z);lamp.rotation.y=l.rot||0;lamp.scale.setScalar(l.scale||1);const pole=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.7,12),mat(0x334155));pole.position.y=.35;const bulb=new THREE.Mesh(new THREE.SphereGeometry(.12,16,12),new THREE.MeshStandardMaterial({color:0xfff2a3,emissive:0xffdd66,emissiveIntensity:.5}));bulb.position.y=.75;lamp.add(pole,bulb);return lamp;}
 function createCat(){const g=new THREE.Group();g.name='cheese-cat';const orange=0xf59e0b,lightOrange=0xfbbf24,darkOrange=0xd97706;const body=new THREE.Mesh(new THREE.CapsuleGeometry(.12,.34,8,16),mat(orange));body.rotation.x=Math.PI/2;body.position.set(0,.22,0);body.castShadow=true;g.add(body);const head=new THREE.Mesh(new THREE.SphereGeometry(.14,18,12),mat(lightOrange));head.position.set(0,.25,.26);head.castShadow=true;g.add(head);const earGeo=new THREE.ConeGeometry(.04,.09,8),ear1=new THREE.Mesh(earGeo,mat(orange)),ear2=ear1.clone();ear1.position.set(-.07,.38,.25);ear2.position.set(.07,.38,.25);ear1.rotation.x=-.18;ear2.rotation.x=-.18;g.add(ear1,ear2);const eyeL=new THREE.Mesh(new THREE.SphereGeometry(.012,8,6),mat(0x111111)),eyeR=eyeL.clone();eyeL.position.set(-.045,.27,.385);eyeR.position.set(.045,.27,.385);g.add(eyeL,eyeR);const nose=new THREE.Mesh(new THREE.SphereGeometry(.012,8,6),mat(0x7c2d12));nose.position.set(0,.245,.4);g.add(nose);const tail=new THREE.Mesh(new THREE.CylinderGeometry(.026,.026,.28,10),mat(orange));tail.position.set(0,.29,-.28);tail.rotation.x=-.75;g.add(tail);[[-.065,-.12],[.065,-.12],[-.065,.11],[.065,.11]].forEach(([x,z])=>{const leg=new THREE.Mesh(new THREE.CylinderGeometry(.02,.02,.12,8),mat(darkOrange));leg.position.set(x,.085,z);g.add(leg);});[-.1,.02,.13].forEach(z=>{const stripe=new THREE.Mesh(new THREE.BoxGeometry(.18,.014,.018),mat(0xc26700));stripe.position.set(0,.335,z);g.add(stripe);});g.position.set(state.cat.x,GROUND_Y,state.cat.z);return g;}
-function createBuilding(b){const group=new THREE.Group();group.name=b.id;group.userData={kind:'building',id:b.id,ref:b};group.position.set(b.x,BUILDING_Y,b.z);group.rotation.y=b.rot||0;group.scale.setScalar(b.scale||1);const colors=buildingColors(b.type);if(b.roofColor)colors.roof=parseInt(b.roofColor.replace('#',''),16);const body=new THREE.Mesh(new THREE.BoxGeometry(1.35,1,1.05),mat(colors.body));body.position.y=.55;body.castShadow=true;body.receiveShadow=true;group.add(body);if(b.type==='lab'){const w1=new THREE.Mesh(new THREE.BoxGeometry(.9,.72,.82),mat(0xf4f8fb));w1.position.set(-.95,.43,.1);w1.castShadow=true;group.add(w1);const w2=new THREE.Mesh(new THREE.BoxGeometry(.82,.72,.82),mat(0xe8eef4));w2.position.set(.95,.43,-.05);w2.castShadow=true;group.add(w2);createWindowGrid(group,-.02,1,.54,4,2,0x9cd7ea);addSign(group,'LAB',0x2f80aa);}else if(b.type==='school'){const top=new THREE.Mesh(new THREE.BoxGeometry(1.35,.28,1.08),mat(0xba7a57));top.position.y=1.18;top.castShadow=true;group.add(top);const roof=new THREE.Mesh(new THREE.BoxGeometry(1.55,.16,1.18),mat(colors.roof));roof.position.y=1.4;roof.castShadow=true;group.add(roof);createWindowGrid(group,0,.78,.56,4,3,0xbfe3f1);addEmblem(group);addSign(group,'MED',0x7c3f2f);}else{const roof=createRoof(colors.roof);roof.position.y=1.17;group.add(roof);createWindowGrid(group,0,.72,.55,2,1,0xbfe8ff);addSign(group,b.type==='post'?'POST':b.type==='gallery'?'ART':'HOME',colors.sign);}const door=new THREE.Mesh(new THREE.BoxGeometry(.28,.42,.04),mat(colors.door));door.position.set(0,.35,.55);door.castShadow=true;group.add(door);return group;}
+function createBuilding(b){const group=new THREE.Group();group.name=b.id;group.userData={kind:'building',id:b.id,ref:b};group.position.set(b.x,BUILDING_Y,b.z);group.rotation.y=0;group.scale.setScalar(b.scale||1);const colors=buildingColors(b.type);if(b.roofColor)colors.roof=parseInt(b.roofColor.replace('#',''),16);const body=new THREE.Mesh(new THREE.BoxGeometry(1.35,1,1.05),mat(colors.body));body.position.y=.55;body.castShadow=true;body.receiveShadow=true;group.add(body);if(b.type==='lab'){const w1=new THREE.Mesh(new THREE.BoxGeometry(.9,.72,.82),mat(0xf4f8fb));w1.position.set(-.95,.43,.1);w1.castShadow=true;group.add(w1);const w2=new THREE.Mesh(new THREE.BoxGeometry(.82,.72,.82),mat(0xe8eef4));w2.position.set(.95,.43,-.05);w2.castShadow=true;group.add(w2);createWindowGrid(group,-.02,1,.54,4,2,0x9cd7ea);addSign(group,'LAB',0x2f80aa);}else if(b.type==='school'){const top=new THREE.Mesh(new THREE.BoxGeometry(1.35,.28,1.08),mat(0xba7a57));top.position.y=1.18;top.castShadow=true;group.add(top);const roof=new THREE.Mesh(new THREE.BoxGeometry(1.55,.16,1.18),mat(colors.roof));roof.position.y=1.4;roof.castShadow=true;group.add(roof);createWindowGrid(group,0,.78,.56,4,3,0xbfe3f1);addEmblem(group);addSign(group,'MED',0x7c3f2f);}else{const roof=createRoof(colors.roof);roof.position.y=1.17;group.add(roof);createWindowGrid(group,0,.72,.55,2,1,0xbfe8ff);addSign(group,b.type==='post'?'POST':b.type==='gallery'?'ART':'HOME',colors.sign);}const door=new THREE.Mesh(new THREE.BoxGeometry(.28,.42,.04),mat(colors.door));door.position.set(0,.35,.55);door.castShadow=true;group.add(door);return group;}
 function buildingColors(type){if(type==='lab')return{body:0xf7fbff,roof:0xdde9f4,door:0x2e91c2,sign:0x2f80aa};if(type==='school')return{body:0xb9795f,roof:0x5f91c9,door:0xe9eef5,sign:0x7c3f2f};if(type==='gallery')return{body:0xf2eaff,roof:0xded8ee,door:0x7b61d1,sign:0x6d5bd0};if(type==='post')return{body:0xf9eddd,roof:0xd8794a,door:0xc8683e,sign:0xb85b37};return{body:0xf4dfbd,roof:0xe48643,door:0x548b50,sign:0x548b50};}
 function createRoof(color){const roof=new THREE.Mesh(new THREE.ConeGeometry(1.05,.55,4),mat(color));roof.rotation.y=Math.PI/4;roof.castShadow=true;return roof;}
 function createWindowGrid(group,startX,y,z,cols,rows,color){for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const x=startX+(c-(cols-1)/2)*.3,yy=y-r*.23,win=new THREE.Mesh(new THREE.BoxGeometry(.14,.16,.035),mat(color,.35));win.position.set(x,yy,z);group.add(win);}}
@@ -641,33 +568,12 @@ function renderAllObjects(){clampTreesIntoIsland();clampBuildingsIntoIsland();ar
 function renderLists(){const list=document.getElementById('buildingList');list.innerHTML='';state.buildings.forEach(b=>{const card=document.createElement('div');card.className='mini-card'+(selected?.kind==='building'&&selected.id===b.id?' active':'');card.innerHTML=`<strong>${b.icon} ${b.name} ${b.locked?'🔒':''}</strong><span>${b.desc}<br>X ${b.x.toFixed(1)} · Z ${b.z.toFixed(1)} · ${Math.round(b.scale*100)}%</span>`;card.onclick=()=>selectItem('building',b.id);list.appendChild(card);});}
 function getItem(kind,id){if(kind==='building')return state.buildings.find(x=>x.id===id);if(kind==='tree')return state.trees.find(x=>x.id===id);if(kind==='lamp')return state.lamps.find(x=>x.id===id);return null;}
 function selectItem(kind,id){selected={kind,id};fillSelectedPanel();highlightSelected();renderLists();toast.textContent=`${kind==='building'?'건물':kind==='lamp'?'가로등':'나무'} 선택됨`;}
-function fillSelectedPanel(){
-  if(!selected){
-    ['selectedLabel','selectedName','selectedIcon','selectedDesc','selectedX','selectedZ','selectedScale','selectedRot','roomHeadingInput','roomTextInput','roomTagsInput'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-    document.getElementById('selectedRoofColor').value='#e48643';
-    document.getElementById('selectedLocked').checked=false;
-    fillProfilePanel();
-    return;
-  }
-  const item=getItem(selected.kind,selected.id);if(!item)return;
-  document.getElementById('selectedLabel').value=`${selected.kind==='building'?'건물':selected.kind==='lamp'?'가로등':'나무'} · ${item.name||item.type||item.id}`;
-  document.getElementById('selectedName').value=item.name||'';
-  document.getElementById('selectedIcon').value=item.icon||'';
-  document.getElementById('selectedDesc').value=item.desc||'';
-  document.getElementById('selectedX').value=Number(item.x||0).toFixed(2);
-  document.getElementById('selectedZ').value=Number(item.z||0).toFixed(2);
-  document.getElementById('selectedScale').value=item.scale??1;
-  document.getElementById('selectedRot').value=Math.round((item.rot||0)*180/Math.PI);
-  document.getElementById('selectedRoofColor').value=item.roofColor||'#'+new THREE.Color(buildingColors(item.type||'house').roof).getHexString();
-  document.getElementById('selectedLocked').checked=!!item.locked;
-  if(selected.kind==='building') fillRoomInfoPanel(item);
-  fillProfilePanel();
-}
+function fillSelectedPanel(){if(!selected){['selectedLabel','selectedX','selectedZ','selectedScale','selectedRot'].forEach(id=>document.getElementById(id).value='');document.getElementById('selectedRoofColor').value='#e48643';document.getElementById('selectedLocked').checked=false;return;}const item=getItem(selected.kind,selected.id);if(!item)return;document.getElementById('selectedLabel').value=`${selected.kind==='building'?'건물':selected.kind==='lamp'?'가로등':'나무'} · ${item.name||item.type||item.id}`;document.getElementById('selectedX').value=item.x.toFixed(2);document.getElementById('selectedZ').value=item.z.toFixed(2);document.getElementById('selectedScale').value=item.scale??1;document.getElementById('selectedRot').value=Math.round((item.rot||0)*180/Math.PI);document.getElementById('selectedRoofColor').value=item.roofColor||'#'+new THREE.Color(buildingColors(item.type||'house').roof).getHexString();document.getElementById('selectedLocked').checked=!!item.locked;}
 function highlightSelected(){objectRoot.traverse(o=>{if(o.userData?.ref){const active=selected&&o.userData.kind===selected.kind&&o.userData.id===selected.id;o.traverse(child=>{if(child.isMesh&&child.material?.emissive)child.material.emissive.setHex(active?0x15345f:0x000000);});}});}
-function applySelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('먼저 항목을 선택하세요.');const item=getItem(selected.kind,selected.id);if(!item)return;item.x=Number(document.getElementById('selectedX').value||item.x);item.z=Number(document.getElementById('selectedZ').value||item.z);item.scale=Number(document.getElementById('selectedScale').value||item.scale||1);item.rot=Number(document.getElementById('selectedRot').value||0)*Math.PI/180;if(selected.kind==='building'){item.name=document.getElementById('selectedName').value.trim()||item.name;item.icon=document.getElementById('selectedIcon').value.trim()||item.icon;item.desc=document.getElementById('selectedDesc').value.trim()||item.desc;}if(selected.kind==='tree'){const p=clampDecorationSpot(item.x,item.z,'tree');item.x=p.x;item.z=p.z;}if(selected.kind==='lamp'){const p=clampDecorationSpot(item.x,item.z,'lamp');item.x=p.x;item.z=p.z;}if(selected.kind==='building'){const p=clampToIsland(item.x,item.z,1.05);item.x=p.x;item.z=p.z;item.roofColor=document.getElementById('selectedRoofColor').value;}item.locked=document.getElementById('selectedLocked').checked;renderAllObjects();autoSaveAfterEdit();toast.textContent='선택 항목 적용 완료 · Firebase 저장 중';}
+function applySelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('먼저 항목을 선택하세요.');const item=getItem(selected.kind,selected.id);if(!item)return;item.x=Number(document.getElementById('selectedX').value||item.x);item.z=Number(document.getElementById('selectedZ').value||item.z);item.scale=Number(document.getElementById('selectedScale').value||item.scale||1);item.rot=Number(document.getElementById('selectedRot').value||0)*Math.PI/180;if(selected.kind==='tree'){const p=clampDecorationSpot(item.x,item.z,'tree');item.x=p.x;item.z=p.z;}if(selected.kind==='lamp'){const p=clampDecorationSpot(item.x,item.z,'lamp');item.x=p.x;item.z=p.z;}if(selected.kind==='building'){const p=clampToIsland(item.x,item.z,1.05);item.x=p.x;item.z=p.z;item.roofColor=document.getElementById('selectedRoofColor').value;}item.locked=document.getElementById('selectedLocked').checked;renderAllObjects();autoSaveAfterEdit();toast.textContent='선택 항목 적용 완료 · Firebase 저장 중';}
 function saveBuildingDesign(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected||selected.kind!=='building')return alert('건물을 먼저 선택하세요.');applySelected();saveLocalVillageData(true);}
 function deleteSelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('삭제할 항목을 선택하세요.');if(!confirm('선택한 항목을 삭제할까요?'))return;if(selected.kind==='building')state.buildings=state.buildings.filter(x=>x.id!==selected.id);else if(selected.kind==='lamp')state.lamps=state.lamps.filter(x=>x.id!==selected.id);else state.trees=state.trees.filter(x=>x.id!==selected.id);selected=null;renderAllObjects();autoSaveAfterEdit();}
-function addBuilding(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newBuildingType').value,name=document.getElementById('newBuildingName').value||'New Building',iconMap={lab:'🧪',school:'🎓',house:'🏡',gallery:'🖼️',post:'✉️'};const p=clampToIsland(0,5.3,1.05);const id='b'+Date.now();state.buildings.push({id,type,name,icon:iconMap[type],desc:'새로 추가한 건물입니다.',x:p.x,z:p.z,scale:.9,rot:0,locked:false});state.rooms[id]={heading:name,text:'',tags:[type],attachments:[]};renderAllObjects();autoSaveAfterEdit();}
+function addBuilding(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newBuildingType').value,name=document.getElementById('newBuildingName').value||'New Building',iconMap={lab:'🧪',school:'🎓',house:'🏡',gallery:'🖼️',post:'✉️'};const p=clampToIsland(0,5.3,1.05);state.buildings.push({id:'b'+Date.now(),type,name,icon:iconMap[type],desc:'새로 추가한 건물입니다.',x:p.x,z:p.z,scale:.9,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();}
 function addTree(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newTreeType').value;const p=findTreeSpot();state.trees.push({id:'t'+Date.now(),type,x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();toast.textContent='나무를 건물 옆쪽에 추가했습니다. · Firebase 저장 중';}
 function addLamp(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const rawX=Number(document.getElementById('newLampX').value||0),rawZ=Number(document.getElementById('newLampZ').value||0);const manual=Math.hypot(rawX,rawZ)>.05;const p=manual?snapLampSpot(rawX,rawZ):findLampSpot();state.lamps.push({id:'l'+Date.now(),x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();toast.textContent=manual?'가로등을 가까운 도로/건물 옆으로 보정해 추가했습니다. · Firebase 저장 중':'가로등을 도로 근처에 추가했습니다. · Firebase 저장 중';}
 function clearLamps(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!confirm('가로등을 모두 삭제할까요?'))return;state.lamps=[];renderAllObjects();autoSaveAfterEdit();}
@@ -676,7 +582,60 @@ function applyRoadSettings(){if(!isAdminMode){toast.textContent='관리자 모�
 function fillPondForm(){document.getElementById('fishCount').value=state.pond.fishCount;document.getElementById('fishSpeed').value=state.pond.fishSpeed;}
 function applyPondSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.pond.fishCount=Number(document.getElementById('fishCount').value||state.pond.fishCount);state.pond.fishSpeed=Number(document.getElementById('fishSpeed').value||state.pond.fishSpeed);rebuildCenterPond();autoSaveAfterEdit();toast.textContent='중앙 연못 설정 적용 완료 · Firebase 저장 중';}
 
-function setupEvents(){window.addEventListener('resize',onResize);window.addEventListener('keydown',e=>{keyState[e.key.toLowerCase()]=true;if(['arrowup','arrowdown','arrowleft','arrowright','enter','escape',' ','f','q'].includes(e.key.toLowerCase()))e.preventDefault();if(e.key==='Enter'&&activeBuilding&&!roomMode)openBuilding(activeBuilding.id);if(e.key==='Escape'&&roomMode)closeRoom();if(e.key.toLowerCase()==='f')tryFishing();if(e.key.toLowerCase()==='q'){state.avatar.carry='none';updateCarryVisual();toast.textContent='낚시대에서 내려놓았습니다.';}});window.addEventListener('keyup',e=>keyState[e.key.toLowerCase()]=false);renderer.domElement.addEventListener('pointerdown',onPointerDown);renderer.domElement.addEventListener('pointermove',onPointerMove);renderer.domElement.addEventListener('pointerup',onPointerUp);renderer.domElement.addEventListener('wheel',onWheel,{passive:false});renderer.domElement.addEventListener('contextmenu',e=>e.preventDefault());}
+
+function dropCarry(){
+  if(state.avatar.carry==='none'){
+    toast.textContent='낚시대에 걸린 것이 없습니다.';
+    return;
+  }
+  if(state.avatar.carry==='cat'){
+    state.cat.x=state.avatar.x+.38;
+    state.cat.z=state.avatar.z+.38;
+    if(catGroup){catGroup.visible=true;catGroup.position.set(state.cat.x,GROUND_Y,state.cat.z);}
+    toast.textContent='고양이를 조심히 내려놓았습니다 🐱';
+  }else if(state.avatar.carry==='fish'){
+    toast.textContent='물고기를 내려놓았습니다.';
+  }
+  state.avatar.carry='none';
+  updateCarryVisual();
+}
+function mobileEnter(){
+  if(roomMode){closeRoom();return;}
+  checkPreview();
+  if(activeBuilding) openBuilding(activeBuilding.id);
+  else toast.textContent='건물 가까이 이동한 뒤 입장 버튼을 누르세요.';
+}
+function mobileZoom(delta){
+  cameraOrbit.distance=Math.min(24,Math.max(7,cameraOrbit.distance+delta));
+  applyCameraOrbit();
+}
+function setupMobileControls(){
+  const controls=document.getElementById('mobileControls');
+  if(!controls)return;
+  controls.querySelectorAll('[data-key]').forEach(btn=>{
+    const key=btn.dataset.key;
+    const press=e=>{e.preventDefault();e.stopPropagation();keyState[key]=true;};
+    const release=e=>{e.preventDefault();e.stopPropagation();keyState[key]=false;};
+    btn.addEventListener('pointerdown',press);
+    btn.addEventListener('pointerup',release);
+    btn.addEventListener('pointercancel',release);
+    btn.addEventListener('pointerleave',release);
+  });
+  controls.querySelectorAll('[data-action]').forEach(btn=>{
+    btn.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();});
+    btn.addEventListener('click',e=>{
+      e.preventDefault();e.stopPropagation();
+      const action=btn.dataset.action;
+      if(action==='enter')mobileEnter();
+      if(action==='fish')tryFishing();
+      if(action==='drop')dropCarry();
+      if(action==='zoomIn')mobileZoom(-1.2);
+      if(action==='zoomOut')mobileZoom(1.2);
+    });
+  });
+}
+
+function setupEvents(){window.addEventListener('resize',onResize);window.addEventListener('keydown',e=>{keyState[e.key.toLowerCase()]=true;if(['arrowup','arrowdown','arrowleft','arrowright','enter','escape',' ','f','q'].includes(e.key.toLowerCase()))e.preventDefault();if(e.key==='Enter'&&activeBuilding&&!roomMode)openBuilding(activeBuilding.id);if(e.key==='Escape'&&roomMode)closeRoom();if(e.key.toLowerCase()==='f')tryFishing();if(e.key.toLowerCase()==='q')dropCarry();});window.addEventListener('keyup',e=>keyState[e.key.toLowerCase()]=false);renderer.domElement.addEventListener('pointerdown',onPointerDown);renderer.domElement.addEventListener('pointermove',onPointerMove);renderer.domElement.addEventListener('pointerup',onPointerUp);renderer.domElement.addEventListener('wheel',onWheel,{passive:false});renderer.domElement.addEventListener('contextmenu',e=>e.preventDefault());}
 function onResize(){const w=viewer.clientWidth,h=viewer.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);}
 function applyCameraOrbit(){if(!camera)return;const y=cameraOrbit.targetY+Math.sin(cameraOrbit.pitch)*cameraOrbit.distance,flat=Math.cos(cameraOrbit.pitch)*cameraOrbit.distance,x=Math.sin(cameraOrbit.yaw)*flat,z=Math.cos(cameraOrbit.yaw)*flat;camera.position.set(x,y,z);camera.lookAt(0,cameraOrbit.targetY,0);const pill=document.getElementById('camPill');if(pill)pill.textContent=`Camera: ${Math.round(cameraOrbit.yaw*180/Math.PI)}°`;}
 function pointerToNDC(event){const rect=renderer.domElement.getBoundingClientRect();pointer.x=(event.clientX-rect.left)/rect.width*2-1;pointer.y=-(event.clientY-rect.top)/rect.height*2+1;}
@@ -796,166 +755,13 @@ function tryFishing(){if(roomMode)return;if(state.avatar.carry!=='none'){toast.t
 function chooseNewCatBehavior(){if(Math.random()<.5){state.cat.mode='idle';state.cat.timer=1.5+Math.random()*2.8;}else{state.cat.mode='walk';state.cat.timer=2+Math.random()*4;state.cat.targetX=-5.4+Math.random()*10.8;state.cat.targetZ=-4.2+Math.random()*9;}}
 function updateCat(dt){if(!catGroup)return;state.cat.timer-=dt;if(state.cat.timer<=0)chooseNewCatBehavior();if(state.cat.mode==='idle'){catGroup.position.set(state.cat.x,GROUND_Y,state.cat.z);return;}const dx=state.cat.targetX-state.cat.x,dz=state.cat.targetZ-state.cat.z,d=Math.hypot(dx,dz);if(d<.18){chooseNewCatBehavior();return;}const step=state.cat.speed*dt;const nx=state.cat.x+dx/d*step,nz=state.cat.z+dz/d*step;const fixed=resolveValidPosition(state.cat.x,state.cat.z,nx,nz,'cat');if(fixed.x===state.cat.x&&fixed.z===state.cat.z)chooseNewCatBehavior();state.cat.x=fixed.x;state.cat.z=fixed.z;catGroup.position.set(state.cat.x,GROUND_Y,state.cat.z);catGroup.rotation.y=Math.atan2(dx,dz);}
 function checkPreview(){if(roomMode){preview.classList.remove('open');return;}let nearest=null,dist=Infinity;state.buildings.forEach(b=>{const d=Math.hypot(state.avatar.x-b.x,state.avatar.z-b.z);if(d<dist){dist=d;nearest=b;}});if(nearest&&dist<1.8){activeBuilding=nearest;document.getElementById('previewIcon').textContent=nearest.icon;document.getElementById('previewTitle').textContent=nearest.name;document.getElementById('previewKind').textContent=`${nearest.type} · ${dist.toFixed(1)}m`;document.getElementById('previewDesc').textContent=nearest.desc;preview.classList.add('open');}else{activeBuilding=null;preview.classList.remove('open');}}
-function openBuilding(id){const b=state.buildings.find(x=>x.id===id);if(!b)return;roomMode=true;roomBuilding=b;preview.classList.remove('open');const rot=b.rot||0;const frontOffset={x:Math.sin(rot)*1.02,z:Math.cos(rot)*1.02};const cameraOffset={x:Math.sin(rot)*3.95,z:Math.cos(rot)*3.95};const frontX=b.x+frontOffset.x,frontZ=b.z+frontOffset.z;state.avatar.x=frontX;state.avatar.z=frontZ;avatarGroup.position.set(frontX,GROUND_Y,frontZ);avatarGroup.scale.setScalar(.68);avatarGroup.rotation.y=rot+Math.PI;const camX=b.x+cameraOffset.x,camZ=b.z+cameraOffset.z;camera.position.set(camX,1.58,camZ);camera.lookAt(b.x,.86,b.z);renderRoomPanel(b);document.getElementById('roomOverlay').classList.add('open');toast.textContent=isAdminMode?`${b.name} 앞에 도착 · 아바타는 좌측, 상태창은 우측에 배치했습니다.`:`${b.name} 자료창을 열었습니다.`;}
+function openBuilding(id){const b=state.buildings.find(x=>x.id===id);if(!b)return;roomMode=true;roomBuilding=b;preview.classList.remove('open');const frontX=b.x-1.05,frontZ=b.z+.92;state.avatar.x=frontX;state.avatar.z=frontZ;avatarGroup.position.set(frontX,GROUND_Y,frontZ);avatarGroup.scale.setScalar(.68);const camX=b.x+.15,camZ=b.z+4.15;camera.position.set(camX,1.58,camZ);camera.lookAt(b.x+.05,.86,b.z+.75);avatarGroup.rotation.y=0;renderRoomPanel(b);document.getElementById('roomOverlay').classList.add('open');toast.textContent=isAdminMode?`${b.name} 앞에 도착 · 아바타는 좌측, 상태창은 우측에 배치했습니다.`:`${b.name} 자료창을 열었습니다.`;}
 function closeRoom(){roomMode=false;roomBuilding=null;if(avatarGroup)avatarGroup.scale.setScalar(1);document.getElementById('roomOverlay').classList.remove('open');applyCameraOrbit();toast.textContent='마을로 돌아왔습니다.';}
 function roomDataFor(building){return state.rooms[building.id]||{heading:building.name,text:building.desc,tags:[building.type],attachments:[]};}
-function renderRoomPanel(building){
-  const room=roomDataFor(building);
-  document.getElementById('roomIcon').textContent=building.icon||'🏠';
-  document.getElementById('roomTitle').textContent=building.name;
-  document.getElementById('roomSubtitle').textContent=`${building.type} room · avatar at entrance`;
-  document.getElementById('roomMainHeading').textContent=room.heading||building.name;
-  const baseText=room.text||building.desc;
-  document.getElementById('roomMainText').textContent=building.id==='house'?formatHouseText(baseText):baseText;
-  const tagBox=document.getElementById('roomTags');tagBox.innerHTML='';
-  (room.tags||[]).forEach(tag=>{const span=document.createElement('span');span.className='room-tag';span.textContent=tag;tagBox.appendChild(span);});
-  renderAttachments(building);
-}
-function formatHouseText(baseText){
-  const p=state.profile||{};
-  const lines=[];
-  if(baseText) lines.push(baseText);
-  const profileLines=[];
-  if(p.name) profileLines.push(`이름: ${p.name}`);
-  if(p.birthYear) profileLines.push(`출생연도: ${p.birthYear}`);
-  if(p.birthplace) profileLines.push(`출생/지역: ${p.birthplace}`);
-  if(p.gender) profileLines.push(`성별/정체성: ${p.gender}`);
-  if(p.role) profileLines.push(`역할/소속: ${p.role}`);
-  if(p.intro) profileLines.push(`소개: ${p.intro}`);
-  if(profileLines.length) lines.push('\n[아바타 프로필]\n'+profileLines.join('\n'));
-  return lines.join('\n');
-}
-function iconForAttachment(file){const name=(file.name||'').toLowerCase(),type=(file.type||'').toLowerCase();if(name.endsWith('.ppt')||name.endsWith('.pptx')||type.includes('presentation')||type.includes('ppt'))return'📽️';if(name.endsWith('.xls')||name.endsWith('.xlsx')||type.includes('excel')||type.includes('sheet'))return'📊';if(name.endsWith('.pdf')||type.includes('pdf'))return'📄';if(name.endsWith('.png')||name.endsWith('.jpg')||name.endsWith('.jpeg')||type.includes('image'))return'🖼️';if(name.endsWith('.py')||name.endsWith('.js')||name.endsWith('.html')||name.endsWith('.ipynb'))return'💻';if(name.startsWith('http')||name.endsWith('.url')||type.includes('link'))return'🔗';return'📎';}
-function renderAttachments(building){
-  const room=roomDataFor(building),list=document.getElementById('attachmentList');list.innerHTML='';
-  if(!(room.attachments||[]).length){list.innerHTML='<div class="room-note">등록된 자료가 없습니다.</div>';return;}
-  (room.attachments||[]).forEach((file,idx)=>{
-    const card=document.createElement('div');card.className='attachment-card';
-    const openButton=file.url?`<button class="attachment-open" onclick="openAttachment('${building.id}',${idx})">열기</button>`:`<button class="attachment-open" onclick="openAttachment('${building.id}',${idx})">보기</button>`;
-    const adminButtons=isAdminMode?`<button class="attachment-open ghost" onclick="renameAttachment('${building.id}',${idx})">수정</button><button class="attachment-open danger" onclick="deleteAttachment('${building.id}',${idx})">삭제</button>`:'';
-    card.innerHTML=`<div class="attachment-icon">${iconForAttachment(file)}</div><div><div class="attachment-name">${escapeHtml(file.name||'Untitled')}</div><div class="attachment-meta">${escapeHtml(file.type||'file')} · ${escapeHtml(file.size||file.url||file.content||'')}</div></div><div class="attachment-actions">${openButton}${adminButtons}</div>`;
-    list.appendChild(card);
-  });
-}
-function openAttachment(buildingId,idx){
-  const file=state.rooms?.[buildingId]?.attachments?.[idx];
-  if(!file){toast.textContent='자료를 찾을 수 없습니다.';return;}
-  if(file.url){window.open(file.url,'_blank');return;}
-  const msg=file.content||file.size||file.desc||'URL 없이 등록된 텍스트 자료입니다.';
-  alert((file.name||'자료')+'\n\n'+msg);
-}
-
-function ensureRoomForBuilding(buildingId){
-  const b=state.buildings.find(x=>x.id===buildingId);
-  if(!state.rooms[buildingId]) state.rooms[buildingId]={heading:b?.name||buildingId,text:b?.desc||'',tags:b?.type?[b.type]:[],attachments:[]};
-  if(!Array.isArray(state.rooms[buildingId].attachments)) state.rooms[buildingId].attachments=[];
-  return state.rooms[buildingId];
-}
-function handleRoomFiles(event){
-  if(!isAdminMode){toast.textContent='방문자 화면에서는 파일을 추가할 수 없습니다.';return;}
-  if(!roomBuilding)return;
-  const room=ensureRoomForBuilding(roomBuilding.id);
-  Array.from(event.target.files||[]).forEach(file=>{
-    const url=URL.createObjectURL(file);
-    room.attachments.push({name:file.name,type:file.type||'local file',size:formatFileSize(file.size)+' · 임시 파일',url});
-  });
-  renderAttachments(roomBuilding);autoSaveAfterEdit();event.target.value='';
-  toast.textContent='임시 파일을 추가했습니다. 방문자에게 보이려면 공개 링크를 등록해야 합니다.';
-}
-function fillRoomInfoPanel(building){
-  const room=roomDataFor(building);
-  const h=document.getElementById('roomHeadingInput'), t=document.getElementById('roomTextInput'), tags=document.getElementById('roomTagsInput');
-  if(h)h.value=room.heading||building.name||'';
-  if(t)t.value=room.text||building.desc||'';
-  if(tags)tags.value=(room.tags||[]).join(', ');
-}
-function applyRoomInfo(){
-  if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}
-  if(!selected||selected.kind!=='building')return alert('먼저 건물을 선택하세요.');
-  const room=ensureRoomForBuilding(selected.id);
-  room.heading=document.getElementById('roomHeadingInput').value||'';
-  room.text=document.getElementById('roomTextInput').value||'';
-  room.tags=document.getElementById('roomTagsInput').value.split(',').map(x=>x.trim()).filter(Boolean);
-  if(roomMode&&roomBuilding&&roomBuilding.id===selected.id)renderRoomPanel(roomBuilding);
-  autoSaveAfterEdit();
-  toast.textContent='방 내용을 Firebase에 저장 중입니다.';
-}
-function addAttachmentLink(){
-  if(!isAdminMode){toast.textContent='관리자 모드에서만 추가할 수 있습니다.';return;}
-  if(!selected||selected.kind!=='building')return alert('먼저 건물을 선택하세요.');
-  const name=document.getElementById('attachNameInput').value.trim();
-  let url=document.getElementById('attachUrlInput').value.trim();
-  const type=document.getElementById('attachTypeInput').value.trim()||'Link';
-  const size=document.getElementById('attachSizeInput').value.trim();
-  if(!name)return alert('자료 이름을 입력하세요.');
-  if(!url&&!size)return alert('URL을 넣거나, 설명/텍스트 내용을 입력하세요.');
-  if(url&&!/^https?:\/\//i.test(url)&&!url.startsWith('assets/')) url='https://'+url;
-  const room=ensureRoomForBuilding(selected.id);
-  const item={name,type,size:size||'linked resource'};
-  if(url)item.url=url; else item.content=size;
-  room.attachments.push(item);
-  ['attachNameInput','attachUrlInput','attachTypeInput','attachSizeInput'].forEach(id=>document.getElementById(id).value='');
-  if(roomMode&&roomBuilding&&roomBuilding.id===selected.id)renderAttachments(roomBuilding);
-  autoSaveAfterEdit();
-  toast.textContent='자료를 Firebase에 저장 중입니다.';
-}
-function renameAttachment(buildingId,idx){
-  if(!isAdminMode)return;
-  const room=ensureRoomForBuilding(buildingId), file=room.attachments[idx];if(!file)return;
-  const name=prompt('자료 이름/제목을 수정하세요.',file.name||'');if(name===null)return;
-  const url=prompt('자료 URL을 수정하세요. 텍스트 자료면 비워도 됩니다.',file.url||'');if(url===null)return;
-  const type=prompt('자료 종류를 수정하세요. 예: PDF, PPT, Link, Text',file.type||'Link');if(type===null)return;
-  const desc=prompt('자료 설명/텍스트 내용을 수정하세요.',file.size||file.content||'');if(desc===null)return;
-  file.name=name.trim()||file.name;file.type=type.trim()||file.type;file.size=desc.trim();file.content=desc.trim();
-  const cleanUrl=url.trim();
-  if(cleanUrl){file.url=(!/^https?:\/\//i.test(cleanUrl)&&!cleanUrl.startsWith('assets/'))?'https://'+cleanUrl:cleanUrl;}else delete file.url;
-  renderAttachments(state.buildings.find(b=>b.id===buildingId)||roomBuilding);autoSaveAfterEdit();toast.textContent='자료 정보를 수정했습니다.';
-}
-function deleteAttachment(buildingId,idx){
-  if(!isAdminMode)return;
-  const room=ensureRoomForBuilding(buildingId);if(!room.attachments?.[idx])return;
-  if(!confirm('이 자료를 삭제할까요?'))return;
-  room.attachments.splice(idx,1);
-  renderAttachments(state.buildings.find(b=>b.id===buildingId)||roomBuilding);autoSaveAfterEdit();toast.textContent='자료를 삭제했습니다.';
-}
-function openSelectedRoom(){
-  if(!selected||selected.kind!=='building')return alert('먼저 건물을 선택하세요.');
-  openBuilding(selected.id);
-}
-function fillProfilePanel(){
-  const p=state.profile||{};
-  const ids={profileName:'name',profileBirthYear:'birthYear',profileBirthplace:'birthplace',profileGender:'gender',profileRole:'role',profileIntro:'intro'};
-  Object.entries(ids).forEach(([id,key])=>{const el=document.getElementById(id);if(el)el.value=p[key]||'';});
-}
-function saveProfileInfo(){
-  if(!isAdminMode){toast.textContent='관리자 모드에서만 저장할 수 있습니다.';return;}
-  state.profile={
-    name:document.getElementById('profileName').value.trim(),
-    birthYear:document.getElementById('profileBirthYear').value.trim(),
-    birthplace:document.getElementById('profileBirthplace').value.trim(),
-    gender:document.getElementById('profileGender').value.trim(),
-    role:document.getElementById('profileRole').value.trim(),
-    intro:document.getElementById('profileIntro').value.trim()
-  };
-  if(roomMode&&roomBuilding&&roomBuilding.id==='house')renderRoomPanel(roomBuilding);
-  autoSaveAfterEdit();toast.textContent='아바타 프로필을 Firebase에 저장 중입니다.';
-}
-function deleteSampleAttachmentsAll(){
-  if(!isAdminMode)return;
-  if(!confirm('기본 샘플 자료를 모두 삭제할까요?'))return;
-  const changed=cleanupLegacySampleAttachments();
-  if(roomMode&&roomBuilding)renderAttachments(roomBuilding);
-  renderAllObjects();
-  autoSaveAfterEdit();
-  toast.textContent=changed?'샘플 자료를 삭제하고 Firebase에 저장 중입니다.':'삭제할 샘플 자료가 없습니다.';
-}
-function resetFirebaseToDefaults(){
-  if(!isAdminMode)return;
-  if(!confirm('Firebase 데이터를 현재 파일의 기본값으로 다시 저장할까요? 기존 수정 내용은 덮어써집니다.'))return;
-  localStorage.removeItem('portfolioVillageData');
-  cleanupLegacySampleAttachments();
-  saveFirebaseVillageData(true);
-}
+function renderRoomPanel(building){const room=roomDataFor(building);document.getElementById('roomIcon').textContent=building.icon||'🏠';document.getElementById('roomTitle').textContent=building.name;document.getElementById('roomSubtitle').textContent=`${building.type} room · avatar at entrance`;document.getElementById('roomMainHeading').textContent=room.heading||building.name;document.getElementById('roomMainText').textContent=room.text||building.desc;const tagBox=document.getElementById('roomTags');tagBox.innerHTML='';(room.tags||[]).forEach(tag=>{const span=document.createElement('span');span.className='room-tag';span.textContent=tag;tagBox.appendChild(span);});renderAttachments(building);}
+function iconForAttachment(file){const name=(file.name||'').toLowerCase(),type=(file.type||'').toLowerCase();if(name.endsWith('.ppt')||name.endsWith('.pptx')||type.includes('presentation'))return'📽️';if(name.endsWith('.xls')||name.endsWith('.xlsx')||type.includes('excel')||type.includes('sheet'))return'📊';if(name.endsWith('.pdf')||type.includes('pdf'))return'📄';if(name.endsWith('.png')||name.endsWith('.jpg')||name.endsWith('.jpeg')||type.includes('image'))return'🖼️';if(name.endsWith('.py')||name.endsWith('.js')||name.endsWith('.html')||name.endsWith('.ipynb'))return'💻';if(name.endsWith('.url')||type.includes('link'))return'🔗';return'📎';}
+function renderAttachments(building){const room=roomDataFor(building),list=document.getElementById('attachmentList');list.innerHTML='';(room.attachments||[]).forEach((file,idx)=>{const card=document.createElement('div');card.className='attachment-card';const openButton=file.url?`<button class="attachment-open" onclick="window.open(state.rooms['${building.id}'].attachments[${idx}].url, '_blank')">열기</button>`:`<button class="attachment-open" onclick="toast.textContent='샘플 파일입니다. 실제 파일은 업로드하거나 링크를 연결해야 합니다.'">확인</button>`;card.innerHTML=`<div class="attachment-icon">${iconForAttachment(file)}</div><div><div class="attachment-name">${escapeHtml(file.name||'Untitled')}</div><div class="attachment-meta">${escapeHtml(file.type||'file')} · ${escapeHtml(file.size||'unknown')}</div></div>${openButton}`;list.appendChild(card);});}
+function handleRoomFiles(event){if(!isAdminMode){toast.textContent='방문자 화면에서는 파일을 추가할 수 없습니다.';return;}if(!roomBuilding)return;const room=roomDataFor(roomBuilding);if(!state.rooms[roomBuilding.id])state.rooms[roomBuilding.id]=room;Array.from(event.target.files||[]).forEach(file=>{const url=URL.createObjectURL(file);state.rooms[roomBuilding.id].attachments.push({name:file.name,type:file.type||'local file',size:formatFileSize(file.size),url});});renderAttachments(roomBuilding);autoSaveAfterEdit();event.target.value='';}
 function formatFileSize(bytes){if(!Number.isFinite(bytes))return'unknown';if(bytes<1024)return bytes+' B';if(bytes<1024*1024)return(bytes/1024).toFixed(1)+' KB';return(bytes/1024/1024).toFixed(1)+' MB';}
 function escapeHtml(text){return String(text||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
 function animate(){requestAnimationFrame(animate);const now=performance.now(),dt=Math.min(.05,(now-lastTime)/1000);lastTime=now;moveAvatar(dt);updateCat(dt);checkPreview();animateFish();updateClouds(dt);updateBoat(dt);renderer.render(scene,camera);frameCounter++;if(now-fpsTime>1000){document.getElementById('fpsPill').textContent=`FPS: ${frameCounter}`;frameCounter=0;fpsTime=now;}}
