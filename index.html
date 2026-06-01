@@ -44,6 +44,7 @@
   </div></section></main>
   <aside class="side">
     <h2>관리자 패널</h2><p class="small"><b>방문자 주소:</b> index.html<br><b>관리자 주소:</b> index.html?admin=1<br><br>방향키/WASD 이동 · 빈 땅 드래그로 화면 회전 · 휠 줌 · Enter 입장 · Esc 복귀 · F 낚기 · Q 놓기</p>
+    <div class="panel"><h3>0. 저장 / 공개 반영</h3><p class="small">건물 크기·위치·색·도로·연못 설정은 이 브라우저에 즉시 저장됩니다. 다른 사람에게도 보이게 하려면 village-data.js를 다운로드한 뒤 GitHub에 덮어쓰기 업로드하세요.</p><div class="btn-row"><button class="btn good" onclick="saveLocalVillageData(true)">브라우저 저장</button><button class="btn primary" onclick="downloadVillageData()">village-data.js 다운로드</button><button class="btn danger" onclick="clearLocalVillageData()">브라우저 저장 삭제</button></div></div>
     <div class="panel"><h3>1. 선택 항목 편집</h3><label>선택된 항목</label><input id="selectedLabel" readonly placeholder="아직 선택 없음" /><div class="row"><div><label>X</label><input id="selectedX" type="number" step="0.1" /></div><div><label>Z</label><input id="selectedZ" type="number" step="0.1" /></div></div><div class="row"><div><label>크기</label><input id="selectedScale" type="number" min="0.4" max="2.5" step="0.05" /></div><div><label>회전 보정</label><input id="selectedRot" type="number" step="5" /></div></div><label>건물 지붕색</label><input id="selectedRoofColor" type="color" value="#e48643" /><label><input id="selectedLocked" type="checkbox" style="width:auto" /> 위치 고정</label><div class="btn-row"><button class="btn primary" onclick="applySelected()">적용</button><button class="btn good" onclick="saveBuildingDesign()">건물 디자인 저장</button><button class="btn danger" onclick="deleteSelected()">삭제</button></div></div>
     <div class="panel"><h3>2. 도로 / 중앙 연못</h3><label>도로 재질</label><select id="roadMaterial"><option value="asphalt">아스팔트</option><option value="stone">돌길</option><option value="gravel">자갈길</option><option value="grass">잔디길</option></select><div class="row"><div><label>도로색 1</label><input id="roadColor1" type="color" /></div><div><label>도로색 2</label><input id="roadColor2" type="color" /></div></div><div class="row"><div><label>물고기 수</label><input id="fishCount" type="number" min="0" max="12" /></div><div><label>물고기 속도</label><input id="fishSpeed" type="number" min="0.2" max="3" step="0.1" /></div></div><div class="btn-row"><button class="btn primary" onclick="applyRoadSettings()">도로 적용</button><button class="btn good" onclick="applyPondSettings()">연못 적용</button></div></div>
     <div class="panel"><h3>3. 건물 추가</h3><label>건물 종류</label><select id="newBuildingType"><option value="lab">흰색 연구소</option><option value="school">로고형 학교/의대</option><option value="house">집</option><option value="gallery">전시관</option><option value="post">우체국</option></select><label>건물 이름</label><input id="newBuildingName" placeholder="예: New Lab" /><div class="btn-row"><button class="btn good" onclick="addBuilding()">건물 추가</button></div></div>
@@ -52,6 +53,7 @@
     <div class="panel"><h3>6. 상태</h3><div class="status-grid"><div class="pill" id="fpsPill">FPS: -</div><div class="pill" id="posPill">Avatar: -</div><div class="pill" id="skyPill">Sky: -</div><div class="pill" id="camPill">Camera: -</div><div class="pill" id="carryPill">Carry: none</div></div></div>
   </aside>
 </div>
+<script src="village-data.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 <script>
 'use strict';
@@ -130,8 +132,73 @@ const BUILDING_Y=0.13;
 const POND_CENTER={x:0,z:0.05,rx:1.82,rz:1.20};
 const viewer=document.getElementById('viewer'),preview=document.getElementById('preview'),toast=document.getElementById('toast');
 
+const VILLAGE_STORAGE_KEY='portfolioVillageStateV1';
+let initialVillageDataApplied=false;
+
+function clonePlain(obj){
+  return JSON.parse(JSON.stringify(obj));
+}
+function deepMerge(target, source){
+  if(!source || typeof source!=='object') return target;
+  Object.keys(source).forEach(key=>{
+    const value=source[key];
+    if(Array.isArray(value)) target[key]=clonePlain(value);
+    else if(value && typeof value==='object'){
+      if(!target[key] || typeof target[key]!=='object' || Array.isArray(target[key])) target[key]={};
+      deepMerge(target[key], value);
+    }else target[key]=value;
+  });
+  return target;
+}
+function getVillageDataSnapshot(){
+  return clonePlain({
+    road:state.road,
+    pond:state.pond,
+    buildings:state.buildings,
+    rooms:state.rooms,
+    trees:state.trees,
+    lamps:state.lamps
+  });
+}
+function applyInitialVillageData(){
+  if(initialVillageDataApplied) return;
+  initialVillageDataApplied=true;
+  if(window.VILLAGE_DATA) deepMerge(state, window.VILLAGE_DATA);
+  const saved=localStorage.getItem(VILLAGE_STORAGE_KEY);
+  if(saved){
+    try{deepMerge(state, JSON.parse(saved));}
+    catch(err){console.warn('저장 데이터 불러오기 실패:', err);}
+  }
+}
+function saveLocalVillageData(showMessage=false){
+  localStorage.setItem(VILLAGE_STORAGE_KEY, JSON.stringify(getVillageDataSnapshot()));
+  if(showMessage && typeof toast!=='undefined') toast.textContent='이 브라우저에 저장했습니다. 공개 반영은 village-data.js 다운로드 후 GitHub에 업로드하세요.';
+}
+function clearLocalVillageData(){
+  if(!confirm('이 브라우저에 저장된 편집 내용을 지울까요? GitHub에 올라간 village-data.js는 지워지지 않습니다.')) return;
+  localStorage.removeItem(VILLAGE_STORAGE_KEY);
+  alert('브라우저 저장을 삭제했습니다. 새로고침하면 GitHub의 village-data.js 기준으로 열립니다.');
+}
+function downloadVillageData(){
+  saveLocalVillageData(false);
+  const data=getVillageDataSnapshot();
+  const content='window.VILLAGE_DATA = '+JSON.stringify(data,null,2)+';\n';
+  const blob=new Blob([content],{type:'application/javascript;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='village-data.js';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},0);
+  if(typeof toast!=='undefined') toast.textContent='village-data.js가 다운로드되었습니다. 이 파일을 GitHub에 덮어쓰기 업로드하면 방문자에게 반영됩니다.';
+}
+function autoSaveAfterEdit(){
+  if(isAdminMode) saveLocalVillageData(false);
+}
+
 function init(){
   runSelfTests();
+  applyInitialVillageData();
   const adminRequested=detectAdminMode();
   const adminAllowed=adminRequested && authorizeAdminAccess();
   setMode(adminAllowed);
@@ -368,17 +435,17 @@ function getItem(kind,id){if(kind==='building')return state.buildings.find(x=>x.
 function selectItem(kind,id){selected={kind,id};fillSelectedPanel();highlightSelected();renderLists();toast.textContent=`${kind==='building'?'건물':kind==='lamp'?'가로등':'나무'} 선택됨`;}
 function fillSelectedPanel(){if(!selected){['selectedLabel','selectedX','selectedZ','selectedScale','selectedRot'].forEach(id=>document.getElementById(id).value='');document.getElementById('selectedRoofColor').value='#e48643';document.getElementById('selectedLocked').checked=false;return;}const item=getItem(selected.kind,selected.id);if(!item)return;document.getElementById('selectedLabel').value=`${selected.kind==='building'?'건물':selected.kind==='lamp'?'가로등':'나무'} · ${item.name||item.type||item.id}`;document.getElementById('selectedX').value=item.x.toFixed(2);document.getElementById('selectedZ').value=item.z.toFixed(2);document.getElementById('selectedScale').value=item.scale??1;document.getElementById('selectedRot').value=Math.round((item.rot||0)*180/Math.PI);document.getElementById('selectedRoofColor').value=item.roofColor||'#'+new THREE.Color(buildingColors(item.type||'house').roof).getHexString();document.getElementById('selectedLocked').checked=!!item.locked;}
 function highlightSelected(){objectRoot.traverse(o=>{if(o.userData?.ref){const active=selected&&o.userData.kind===selected.kind&&o.userData.id===selected.id;o.traverse(child=>{if(child.isMesh&&child.material?.emissive)child.material.emissive.setHex(active?0x15345f:0x000000);});}});}
-function applySelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('먼저 항목을 선택하세요.');const item=getItem(selected.kind,selected.id);if(!item)return;item.x=Number(document.getElementById('selectedX').value||item.x);item.z=Number(document.getElementById('selectedZ').value||item.z);item.scale=Number(document.getElementById('selectedScale').value||item.scale||1);item.rot=Number(document.getElementById('selectedRot').value||0)*Math.PI/180;if(selected.kind==='tree'){const p=clampDecorationSpot(item.x,item.z,'tree');item.x=p.x;item.z=p.z;}if(selected.kind==='lamp'){const p=clampDecorationSpot(item.x,item.z,'lamp');item.x=p.x;item.z=p.z;}if(selected.kind==='building'){const p=clampToIsland(item.x,item.z,1.05);item.x=p.x;item.z=p.z;item.roofColor=document.getElementById('selectedRoofColor').value;}item.locked=document.getElementById('selectedLocked').checked;renderAllObjects();toast.textContent='선택 항목 적용 완료';}
-function saveBuildingDesign(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected||selected.kind!=='building')return alert('건물을 먼저 선택하세요.');applySelected();alert('건물 디자인/위치 설정을 저장했습니다.');}
-function deleteSelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('삭제할 항목을 선택하세요.');if(!confirm('선택한 항목을 삭제할까요?'))return;if(selected.kind==='building')state.buildings=state.buildings.filter(x=>x.id!==selected.id);else if(selected.kind==='lamp')state.lamps=state.lamps.filter(x=>x.id!==selected.id);else state.trees=state.trees.filter(x=>x.id!==selected.id);selected=null;renderAllObjects();}
-function addBuilding(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newBuildingType').value,name=document.getElementById('newBuildingName').value||'New Building',iconMap={lab:'🧪',school:'🎓',house:'🏡',gallery:'🖼️',post:'✉️'};const p=clampToIsland(0,5.3,1.05);state.buildings.push({id:'b'+Date.now(),type,name,icon:iconMap[type],desc:'새로 추가한 건물입니다.',x:p.x,z:p.z,scale:.9,rot:0,locked:false});renderAllObjects();}
-function addTree(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newTreeType').value;const p=findTreeSpot();state.trees.push({id:'t'+Date.now(),type,x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();toast.textContent='나무를 건물 옆쪽에 추가했습니다.';}
-function addLamp(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const rawX=Number(document.getElementById('newLampX').value||0),rawZ=Number(document.getElementById('newLampZ').value||0);const manual=Math.hypot(rawX,rawZ)>.05;const p=manual?snapLampSpot(rawX,rawZ):findLampSpot();state.lamps.push({id:'l'+Date.now(),x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();toast.textContent=manual?'가로등을 가까운 도로/건물 옆으로 보정해 추가했습니다.':'가로등을 도로 근처에 추가했습니다.';}
-function clearLamps(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!confirm('가로등을 모두 삭제할까요?'))return;state.lamps=[];renderAllObjects();}
+function applySelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('먼저 항목을 선택하세요.');const item=getItem(selected.kind,selected.id);if(!item)return;item.x=Number(document.getElementById('selectedX').value||item.x);item.z=Number(document.getElementById('selectedZ').value||item.z);item.scale=Number(document.getElementById('selectedScale').value||item.scale||1);item.rot=Number(document.getElementById('selectedRot').value||0)*Math.PI/180;if(selected.kind==='tree'){const p=clampDecorationSpot(item.x,item.z,'tree');item.x=p.x;item.z=p.z;}if(selected.kind==='lamp'){const p=clampDecorationSpot(item.x,item.z,'lamp');item.x=p.x;item.z=p.z;}if(selected.kind==='building'){const p=clampToIsland(item.x,item.z,1.05);item.x=p.x;item.z=p.z;item.roofColor=document.getElementById('selectedRoofColor').value;}item.locked=document.getElementById('selectedLocked').checked;renderAllObjects();autoSaveAfterEdit();toast.textContent='선택 항목 적용 완료 · 브라우저 저장됨';}
+function saveBuildingDesign(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected||selected.kind!=='building')return alert('건물을 먼저 선택하세요.');applySelected();saveLocalVillageData(true);}
+function deleteSelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('삭제할 항목을 선택하세요.');if(!confirm('선택한 항목을 삭제할까요?'))return;if(selected.kind==='building')state.buildings=state.buildings.filter(x=>x.id!==selected.id);else if(selected.kind==='lamp')state.lamps=state.lamps.filter(x=>x.id!==selected.id);else state.trees=state.trees.filter(x=>x.id!==selected.id);selected=null;renderAllObjects();autoSaveAfterEdit();}
+function addBuilding(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newBuildingType').value,name=document.getElementById('newBuildingName').value||'New Building',iconMap={lab:'🧪',school:'🎓',house:'🏡',gallery:'🖼️',post:'✉️'};const p=clampToIsland(0,5.3,1.05);state.buildings.push({id:'b'+Date.now(),type,name,icon:iconMap[type],desc:'새로 추가한 건물입니다.',x:p.x,z:p.z,scale:.9,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();}
+function addTree(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newTreeType').value;const p=findTreeSpot();state.trees.push({id:'t'+Date.now(),type,x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();toast.textContent='나무를 건물 옆쪽에 추가했습니다. · 브라우저 저장됨';}
+function addLamp(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const rawX=Number(document.getElementById('newLampX').value||0),rawZ=Number(document.getElementById('newLampZ').value||0);const manual=Math.hypot(rawX,rawZ)>.05;const p=manual?snapLampSpot(rawX,rawZ):findLampSpot();state.lamps.push({id:'l'+Date.now(),x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();toast.textContent=manual?'가로등을 가까운 도로/건물 옆으로 보정해 추가했습니다. · 브라우저 저장됨':'가로등을 도로 근처에 추가했습니다. · 브라우저 저장됨';}
+function clearLamps(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!confirm('가로등을 모두 삭제할까요?'))return;state.lamps=[];renderAllObjects();autoSaveAfterEdit();}
 function fillRoadForm(){document.getElementById('roadMaterial').value=state.road.material;document.getElementById('roadColor1').value=state.road.color1;document.getElementById('roadColor2').value=state.road.color2;}
-function applyRoadSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.road.material=document.getElementById('roadMaterial').value;state.road.color1=document.getElementById('roadColor1').value;state.road.color2=document.getElementById('roadColor2').value;rebuildRoads();toast.textContent='도로 설정 적용 완료';}
+function applyRoadSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.road.material=document.getElementById('roadMaterial').value;state.road.color1=document.getElementById('roadColor1').value;state.road.color2=document.getElementById('roadColor2').value;rebuildRoads();autoSaveAfterEdit();toast.textContent='도로 설정 적용 완료 · 브라우저 저장됨';}
 function fillPondForm(){document.getElementById('fishCount').value=state.pond.fishCount;document.getElementById('fishSpeed').value=state.pond.fishSpeed;}
-function applyPondSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.pond.fishCount=Number(document.getElementById('fishCount').value||state.pond.fishCount);state.pond.fishSpeed=Number(document.getElementById('fishSpeed').value||state.pond.fishSpeed);rebuildCenterPond();toast.textContent='중앙 연못 설정 적용 완료';}
+function applyPondSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.pond.fishCount=Number(document.getElementById('fishCount').value||state.pond.fishCount);state.pond.fishSpeed=Number(document.getElementById('fishSpeed').value||state.pond.fishSpeed);rebuildCenterPond();autoSaveAfterEdit();toast.textContent='중앙 연못 설정 적용 완료 · 브라우저 저장됨';}
 
 function setupEvents(){window.addEventListener('resize',onResize);window.addEventListener('keydown',e=>{keyState[e.key.toLowerCase()]=true;if(['arrowup','arrowdown','arrowleft','arrowright','enter','escape',' ','f','q'].includes(e.key.toLowerCase()))e.preventDefault();if(e.key==='Enter'&&activeBuilding&&!roomMode)openBuilding(activeBuilding.id);if(e.key==='Escape'&&roomMode)closeRoom();if(e.key.toLowerCase()==='f')tryFishing();if(e.key.toLowerCase()==='q'){state.avatar.carry='none';updateCarryVisual();toast.textContent='낚시대에서 내려놓았습니다.';}});window.addEventListener('keyup',e=>keyState[e.key.toLowerCase()]=false);renderer.domElement.addEventListener('pointerdown',onPointerDown);renderer.domElement.addEventListener('pointermove',onPointerMove);renderer.domElement.addEventListener('pointerup',onPointerUp);renderer.domElement.addEventListener('wheel',onWheel,{passive:false});renderer.domElement.addEventListener('contextmenu',e=>e.preventDefault());}
 function onResize(){const w=viewer.clientWidth,h=viewer.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);}
@@ -506,7 +573,7 @@ function roomDataFor(building){return state.rooms[building.id]||{heading:buildin
 function renderRoomPanel(building){const room=roomDataFor(building);document.getElementById('roomIcon').textContent=building.icon||'🏠';document.getElementById('roomTitle').textContent=building.name;document.getElementById('roomSubtitle').textContent=`${building.type} room · avatar at entrance`;document.getElementById('roomMainHeading').textContent=room.heading||building.name;document.getElementById('roomMainText').textContent=room.text||building.desc;const tagBox=document.getElementById('roomTags');tagBox.innerHTML='';(room.tags||[]).forEach(tag=>{const span=document.createElement('span');span.className='room-tag';span.textContent=tag;tagBox.appendChild(span);});renderAttachments(building);}
 function iconForAttachment(file){const name=(file.name||'').toLowerCase(),type=(file.type||'').toLowerCase();if(name.endsWith('.ppt')||name.endsWith('.pptx')||type.includes('presentation'))return'📽️';if(name.endsWith('.xls')||name.endsWith('.xlsx')||type.includes('excel')||type.includes('sheet'))return'📊';if(name.endsWith('.pdf')||type.includes('pdf'))return'📄';if(name.endsWith('.png')||name.endsWith('.jpg')||name.endsWith('.jpeg')||type.includes('image'))return'🖼️';if(name.endsWith('.py')||name.endsWith('.js')||name.endsWith('.html')||name.endsWith('.ipynb'))return'💻';if(name.endsWith('.url')||type.includes('link'))return'🔗';return'📎';}
 function renderAttachments(building){const room=roomDataFor(building),list=document.getElementById('attachmentList');list.innerHTML='';(room.attachments||[]).forEach((file,idx)=>{const card=document.createElement('div');card.className='attachment-card';const openButton=file.url?`<button class="attachment-open" onclick="window.open(state.rooms['${building.id}'].attachments[${idx}].url, '_blank')">열기</button>`:`<button class="attachment-open" onclick="toast.textContent='샘플 파일입니다. 실제 파일은 업로드하거나 링크를 연결해야 합니다.'">확인</button>`;card.innerHTML=`<div class="attachment-icon">${iconForAttachment(file)}</div><div><div class="attachment-name">${escapeHtml(file.name||'Untitled')}</div><div class="attachment-meta">${escapeHtml(file.type||'file')} · ${escapeHtml(file.size||'unknown')}</div></div>${openButton}`;list.appendChild(card);});}
-function handleRoomFiles(event){if(!isAdminMode){toast.textContent='방문자 화면에서는 파일을 추가할 수 없습니다.';return;}if(!roomBuilding)return;const room=roomDataFor(roomBuilding);if(!state.rooms[roomBuilding.id])state.rooms[roomBuilding.id]=room;Array.from(event.target.files||[]).forEach(file=>{const url=URL.createObjectURL(file);state.rooms[roomBuilding.id].attachments.push({name:file.name,type:file.type||'local file',size:formatFileSize(file.size),url});});renderAttachments(roomBuilding);event.target.value='';}
+function handleRoomFiles(event){if(!isAdminMode){toast.textContent='방문자 화면에서는 파일을 추가할 수 없습니다.';return;}if(!roomBuilding)return;const room=roomDataFor(roomBuilding);if(!state.rooms[roomBuilding.id])state.rooms[roomBuilding.id]=room;Array.from(event.target.files||[]).forEach(file=>{const url=URL.createObjectURL(file);state.rooms[roomBuilding.id].attachments.push({name:file.name,type:file.type||'local file',size:formatFileSize(file.size),url});});renderAttachments(roomBuilding);autoSaveAfterEdit();event.target.value='';}
 function formatFileSize(bytes){if(!Number.isFinite(bytes))return'unknown';if(bytes<1024)return bytes+' B';if(bytes<1024*1024)return(bytes/1024).toFixed(1)+' KB';return(bytes/1024/1024).toFixed(1)+' MB';}
 function escapeHtml(text){return String(text||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
 function animate(){requestAnimationFrame(animate);const now=performance.now(),dt=Math.min(.05,(now-lastTime)/1000);lastTime=now;moveAvatar(dt);updateCat(dt);checkPreview();animateFish();updateClouds(dt);updateBoat(dt);renderer.render(scene,camera);frameCounter++;if(now-fpsTime>1000){document.getElementById('fpsPill').textContent=`FPS: ${frameCounter}`;frameCounter=0;fpsTime=now;}}
