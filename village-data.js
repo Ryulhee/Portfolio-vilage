@@ -1,6 +1,6 @@
 window.VILLAGE_DATA = {
   road:{material:'asphalt',color1:'#6b7280',color2:'#4b5563'},pond:{visible:true,fishCount:6,fishSpeed:1.0},
-  cat:{x:2.6,z:0.95,targetX:2.0,targetZ:2.0,speed:0.75,mode:'idle',timer:1.5},cat2:{x:-2.6,z:0.95,targetX:-2.0,targetZ:1.6,speed:0.65,mode:'idle',timer:2.0},avatar:{x:0,z:0.95,carry:'none',carryCatKey:null},
+  cat:{x:2.6,z:0.95,targetX:1.7,targetZ:0.55,speed:0.78,mode:'idle',timer:1.5},cat2:{x:-3.7,z:2.55,targetX:-3.7,targetZ:2.55,speed:0.56,mode:'sleep',timer:0.2,targetY:1.38},avatar:{x:0,z:0.95,carry:'none',carryCatKey:null},
   buildings:[
     {id:'lab',type:'lab',name:'Research Lab',icon:'🧪',desc:'연구 프로젝트, 논문, 발표 자료를 담아두는 공간입니다.',x:-3.95,z:-1.35,scale:1.00,rot:0,locked:false,bodyColor:'#f6fafc',roofColor:'#cdd6dd',doorColor:'#4a89a8',signColor:'#7d90a0'},
     {id:'school',type:'school',name:'Medical School',icon:'🎓',desc:'학력, 전공, 연구실 이력을 보여주는 공간입니다.',x:3.9,z:2.55,scale:0.95,rot:Math.PI,locked:false,bodyColor:'#f6f3eb',roofColor:'#6ea0df',doorColor:'#e6eef7',signColor:'#5c7fb7'},
