@@ -1,6 +1,6 @@
 window.VILLAGE_DATA = {
   road:{material:'asphalt',color1:'#6b7280',color2:'#4b5563'},pond:{visible:true,fishCount:6,fishSpeed:1.0},
-  cat:{x:-2.2,z:3.9,targetX:2.0,targetZ:2.0,speed:0.75,mode:'idle',timer:1.5},avatar:{x:0.2,z:3.45,carry:'none'},
+  cat:{x:-2.2,z:3.9,targetX:-1.2,targetZ:1.4,speed:0.78,mode:'idle',timer:1.5},cat2:{x:0,z:0,targetX:0,targetZ:0,speed:0.92,mode:'sleep',timer:999999,targetY:1.58,sleepCounter:0,sleepPose:'loaf',catchWindow:0,escapeCooldown:0,visible:true,lastSeenAt:0},avatar:{x:0.2,z:3.45,carry:'none',carryCatKey:null},
   buildings:[
     {id:'lab',type:'lab',name:'Research Lab',icon:'🧪',desc:'연구 프로젝트, 논문, 발표 자료를 담아두는 공간입니다.',x:-3.6,z:-1.9,scale:1.05,rot:0,locked:false},
     {id:'school',type:'school',name:'Medical School',icon:'🎓',desc:'학력, 전공, 연구실 이력을 보여주는 공간입니다.',x:3.6,z:-1.8,scale:1.08,rot:0,locked:false},
