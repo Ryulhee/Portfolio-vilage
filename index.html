@@ -32,8 +32,19 @@
     .room-overlay{position:absolute;inset:0;z-index:7;display:none;pointer-events:none;background:linear-gradient(90deg,rgba(15,23,42,.06),rgba(15,23,42,0))}.room-overlay.open{display:block}.room-panel{position:absolute;right:28px;top:50%;transform:translateY(-50%);width:min(330px,calc(100% - 56px));max-height:min(430px,calc(100% - 56px));overflow:auto;pointer-events:auto;background:rgba(255,255,255,.70);border:1px solid rgba(255,255,255,.88);border-radius:24px;box-shadow:0 22px 55px rgba(15,23,42,.22);backdrop-filter:blur(18px);padding:14px}.room-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}.room-title-wrap{display:flex;align-items:center;gap:12px}.room-icon{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(180deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;font-size:22px}.room-title{font-size:17px;font-weight:950}.room-subtitle{margin-top:3px;font-size:12px;color:#64748b;font-weight:800}.room-close{width:34px;height:34px;border-radius:999px;border:1px solid #cbd5e1;background:rgba(255,255,255,.86);font-weight:950;color:#334155}.room-section{margin-top:10px;background:rgba(248,250,252,.72);border:1px solid rgba(226,232,240,.75);border-radius:16px;padding:10px}.room-section h4{margin:0 0 7px;font-size:13px;color:#334155}.room-text{font-size:12px;line-height:1.48;color:#475569;margin:0}.room-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.room-tag{border-radius:999px;background:#eaf3ff;color:#2563eb;padding:6px 9px;font-size:12px;font-weight:900}.attachment-list{display:grid;gap:8px;margin-top:10px}.attachment-card{display:grid;grid-template-columns:38px 1fr auto;gap:9px;align-items:center;border:1px solid rgba(203,213,225,.9);border-radius:15px;background:rgba(255,255,255,.72);padding:9px}.attachment-icon{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:#eef4ff;font-size:19px}.attachment-name{font-size:13px;font-weight:900;color:#334155;word-break:break-word}.attachment-meta{font-size:11px;color:#64748b;margin-top:2px}.attachment-open{border:0;border-radius:10px;padding:8px 10px;background:#4f8cff;color:white;font-size:12px;font-weight:900}.attachment-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.attachment-actions .attachment-open{padding:7px 9px}.attachment-actions .danger{background:#ef4444}.attachment-actions .ghost{background:#fff;color:#334155;border:1px solid #cbd5e1}.room-file-input{margin-top:10px;background:rgba(255,255,255,.82)}.room-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.room-action{border:0;border-radius:13px;padding:10px 12px;font-size:13px;font-weight:950;background:#e9f0fb;color:#1f2937}.room-action.primary{background:#4f8cff;color:white}.room-action.ghost{background:rgba(255,255,255,.75);border:1px solid #cbd5e1}.room-note{margin-top:10px;font-size:11px;line-height:1.45;color:#64748b}
     .side{position:sticky;top:0;height:100vh;overflow:auto;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-left:1px solid var(--line);padding:16px}.side h2{margin:0 0 5px;font-size:23px}.small{margin:0 0 12px;color:var(--sub);font-size:13px;line-height:1.45}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:12px;box-shadow:0 10px 24px rgba(79,140,255,.04)}.panel h3{margin:0 0 10px;font-size:16px}label{display:block;margin:9px 0 5px;font-size:13px;font-weight:900;color:#334155}input,select,textarea{width:100%;border:1px solid #d7e3f0;border-radius:12px;padding:9px 10px;background:#fff;color:#1f2937;font-size:14px}textarea{min-height:72px;resize:vertical;line-height:1.45}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btn{border:0;border-radius:12px;padding:10px 12px;font-weight:900;background:#e9f0fb;color:#1f2937}.btn.primary{background:var(--blue);color:#fff}.btn.good{background:var(--green);color:#fff}.btn.danger{background:var(--red);color:#fff}.btn.ghost{background:#fff;border:1px solid #d7e3f0}.list{display:grid;gap:8px;max-height:230px;overflow:auto;margin-top:8px}.mini-card{background:#fff;border:1px solid #dce7f2;border-radius:14px;padding:10px;font-size:13px;cursor:pointer}.mini-card.active{outline:3px solid #fde68a}.mini-card strong{display:block;margin-bottom:4px}.mini-card span{color:#64748b;line-height:1.35}.status-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:#64748b}.pill{border-radius:999px;background:#f1f5f9;padding:7px 10px;font-weight:800;color:#475569}
 
-    .mobile-controls{position:absolute;left:12px;right:12px;bottom:12px;z-index:9;display:none;grid-template-columns:124px 1fr;gap:10px;align-items:end;pointer-events:none}.mobile-controls button{pointer-events:auto;border:0;border-radius:15px;background:rgba(255,255,255,.90);border:1px solid rgba(203,213,225,.95);box-shadow:0 8px 20px rgba(15,23,42,.16);font-weight:950;color:#1f2937;touch-action:none;-webkit-user-select:none;user-select:none}.mobile-joy{display:grid;grid-template-columns:40px 40px 40px;grid-template-rows:40px 40px 40px;gap:4px;pointer-events:auto}.mobile-joy .up{grid-column:2;grid-row:1}.mobile-joy .left{grid-column:1;grid-row:2}.mobile-joy .center{grid-column:2;grid-row:2;background:rgba(79,140,255,.92);color:#fff}.mobile-joy .right{grid-column:3;grid-row:2}.mobile-joy .down{grid-column:2;grid-row:3}.mobile-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;pointer-events:auto}.mobile-actions button{min-width:48px;min-height:38px;padding:8px 10px;font-size:12px}.mobile-actions .primary{background:#4f8cff;color:white}.mobile-actions .good{background:#22c55e;color:white}.mobile-actions .danger{background:#ef4444;color:white}.mobile-actions .angle{background:rgba(255,251,235,.94);color:#7c2d12;border-color:#fde68a}@media (max-width:1160px),(pointer:coarse){.mobile-controls{display:grid}#viewer{touch-action:none}.toast{bottom:118px}.room-overlay.open~.mobile-controls{display:none}}
+    .mobile-controls{position:absolute;left:12px;right:12px;bottom:12px;z-index:9;display:none;grid-template-columns:124px 1fr;gap:10px;align-items:end;pointer-events:none}.mobile-controls button{pointer-events:auto;border:0;border-radius:15px;background:rgba(255,255,255,.90);border:1px solid rgba(203,213,225,.95);box-shadow:0 8px 20px rgba(15,23,42,.16);font-weight:950;color:#1f2937;touch-action:none;-webkit-user-select:none;user-select:none}.mobile-joy{display:grid;grid-template-columns:40px 40px 40px;grid-template-rows:40px 40px 40px;gap:4px;pointer-events:auto}.mobile-joy .up{grid-column:2;grid-row:1}.mobile-joy .left{grid-column:1;grid-row:2}.mobile-joy .center{grid-column:2;grid-row:2;background:rgba(79,140,255,.92);color:#fff}.mobile-joy .right{grid-column:3;grid-row:2}.mobile-joy .down{grid-column:2;grid-row:3}.mobile-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;pointer-events:auto}.mobile-actions button{min-width:48px;min-height:38px;padding:8px 10px;font-size:12px}.mobile-actions .primary{background:#4f8cff;color:white}.mobile-actions .good{background:#22c55e;color:white}.mobile-actions .danger{background:#ef4444;color:white}.mobile-actions .angle{background:rgba(255,251,235,.94);color:#7c2d12;border-color:#fde68a}@media (max-width:1160px),(pointer:coarse){.mobile-controls{display:grid}#viewer{touch-action:none}.toast{bottom:118px}.room-overlay.open~.mobile-controls{display:none}.room-overlay.open~#mobile-console{display:none}}
     @media (max-width:1160px){.app{grid-template-columns:1fr}.side{position:relative;height:auto;border-left:0;border-top:1px solid var(--line)}#viewer{height:680px}body.visitor-mode #viewer{height:680px}}
+
+
+    /* Animal Crossing-like console overlay */
+    #pc-controls{position:absolute;bottom:20px;left:20px;background:rgba(255,255,255,.80);padding:15px;border-radius:8px;font-size:14px;pointer-events:none;z-index:9;box-shadow:0 12px 26px rgba(15,23,42,.16);backdrop-filter:blur(8px)}
+    #pc-controls p{margin:0 0 6px}#pc-controls ul{margin:0;padding-left:18px}
+    #mobile-console{position:absolute;left:16px;bottom:16px;z-index:10;width:min(435px,calc(100% - 32px));background:rgba(0,0,0,.60)!important;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.20);border-radius:10px;color:white;padding:10px;box-shadow:0 16px 38px rgba(15,23,42,.26);pointer-events:auto;display:none;grid-template-columns:1fr;gap:8px}
+    .console-head{display:flex;align-items:center;justify-content:space-between;font-size:22px;letter-spacing:.04em;font-weight:800;padding:4px 10px 8px;border-bottom:1px solid rgba(255,255,255,.18)}
+    .console-close{font-size:30px;line-height:1;opacity:.78}.console-admin{height:40px;border-radius:10px;background:rgba(255,255,255,.12);display:flex;align-items:center;padding:0 14px;font-size:14px;font-weight:800;letter-spacing:.04em}.console-body{display:grid;grid-template-columns:1fr 1.1fr;gap:10px}.console-left,.console-right{background:rgba(20,35,42,.55);border-radius:10px;padding:10px}.console-action-row{display:grid;grid-template-columns:74px 1fr;gap:10px;align-items:center;margin-bottom:12px}.console-key{width:70px;height:58px;border:0;border-radius:8px;background:rgba(255,255,255,.88);color:#333;font-size:36px;font-weight:900;box-shadow:inset 0 -3px rgba(0,0,0,.15);touch-action:none}.console-label{font-size:18px;line-height:1.15;font-weight:750}.console-divider{height:1px;background:rgba(255,255,255,.28);margin:8px 0 12px}.console-mini-row{display:grid;grid-template-columns:40px 1fr;gap:8px;align-items:center;margin:7px 0}.console-mini-key{height:32px;border:0;border-radius:6px;background:rgba(255,255,255,.85);color:#333;font-size:13px;font-weight:900;touch-action:none}.console-mini-label{font-size:15px;font-weight:700}.console-wasd{display:grid;grid-template-columns:30px 30px 30px;grid-template-rows:24px 24px;gap:2px;width:94px}.console-wasd span{display:grid;place-items:center;background:rgba(255,255,255,.85);color:#333;border-radius:4px;font-size:11px;font-weight:900}.console-wasd .w{grid-column:2}.console-wasd .a{grid-column:1}.console-wasd .s{grid-column:2}.console-wasd .d{grid-column:3}
+    @media (max-width:1160px),(pointer:coarse){#mobile-console{display:grid}.mobile-controls{display:none!important}#pc-controls{display:none}.toast{bottom:230px}}
+    @media (min-width:1161px) and (pointer:fine){#pc-controls{display:block}}
+
   </style>
 </head>
 <body>
@@ -42,23 +53,31 @@
     <div id="modeBadge" class="mode-badge"><span id="modeText">방문자 모드</span><button id="modeButton" type="button" onclick="toggleAdminMode()">관리자</button></div>
     <div id="preview" class="preview"><div class="preview-head"><div id="previewIcon" class="preview-icon">🏠</div><div><div id="previewTitle" class="preview-title">건물 이름</div><div id="previewKind" class="preview-kind">building</div></div></div><div id="previewDesc" class="preview-desc">설명</div><div class="preview-hint">Enter를 누르면 건물 앞 시점으로 이동하고 자료창이 열립니다.</div></div>
     <div id="toast" class="toast">3D 마을 로딩 중...</div>
-    <div id="mobileControls" class="mobile-controls">
-      <div class="mobile-joy">
-        <button class="up" type="button" onpointerdown="mobileMoveStart('arrowup',event)" onpointerup="mobileMoveEnd('arrowup',event)" onpointercancel="mobileMoveEnd('arrowup',event)" onpointerleave="mobileMoveEnd('arrowup',event)">▲</button>
-        <button class="left" type="button" onpointerdown="mobileMoveStart('arrowleft',event)" onpointerup="mobileMoveEnd('arrowleft',event)" onpointercancel="mobileMoveEnd('arrowleft',event)" onpointerleave="mobileMoveEnd('arrowleft',event)">◀</button>
-        <button class="center primary" type="button" onclick="mobileEnter(event)">입장</button>
-        <button class="right" type="button" onpointerdown="mobileMoveStart('arrowright',event)" onpointerup="mobileMoveEnd('arrowright',event)" onpointercancel="mobileMoveEnd('arrowright',event)" onpointerleave="mobileMoveEnd('arrowright',event)">▶</button>
-        <button class="down" type="button" onpointerdown="mobileMoveStart('arrowdown',event)" onpointerup="mobileMoveEnd('arrowdown',event)" onpointercancel="mobileMoveEnd('arrowdown',event)" onpointerleave="mobileMoveEnd('arrowdown',event)">▼</button>
-      </div>
-      <div class="mobile-actions">
-        <button class="good" type="button" onclick="mobileFish(event)">낚기</button>
-        <button class="danger" type="button" onclick="mobileDrop(event)">놓기</button>
-        <button class="angle" type="button" onclick="mobileRotate(-0.22,event)">↶</button>
-        <button class="angle" type="button" onclick="mobileRotate(0.22,event)">↷</button>
-        <button class="angle" type="button" onclick="mobileTilt(0.10,event)">위각</button>
-        <button class="angle" type="button" onclick="mobileTilt(-0.10,event)">아래각</button>
-        <button type="button" onclick="mobileZoom(-1,event)">＋</button>
-        <button type="button" onclick="mobileZoom(1,event)">－</button>
+    <div id="pc-controls">
+      <p><strong>조작법:</strong></p>
+      <ul>
+        <li>[Q] : 아이템 사용 / 상호작용</li>
+        <li>[F] : 관찰 모드 전환</li>
+        <li>[WASD] : 이동</li>
+      </ul>
+    </div>
+
+    <div id="mobile-console">
+      <div class="console-head"><span>CONSOLE</span><span class="console-close">×</span></div>
+      <div class="console-admin">ADMIN PANEL</div>
+      <div class="console-body">
+        <div class="console-left">
+          <div class="console-action-row"><button class="console-key" type="button" onclick="mobileDrop(event)">Q</button><div class="console-label">놓기<br>(Drop)</div></div>
+          <div class="console-divider"></div>
+          <div class="console-action-row"><button class="console-key" type="button" onclick="mobileFish(event)">F</button><div class="console-label">낚기<br>(Fish)</div></div>
+        </div>
+        <div class="console-right">
+          <div class="console-mini-row"><div class="console-wasd"><span class="w">▲</span><span class="a">◀</span><span class="s">▼</span><span class="d">▶</span></div><div class="console-mini-label">방향키/WASD 이동</div></div>
+          <div class="console-mini-row"><button class="console-mini-key" type="button" onclick="mobileEnter(event)">Enter</button><div class="console-mini-label">입장</div></div>
+          <div class="console-mini-row"><button class="console-mini-key" type="button" onclick="closeRoom()">Esc</button><div class="console-mini-label">복귀</div></div>
+          <div class="console-mini-row"><button class="console-mini-key" type="button" onclick="mobileRotate(-0.22,event)">↶</button><div class="console-mini-label">드래그 회전</div></div>
+          <div class="console-mini-row"><button class="console-mini-key" type="button" onclick="mobileZoom(-1,event)">↕</button><div class="console-mini-label">휠 줌</div></div>
+        </div>
       </div>
     </div>
 
@@ -172,7 +191,7 @@ const state={
 let scene,camera,renderer,raycaster,pointer,groundPlane,root,objectRoot,roadRoot,pondRoot,skyRoot,cloudRoot,seaRoot,avatarGroup,avatarCarryAnchor,catGroup,boatGroup;
 let selected=null,drag=null,activeBuilding=null,roomMode=false,roomBuilding=null,keyState={};
 let lastTime=performance.now(),frameCounter=0,fpsTime=performance.now(),fishList=[],stars=[],sunMesh,moonMesh;
-let cameraOrbit={yaw:0,pitch:0,distance:16.2,targetY:1.1,dragging:false,lastX:0,lastY:0};
+let cameraOrbit={yaw:0,pitch:.73,distance:15.5,targetY:0.65,dragging:false,lastX:0,lastY:0};
 const GROUND_Y=0.18;
 const BUILDING_Y=0.13;
 const POND_CENTER={x:0,z:0.05,rx:1.82,rz:1.20};
@@ -365,8 +384,8 @@ async function init(){
   if(adminRequested && !adminAllowed){setTimeout(()=>{toast.textContent='관리자 비밀번호가 맞지 않습니다. 방문자 모드로 열었습니다.';},0);}
   await applyInitialVillageData();
   if(!window.THREE){toast.textContent='Three.js를 불러오지 못했습니다. 인터넷 연결을 확인하세요.';return;}
-  scene=new THREE.Scene();scene.background=new THREE.Color(0xaee8ff);scene.fog=new THREE.Fog(0xaee8ff,26,48);
-  const w=viewer.clientWidth,h=viewer.clientHeight;camera=new THREE.PerspectiveCamera(42,w/h,.1,100);applyCameraOrbit();
+  scene=new THREE.Scene();scene.background=new THREE.Color(0x1187bd);scene.fog=new THREE.Fog(0x79d8ff,28,58);
+  const w=viewer.clientWidth,h=viewer.clientHeight;camera=new THREE.PerspectiveCamera(38,w/h,.1,100);camera.position.set(0,12,10);camera.lookAt(0,0,0);applyCameraOrbit();
   renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));renderer.setSize(w,h);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.domElement.id='threeCanvas';viewer.prepend(renderer.domElement);
   raycaster=new THREE.Raycaster();pointer=new THREE.Vector2();groundPlane=new THREE.Plane(new THREE.Vector3(0,1,0),0);
   addLights();root=new THREE.Group();scene.add(root);createSky();createClouds();createWorld();renderAllObjects();fillRoadForm();fillPondForm();setupEvents();updateSkyByKST();setInterval(updateSkyByKST,60000);startFirebaseVillageListener();animate();toast.textContent=firebaseReady?'준비 완료 · Firebase 실시간 동기화 연결됨':'준비 완료 · Firebase 연결 실패, Rules 또는 인터넷을 확인하세요.';
@@ -451,12 +470,28 @@ function createEdgeFence(){
     fenceGroup.add(endPicket);
   });
 }
-function createSea(){seaRoot=new THREE.Group();root.add(seaRoot);const sea=new THREE.Mesh(new THREE.CylinderGeometry(18,18,.14,140),new THREE.MeshStandardMaterial({color:0x6fd3ff,roughness:.18,metalness:.04,transparent:true,opacity:.96}));sea.position.y=-.78;sea.receiveShadow=true;seaRoot.add(sea);const seaInner=new THREE.Mesh(new THREE.CylinderGeometry(14.8,14.8,.04,140),new THREE.MeshStandardMaterial({color:0x4fc3f7,roughness:.20,metalness:.05,transparent:true,opacity:.55}));seaInner.position.y=-.70;seaRoot.add(seaInner);const foam=new THREE.Mesh(new THREE.RingGeometry(7.55,8.15,140),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.35,side:THREE.DoubleSide}));foam.rotation.x=-Math.PI/2;foam.scale.z=.82;foam.position.y=-.60;seaRoot.add(foam);boatGroup=createBoat();seaRoot.add(boatGroup);}
+function createSea(){
+  seaRoot=new THREE.Group();root.add(seaRoot);
+  const seaMat=new THREE.MeshStandardMaterial({color:0x0789c8,roughness:.12,metalness:.03,transparent:true,opacity:.98});
+  const sea=new THREE.Mesh(new THREE.CylinderGeometry(19,19,.16,160),seaMat);sea.position.y=-.82;sea.receiveShadow=true;seaRoot.add(sea);
+  const shallow=new THREE.Mesh(new THREE.RingGeometry(7.65,9.3,160),new THREE.MeshBasicMaterial({color:0x7cecff,transparent:true,opacity:.34,side:THREE.DoubleSide}));shallow.rotation.x=-Math.PI/2;shallow.scale.z=.82;shallow.position.y=-.69;seaRoot.add(shallow);
+  const foam=new THREE.Mesh(new THREE.RingGeometry(7.35,7.75,160),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.44,side:THREE.DoubleSide}));foam.rotation.x=-Math.PI/2;foam.scale.z=.82;foam.position.y=-.57;seaRoot.add(foam);
+  for(let i=0;i<18;i++){const a=i/18*Math.PI*2,rx=8.5+Math.sin(i)*.45,rz=(6.7+Math.cos(i*1.3)*.35);addCoralCluster(Math.cos(a)*rx,Math.sin(a)*rz,a);}
+  boatGroup=createBoat();seaRoot.add(boatGroup);
+}
+function addCoralCluster(x,z,a){const g=new THREE.Group();g.position.set(x,-.55,z);g.rotation.y=-a;const colors=[0x8b5cf6,0x22c55e,0xf472b6,0x38bdf8];for(let i=0;i<3;i++){const stem=new THREE.Mesh(new THREE.CylinderGeometry(.025,.035,.28+Math.random()*.18,8),mat(colors[(i+Math.floor(Math.abs(x)))%colors.length],.75));stem.position.set((i-1)*.12,.12,Math.sin(i)*.05);stem.rotation.z=(i-1)*.35;g.add(stem);}seaRoot.add(g);}
 function createBoat(){const g=new THREE.Group();const hull=new THREE.Mesh(new THREE.BoxGeometry(.90,.22,.36),mat(0x8b5a2b));hull.castShadow=true;g.add(hull);const bow=new THREE.Mesh(new THREE.ConeGeometry(.18,.26,4),mat(0x9a6337));bow.rotation.z=Math.PI/2;bow.position.set(.52,.01,0);g.add(bow);const stern=bow.clone();stern.position.set(-.52,.01,0);stern.rotation.z=-Math.PI/2;g.add(stern);const seat=new THREE.Mesh(new THREE.BoxGeometry(.28,.08,.20),mat(0xd1a46c));seat.position.set(-.05,.14,0);g.add(seat);const mast=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.75,10),mat(0x6b4f2c));mast.position.set(.08,.42,0);g.add(mast);const sail=new THREE.Mesh(new THREE.PlaneGeometry(.42,.34),new THREE.MeshStandardMaterial({color:0xfff7e6,roughness:.7,side:THREE.DoubleSide}));sail.position.set(.22,.48,0);sail.rotation.y=-.25;g.add(sail);g.position.set(8.8,-.60,1.6);g.rotation.y=-.8;return g;}
 function updateBoat(){if(!boatGroup)return;const t=performance.now()*.001;boatGroup.position.y=-.60+Math.sin(t*1.8)*.06;boatGroup.rotation.z=Math.sin(t*1.8)*.04;boatGroup.rotation.x=Math.cos(t*1.4)*.015;boatGroup.position.x=8.8+Math.sin(t*.45)*.18;boatGroup.position.z=1.6+Math.cos(t*.50)*.12;}
 function roadMaterial(){if(state.road.material==='grass')return mat(0x7fcf6b,.95);if(state.road.material==='stone')return mat(0xaaa7a1,.85);if(state.road.material==='gravel')return mat(0xb4a58e,.95);return mat(new THREE.Color(state.road.color1).lerp(new THREE.Color(state.road.color2),.45).getHex(),.9);}
-function rebuildRoads(){if(!roadRoot)return;roadRoot.clear();const ring=new THREE.Mesh(new THREE.RingGeometry(2.45,3.05,128),roadMaterial());ring.rotation.x=-Math.PI/2;ring.scale.z=.76;ring.position.set(0,.245,.05);ring.receiveShadow=true;roadRoot.add(ring);const lane=new THREE.Mesh(new THREE.RingGeometry(2.72,2.76,128),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.45}));lane.rotation.x=-Math.PI/2;lane.scale.z=.76;lane.position.set(0,.26,.05);roadRoot.add(lane);}
-function rebuildCenterPond(){if(!pondRoot)return;pondRoot.clear();fishList=[];if(!state.pond.visible)return;const pondGroup=new THREE.Group();pondGroup.position.set(0,.3,.05);pondRoot.add(pondGroup);const rim=createWavyDiscMesh({radiusX:1.78,radiusZ:1.18,y:0,color:0x5f9d56,roughness:.72,wobble:.18,segments:112});rim.castShadow=true;rim.receiveShadow=true;pondGroup.add(rim);const water=createWavyDiscMesh({radiusX:1.42,radiusZ:.95,y:.08,color:0x63d7f0,roughness:.16,wobble:.14,segments:112,transparent:true,opacity:.88});pondGroup.add(water);pondGroup.add(createWavyLine({radiusX:.96,radiusZ:.52,y:.13,color:0xffffff,opacity:.38,wobble:.12}));const count=Math.max(0,Math.min(12,Number(state.pond.fishCount||0))),colors=[0xff8c42,0xffc14d,0xff6b6b,0xffffff,0xf97316,0xfacc15];for(let i=0;i<count;i++){const angle=Math.PI*2/Math.max(1,count)*i;createFish(pondGroup,Math.cos(angle)*.28,Math.sin(angle)*.18,colors[i%colors.length],i,.17);}}
+function addRoadRect(w,d,x,z,y=.255){const r=new THREE.Mesh(new THREE.BoxGeometry(w,.035,d),roadMaterial());r.position.set(x,y,z);r.receiveShadow=true;roadRoot.add(r);return r;}
+function addRoadStripe(w,d,x,z,y=.278){const s=new THREE.Mesh(new THREE.BoxGeometry(w,.012,d),new THREE.MeshBasicMaterial({color:0xf9fafb,transparent:true,opacity:.62}));s.position.set(x,y,z);roadRoot.add(s);return s;}
+function rebuildRoads(){
+  if(!roadRoot)return;roadRoot.clear();
+  const ring=new THREE.Mesh(new THREE.RingGeometry(6.05,6.55,160),roadMaterial());ring.rotation.x=-Math.PI/2;ring.scale.z=.82;ring.position.set(0,.242,.05);ring.receiveShadow=true;roadRoot.add(ring);
+  addRoadRect(.82,6.15,0,0.72);addRoadStripe(.045,5.7,0,0.72);
+  addRoadRect(2.25,.58,-3.62,-1.1);addRoadRect(2.25,.58,3.62,-1.1);addRoadRect(2.0,.50,-4.65,2.55);addRoadRect(2.0,.50,4.65,2.55);addRoadRect(1.65,.50,0,4.05);
+  const lane=new THREE.Mesh(new THREE.RingGeometry(6.29,6.34,160),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.45}));lane.rotation.x=-Math.PI/2;lane.scale.z=.82;lane.position.set(0,.27,.05);roadRoot.add(lane);
+}function rebuildCenterPond(){if(!pondRoot)return;pondRoot.clear();fishList=[];if(!state.pond.visible)return;const pondGroup=new THREE.Group();pondGroup.position.set(0,.3,.05);pondRoot.add(pondGroup);const rim=createWavyDiscMesh({radiusX:1.78,radiusZ:1.18,y:0,color:0x5f9d56,roughness:.72,wobble:.18,segments:112});rim.castShadow=true;rim.receiveShadow=true;pondGroup.add(rim);const water=createWavyDiscMesh({radiusX:1.42,radiusZ:.95,y:.08,color:0x63d7f0,roughness:.16,wobble:.14,segments:112,transparent:true,opacity:.88});pondGroup.add(water);pondGroup.add(createWavyLine({radiusX:.96,radiusZ:.52,y:.13,color:0xffffff,opacity:.38,wobble:.12}));const count=Math.max(0,Math.min(12,Number(state.pond.fishCount||0))),colors=[0xff8c42,0xffc14d,0xff6b6b,0xffffff,0xf97316,0xfacc15];for(let i=0;i<count;i++){const angle=Math.PI*2/Math.max(1,count)*i;createFish(pondGroup,Math.cos(angle)*.28,Math.sin(angle)*.18,colors[i%colors.length],i,.17);}}
 function createWavyDiscMesh({radiusX,radiusZ,y,color,roughness=.5,wobble=.14,segments=80,transparent=false,opacity=1}){const shape=new THREE.Shape();for(let i=0;i<=segments;i++){const a=i/segments*Math.PI*2,noise=1+Math.sin(a*3.1)*wobble*.55+Math.cos(a*5.2)*wobble*.35+Math.sin(a*7.3)*wobble*.18,x=Math.cos(a)*radiusX*noise,z=Math.sin(a)*radiusZ*noise;if(i===0)shape.moveTo(x,z);else shape.lineTo(x,z);}const mesh=new THREE.Mesh(new THREE.ShapeGeometry(shape),new THREE.MeshStandardMaterial({color,roughness,metalness:.04,transparent,opacity,side:THREE.DoubleSide}));mesh.rotation.x=-Math.PI/2;mesh.position.y=y;mesh.receiveShadow=true;return mesh;}
 function createWavyLine({radiusX,radiusZ,y,color,opacity=.5,wobble=.12}){const pts=[];for(let i=0;i<=96;i++){const a=i/96*Math.PI*2,noise=1+Math.sin(a*3.4)*wobble*.5+Math.cos(a*6.1)*wobble*.25;pts.push(new THREE.Vector3(Math.cos(a)*radiusX*noise,y,Math.sin(a)*radiusZ*noise));}const curve=new THREE.CatmullRomCurve3(pts,true);return new THREE.Mesh(new THREE.TubeGeometry(curve,96,.012,6,true),new THREE.MeshBasicMaterial({color,transparent:true,opacity}));}
 function createFish(parent,x,z,color,index,yOverride=.17){const fish=new THREE.Group(),body=new THREE.Mesh(new THREE.SphereGeometry(.075,16,12),mat(color));body.scale.set(1.45,.78,.78);fish.add(body);const tail=new THREE.Mesh(new THREE.ConeGeometry(.045,.12,12),mat(color));tail.rotation.z=Math.PI/2;tail.position.set(-.12,0,0);fish.add(tail);const eye=new THREE.Mesh(new THREE.SphereGeometry(.011,8,6),mat(0x111111));eye.position.set(.08,.035,.035);fish.add(eye);fish.position.set(x,yOverride,z);fish.userData={centerX:x,centerZ:z,baseY:yOverride,radius:.2+index%4*.07,speed:(.7+index%5*.16)*Number(state.pond.fishSpeed||1),offset:index*1.7};fishList.push(fish);parent.add(fish);}
@@ -475,188 +510,26 @@ function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x
 
 function createSmallFishVisual(){const f=new THREE.Group();const body=new THREE.Mesh(new THREE.SphereGeometry(.055,14,10),mat(0xffa34b));body.scale.set(1.5,.8,.8);f.add(body);const tail=new THREE.Mesh(new THREE.ConeGeometry(.035,.09,10),mat(0xffa34b));tail.rotation.z=Math.PI/2;tail.position.set(-.09,0,0);f.add(tail);return f;}
 function createAvatar(){
-  const g=new THREE.Group();
-  g.name='avatar';
-
-  const skin=0xf4c7a8;
-  const hair=0x5a3a2a;
-  const coatWhite=0xfafafa;
-  const coatShadow=0xe5e7eb;
-  const shirtColor=0xcfe3ff;
-  const pantsColor=0x6b7280;
-  const shoeColor=0xffffff;
-  const glassesColor=0x2f3640;
-
-  const legL=new THREE.Mesh(new THREE.CylinderGeometry(.05,.055,.24,12),mat(skin));
-  const legR=legL.clone();
-  legL.position.set(-.08,.16,0);
-  legR.position.set(.08,.16,0);
-  g.add(legL,legR);
-
-  const pants=new THREE.Mesh(new THREE.BoxGeometry(.24,.18,.18),mat(pantsColor));
-  pants.position.set(0,.30,0);
-  g.add(pants);
-
-  const shoeL=new THREE.Mesh(new THREE.SphereGeometry(.07,12,10),mat(shoeColor));
-  shoeL.scale.set(1.2,.55,1.6);
-  shoeL.position.set(-.08,.02,.03);
-  const shoeR=shoeL.clone();
-  shoeR.position.set(.08,.02,.03);
-  g.add(shoeL,shoeR);
-
-  const body=new THREE.Mesh(new THREE.BoxGeometry(.34,.34,.22),mat(coatWhite));
-  body.position.set(0,.52,0);
-  body.castShadow=true;
-  g.add(body);
-
-  const bodyRound=new THREE.Mesh(new THREE.SphereGeometry(.17,18,14),mat(coatWhite));
-  bodyRound.scale.set(1.05,.9,.85);
-  bodyRound.position.set(0,.53,.01);
-  g.add(bodyRound);
-
-  const innerShirt=new THREE.Mesh(new THREE.BoxGeometry(.14,.19,.06),mat(shirtColor));
-  innerShirt.position.set(0,.51,.10);
-  g.add(innerShirt);
-
-  const collarL=new THREE.Mesh(new THREE.BoxGeometry(.08,.10,.02),mat(coatShadow));
-  collarL.position.set(-.04,.57,.12);
-  collarL.rotation.z=.45;
-  const collarR=collarL.clone();
-  collarR.position.set(.04,.57,.12);
-  collarR.rotation.z=-.45;
-  g.add(collarL,collarR);
-
-  [.47,.53,.59].forEach(y=>{
-    const btn=new THREE.Mesh(new THREE.SphereGeometry(.012,10,8),mat(0xcbd5e1));
-    btn.position.set(0,y,.12);
-    g.add(btn);
-  });
-
-  // 팔은 어깨부터 몸 가까이에 붙인 상태
-  const armL=new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,.22,10),mat(skin));
-  armL.position.set(-.17,.50,.01);
-  armL.rotation.z=.25;
-  const armR=new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,.22,10),mat(skin));
-  armR.position.set(.17,.50,.02);
-  armR.rotation.z=-.32;
-  g.add(armL,armR);
-
-  const handL=new THREE.Mesh(new THREE.SphereGeometry(.045,12,10),mat(skin));
-  handL.position.set(-.21,.40,.02);
-  const handR=handL.clone();
-  handR.position.set(.23,.41,.03);
-  g.add(handL,handR);
-
-  const head=new THREE.Mesh(new THREE.SphereGeometry(.26,28,20),mat(skin));
-  head.position.set(0,.93,.03);
-  head.scale.set(1.0,1.02,.96);
-  head.castShadow=true;
-  g.add(head);
-
-  const earL=new THREE.Mesh(new THREE.SphereGeometry(.06,12,10),mat(skin));
-  earL.position.set(-.25,.91,0);
-  earL.scale.set(.85,1.05,.55);
-  const earR=earL.clone();
-  earR.position.set(.25,.91,0);
-  g.add(earL,earR);
-
-  const hairCap=new THREE.Mesh(new THREE.SphereGeometry(.275,28,18,0,Math.PI*2,0,Math.PI*.60),mat(hair));
-  hairCap.position.set(0,1.02,.04);
-  hairCap.castShadow=true;
-  g.add(hairCap);
-
-  const backHair=new THREE.Mesh(new THREE.BoxGeometry(.38,.16,.12),mat(hair));
-  backHair.position.set(0,.81,-.04);
-  g.add(backHair);
-
-  const sideHairL=new THREE.Mesh(new THREE.BoxGeometry(.08,.15,.10),mat(hair));
-  sideHairL.position.set(-.19,.91,.07);
-  sideHairL.rotation.z=.04;
-  const sideHairR=new THREE.Mesh(new THREE.BoxGeometry(.10,.17,.10),mat(hair));
-  sideHairR.position.set(.19,.90,.07);
-  sideHairR.rotation.z=-.08;
-  g.add(sideHairL,sideHairR);
-
-  // 앞머리는 눈보다 위, 귀 위쪽으로 올림
-  const bang1=new THREE.Mesh(new THREE.BoxGeometry(.15,.06,.05),mat(hair));
-  bang1.position.set(-.04,1.11,.11);
-  bang1.rotation.z=-.35;
-  bang1.rotation.x=-.10;
-  const bang2=new THREE.Mesh(new THREE.BoxGeometry(.12,.055,.05),mat(hair));
-  bang2.position.set(.09,1.08,.11);
-  bang2.rotation.z=-.20;
-  bang2.rotation.x=-.08;
-  g.add(bang1,bang2);
-
-  const eyeWhiteL=new THREE.Mesh(new THREE.SphereGeometry(.072,18,14),mat(0xffffff));
-  eyeWhiteL.scale.set(1.0,1.08,.72);
-  eyeWhiteL.position.set(-.09,.95,.245);
-  const eyeWhiteR=eyeWhiteL.clone();
-  eyeWhiteR.position.set(.09,.95,.245);
-  g.add(eyeWhiteL,eyeWhiteR);
-
-  const pupilBaseL=new THREE.Mesh(new THREE.SphereGeometry(.028,14,10),mat(0x111111));
-  pupilBaseL.position.set(-.09,.948,.295);
-  const pupilBaseR=pupilBaseL.clone();
-  pupilBaseR.position.set(.09,.948,.295);
-  g.add(pupilBaseL,pupilBaseR);
-
-  const pupilHi1L=new THREE.Mesh(new THREE.SphereGeometry(.010,10,8),mat(0xffffff));
-  pupilHi1L.position.set(-.102,.965,.314);
-  const pupilHi1R=pupilHi1L.clone();
-  pupilHi1R.position.set(.078,.965,.314);
-  g.add(pupilHi1L,pupilHi1R);
-
-  const pupilHi2L=new THREE.Mesh(new THREE.SphereGeometry(.005,8,6),mat(0xffffff));
-  pupilHi2L.position.set(-.078,.932,.309);
-  const pupilHi2R=pupilHi2L.clone();
-  pupilHi2R.position.set(.102,.932,.309);
-  g.add(pupilHi2L,pupilHi2R);
-
-  const nose=new THREE.Mesh(new THREE.SphereGeometry(.022,10,8),mat(0xf4a48b));
-  nose.scale.set(.95,.75,.85);
-  nose.position.set(0,.885,.255);
-  g.add(nose);
-
-  const mouthMat=new THREE.MeshStandardMaterial({color:0x2b1b18,roughness:.45,metalness:.02});
-  const mouthGroup=new THREE.Group();
-  const mouthMain=new THREE.Mesh(new THREE.TorusGeometry(.040,.0065,8,24,Math.PI*1.1),mouthMat);
-  mouthMain.rotation.z=Math.PI;
-  mouthMain.position.set(0,.815,.245);
-  mouthGroup.add(mouthMain);
-  const cheekLineL=new THREE.Mesh(new THREE.TorusGeometry(.032,.0045,6,18,Math.PI*.75),mouthMat);
-  cheekLineL.rotation.z=-.55;
-  cheekLineL.position.set(-.11,.825,.225);
-  mouthGroup.add(cheekLineL);
-  const cheekLineR=new THREE.Mesh(new THREE.TorusGeometry(.032,.0045,6,18,Math.PI*.75),mouthMat);
-  cheekLineR.rotation.z=.55;
-  cheekLineR.position.set(.11,.825,.225);
-  mouthGroup.add(cheekLineR);
-  g.add(mouthGroup);
-
-  const glassesMat=new THREE.MeshStandardMaterial({color:glassesColor,roughness:.4,metalness:.15});
-  const glassL=new THREE.Mesh(new THREE.TorusGeometry(.055,.007,8,24),glassesMat);
-  glassL.position.set(-.09,.95,.205);
-  const glassR=glassL.clone();
-  glassR.position.set(.09,.95,.205);
-  const bridge=new THREE.Mesh(new THREE.BoxGeometry(.05,.01,.01),glassesMat);
-  bridge.position.set(0,.95,.205);
-  g.add(glassL,glassR,bridge);
-
-  const rodGroup=new THREE.Group();
-  rodGroup.position.set(.28,.58,.06);
-  rodGroup.rotation.z=-.45;
-  const rod=new THREE.Mesh(new THREE.CylinderGeometry(.008,.012,.90,8),mat(0x8b5a2b));
-  rod.rotation.z=Math.PI/2;
-  rod.position.set(.40,0,0);
-  rodGroup.add(rod);
-  avatarCarryAnchor=new THREE.Group();
-  avatarCarryAnchor.position.set(.80,.08,0);
-  rodGroup.add(avatarCarryAnchor);
-  g.add(rodGroup);
-
-  g.position.set(state.avatar.x,GROUND_Y,state.avatar.z);
-  return g;
+  const g=new THREE.Group();g.name='avatar';
+  const skin=0xf4c7a8,hair=0x5b2f1f,shirt=0xd9ecff,pants=0x334155,shoe=0xffffff,black=0x111111,cheek=0xf3a6a6;
+  const legL=new THREE.Mesh(new THREE.CylinderGeometry(.045,.052,.25,12),mat(skin));legL.position.set(-.075,.16,0);
+  const legR=legL.clone();legR.position.set(.075,.16,0);g.add(legL,legR);
+  const pantsMesh=new THREE.Mesh(new THREE.BoxGeometry(.24,.18,.18),mat(pants));pantsMesh.position.set(0,.31,0);g.add(pantsMesh);
+  const body=new THREE.Mesh(new THREE.CapsuleGeometry(.17,.20,8,18),mat(shirt));body.position.set(0,.55,0);body.castShadow=true;g.add(body);
+  const collar=new THREE.Mesh(new THREE.BoxGeometry(.17,.045,.035),mat(0xffffff));collar.position.set(0,.68,.09);g.add(collar);
+  const armL=new THREE.Mesh(new THREE.CylinderGeometry(.035,.038,.24,10),mat(skin));armL.position.set(-.20,.53,.02);armL.rotation.z=.35;
+  const armR=armL.clone();armR.position.set(.20,.53,.02);armR.rotation.z=-.35;g.add(armL,armR);
+  const head=new THREE.Mesh(new THREE.SphereGeometry(.285,32,22),mat(skin));head.position.set(0,.93,.04);head.scale.set(1.03,1.0,.96);head.castShadow=true;g.add(head);
+  const curlPositions=[[-.22,1.08,.09],[-.11,1.16,.12],[.02,1.18,.13],[.15,1.13,.11],[.25,1.04,.05],[-.26,.97,.05],[-.15,1.02,.18],[.08,1.03,.19],[.21,.96,.12],[-.04,1.10,.20]];
+  curlPositions.forEach((p,i)=>{const c=new THREE.Mesh(new THREE.SphereGeometry(.105+(i%3)*.018,18,14),mat(hair));c.position.set(...p);c.scale.y=.92;c.castShadow=true;g.add(c);});
+  const back=new THREE.Mesh(new THREE.SphereGeometry(.24,22,16),mat(hair));back.position.set(0,.94,-.08);back.scale.set(1.15,.88,.55);g.add(back);
+  const eyeL=new THREE.Mesh(new THREE.SphereGeometry(.030,14,10),mat(black));eyeL.position.set(-.095,.945,.305);const eyeR=eyeL.clone();eyeR.position.set(.095,.945,.305);g.add(eyeL,eyeR);
+  const hiL=new THREE.Mesh(new THREE.SphereGeometry(.008,8,6),mat(0xffffff));hiL.position.set(-.105,.958,.325);const hiR=hiL.clone();hiR.position.set(.085,.958,.325);g.add(hiL,hiR);
+  const cheekL=new THREE.Mesh(new THREE.SphereGeometry(.035,12,8),new THREE.MeshStandardMaterial({color:cheek,roughness:.7,transparent:true,opacity:.58}));cheekL.scale.set(1.45,.55,.25);cheekL.position.set(-.16,.875,.295);const cheekR=cheekL.clone();cheekR.position.set(.16,.875,.295);g.add(cheekL,cheekR);
+  const mouth=new THREE.Mesh(new THREE.TorusGeometry(.035,.0055,8,22,Math.PI),new THREE.MeshStandardMaterial({color:0x2b1b18,roughness:.5}));mouth.rotation.z=Math.PI;mouth.position.set(0,.835,.31);g.add(mouth);
+  const shoeL=new THREE.Mesh(new THREE.SphereGeometry(.06,12,8),mat(shoe));shoeL.scale.set(1.25,.55,1.5);shoeL.position.set(-.08,.03,.04);const shoeR=shoeL.clone();shoeR.position.set(.08,.03,.04);g.add(shoeL,shoeR);
+  avatarCarryAnchor=new THREE.Group();avatarCarryAnchor.position.set(.28,.65,.12);g.add(avatarCarryAnchor);
+  g.position.set(state.avatar.x,GROUND_Y,state.avatar.z);g.scale.setScalar(.95);return g;
 }
 
 function renderAllObjects(){clampTreesIntoIsland();clampBuildingsIntoIsland();arrangeDecorations();ensureAvatarStartsFree();objectRoot.clear();state.trees.forEach(t=>objectRoot.add(createTree(t)));state.lamps.forEach(l=>objectRoot.add(createLamp(l)));state.buildings.forEach(b=>objectRoot.add(createBuilding(b)));catGroup=createCat();objectRoot.add(catGroup);avatarGroup=createAvatar();objectRoot.add(avatarGroup);renderLists();fillSelectedPanel();highlightSelected();updateCarryVisual();}
