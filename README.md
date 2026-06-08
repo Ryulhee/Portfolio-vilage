@@ -1,22 +1,34 @@
-# Portfolio Village
+# Pixel Portfolio Village
 
-GitHub Pages 업로드용 파일입니다.
+English visitor/admin version for GitHub Pages.
 
-## 업로드할 파일
+## Files to upload
 
-- `index.html` : 방문자 페이지
-- `admin.html` : 관리자 페이지
-- `village-data.js` : 기본 마을 데이터
-- `README.md` : 설명 파일
+- `index.html` : visitor page
+- `admin.html` : admin page
+- `village-data.js` : default village data in English
+- `README.md` : this guide
 
-## GitHub에서 바로 반영하는 방법
+## Main changes
 
-1. 이 ZIP 안의 파일 4개를 GitHub 저장소 루트에 업로드합니다.
-2. 기존 `index.html`, `admin.html`, `village-data.js`, `README.md`를 덮어씁니다.
-3. GitHub Pages가 켜져 있으면 `index.html`이 방문자 페이지로 바로 열립니다.
-4. 관리자 페이지는 `admin.html`로 접속합니다.
+1. Pixel-art inspired visual style: lower-resolution pixelated canvas, sharper square UI, stronger contrast.
+2. Mobile controls: the large console is removed on mobile. A movement remote appears on the left, and fishing/drop actions appear on the right.
+3. First-screen avatar introduction: a short English self-introduction bubble appears when the page opens.
+4. English UI: visitor-facing labels, room text, guides, buttons, and default portfolio data are translated to English.
 
-## 참고
+## Upload to GitHub Pages
 
-Firebase에 저장된 데이터가 있으면 Firebase 데이터가 화면에 우선 반영될 수 있습니다.
-정적 기본값을 바꿀 때는 `village-data.js`를 수정하고, 실제 공개 데이터는 관리자 화면에서 Firebase 저장을 눌러 반영하세요.
+Upload these four files to the root of your GitHub repository and overwrite the existing files.
+
+Note: if Firebase already contains older Korean text, the page includes a fallback localizer for common default Korean strings. For complete publishing, open `admin.html`, check the English text, and press **Save to Firebase**.
+
+
+## Latest tweak
+- Pixel-art rendering updated with larger, more visible pixel blocks.
+- Intro bubble now disappears when the visitor starts moving or interacts with the scene.
+- Country naming updated to "Republic of Korea".
+
+
+## v3 tweak
+- Restored normal high-resolution 3D rendering and removed the pixelated canvas effect.
+- Kept the mobile remote layout, English visitor UI updates, Republic of Korea wording, and auto-hiding intro bubble.

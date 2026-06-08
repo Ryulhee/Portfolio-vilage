@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3D Portfolio Village</title>
+  <title>Pixel Portfolio Village</title>
   <style>
     :root{
       --bg1:#8fe4ff;--bg2:#effcff;--line:#dbe7f4;--text:#1f2937;--sub:#64748b;
@@ -48,7 +48,7 @@
     }
     #console-dock:hover{height:34px;background:rgba(18,24,29,.78)}
     #console-dock::after{
-      content:'마우스를 올리면 조작 콘솔이 열립니다';
+      content:'Hover to open controls';
       position:absolute;bottom:42px;left:50%;transform:translateX(-50%);
       background:rgba(15,23,42,.88);border:1px solid rgba(255,255,255,.15);
       color:#fff;border-radius:12px;padding:8px 12px;font-size:12px;
@@ -140,25 +140,95 @@
     .memo-editor textarea{min-height:220px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:12px;line-height:1.48;background:#0f172a;color:#dbeafe;border-color:#334155}
     .memo-editor .hint{font-size:12px;line-height:1.45;color:#64748b;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:9px 10px}
     
+
+    /* Pixel-art inspired visual mode */
+    :root{
+      --bg1:#74d9ff;--bg2:#eaffff;--line:#1f2937;--text:#172033;--sub:#5b6473;
+      --blue:#3b82f6;--green:#16a34a;--red:#dc2626;
+    }
+    html,body,button,input,select,textarea{
+      font-family:"Trebuchet MS",Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+      letter-spacing:.01em;
+    }
+    .viewer-wrap,#viewer,.preview,.room-panel,.panel,.side,.mode-badge,.toast,.attachment-card,.room-section,.profile-row,
+    .html-board,.btn,.room-action,input,select,textarea,button{
+      border-radius:0!important;
+      box-shadow:6px 6px 0 rgba(15,23,42,.18)!important;
+    }
+    #viewer{background:linear-gradient(180deg,#7ed7ff 0%,#dff8ff 56%,#b6f07b 56%,#8ad05a 100%)}
+    #threeCanvas{display:block;width:100%;height:100%}
+    .pixel-intro{
+      position:absolute;left:50%;top:76px;transform:translateX(-50%);z-index:12;
+      width:min(470px,calc(100% - 28px));background:#fffbe8;border:3px solid #1f2937;
+      padding:14px 16px 14px 54px;color:#1f2937;font-size:14px;line-height:1.45;font-weight:850;
+      box-shadow:6px 6px 0 rgba(15,23,42,.25)!important;
+    }
+    .pixel-intro:before{content:'👋';position:absolute;left:14px;top:14px;font-size:26px}
+    .pixel-intro .pixel-intro-title{font-size:16px;font-weight:950;margin-bottom:3px;color:#111827}
+    .pixel-intro button{position:absolute;right:6px;top:6px;width:26px;height:26px;border:2px solid #1f2937;background:#fff;color:#111827;font-weight:950;box-shadow:none!important}
+    .pixel-intro.hiding{opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .18s ease, transform .18s ease}
+    .console-head,.console-admin,.console-label,.console-mini-label,.joystick-label{font-family:"Trebuchet MS",Arial,sans-serif}
+
+    @media (max-width:760px),(pointer:coarse){
+      body.visitor-mode .main{padding:0}
+      body.visitor-mode .viewer-wrap{height:100vh;max-width:none;border:0;padding:0;background:transparent;box-shadow:none!important}
+      body.visitor-mode #viewer{height:100vh;border:0;border-radius:0!important}
+      #console-dock{display:none!important}
+      #mobile-console{
+        display:block!important;opacity:1!important;visibility:visible!important;transform:none!important;
+        left:0!important;right:0!important;top:0!important;bottom:0!important;width:auto!important;height:auto!important;
+        background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;
+        padding:0!important;pointer-events:none!important;
+      }
+      #mobile-console .console-head,#mobile-console .console-admin{display:none!important}
+      #mobile-console .console-body{display:block!important;pointer-events:none!important}
+      #mobile-console .console-right{
+        position:absolute;left:10px;bottom:12px;width:146px;padding:9px;background:rgba(17,24,39,.78);
+        border:3px solid rgba(255,255,255,.90);pointer-events:auto!important;box-shadow:5px 5px 0 rgba(0,0,0,.25)!important;
+      }
+      #mobile-console .console-left{
+        position:absolute;right:10px;bottom:12px;width:126px;padding:9px;background:rgba(17,24,39,.78);
+        border:3px solid rgba(255,255,255,.90);pointer-events:auto!important;box-shadow:5px 5px 0 rgba(0,0,0,.25)!important;
+      }
+      .joystick{width:108px;height:108px;border-radius:0;background:rgba(255,255,255,.20);border:3px solid rgba(255,255,255,.85);box-shadow:none!important}
+      .joy-knob{width:38px;height:38px;border-radius:0;box-shadow:none!important}
+      .joy-dot{border-radius:0}
+      .console-key{width:48px;height:42px;border-radius:0;font-size:22px;box-shadow:inset 0 -3px rgba(0,0,0,.18)!important}
+      .console-action-row{grid-template-columns:52px 1fr;gap:7px;margin-bottom:8px}
+      .console-label{font-size:12px;line-height:1.15;color:#fff}
+      .console-divider{margin:6px 0 8px}
+      .console-mini-row{grid-template-columns:58px 1fr;gap:6px;margin:7px 0}
+      .console-mini-key{height:32px;border-radius:0;font-size:11px;box-shadow:none!important}
+      .console-mini-label{font-size:12px;color:#fff}
+      .joystick-label{font-size:11px;color:#fff;margin-top:2px}
+      .toast{bottom:154px!important;font-size:11px;border-radius:0!important;max-width:calc(100% - 24px);text-align:center}
+      .pixel-intro{top:54px;font-size:12px;padding:11px 12px 11px 44px;width:calc(100% - 24px)}
+      .pixel-intro:before{left:10px;top:10px;font-size:22px}
+      .mode-badge{right:8px;top:8px;font-size:10px;padding:6px 7px}
+      .preview{top:50px;font-size:12px}
+      .room-panel{left:10px!important;right:10px!important;top:50%!important;width:auto!important;max-height:72vh!important}
+    }
+
   </style>
 </head>
 <body>
 <div class="app">
   <main class="main"><section class="viewer-wrap"><div id="viewer">
-    <div id="modeBadge" class="mode-badge"><span id="modeText">방문자 모드</span><button id="modeButton" type="button" onclick="toggleAdminMode()">관리자</button></div>
-    <div id="preview" class="preview"><div class="preview-head"><div id="previewIcon" class="preview-icon">🏠</div><div><div id="previewTitle" class="preview-title">건물 이름</div><div id="previewKind" class="preview-kind">building</div></div></div><div id="previewDesc" class="preview-desc">설명</div><div class="preview-hint">Enter를 누르면 건물 앞 시점으로 이동하고 자료창이 열립니다.</div></div>
-    <div id="toast" class="toast">3D 마을 로딩 중...</div>
+    <div id="modeBadge" class="mode-badge"><span id="modeText">Visitor Mode</span><button id="modeButton" type="button" onclick="toggleAdminMode()">Admin</button></div>
+    <div id="preview" class="preview"><div class="preview-head"><div id="previewIcon" class="preview-icon">🏠</div><div><div id="previewTitle" class="preview-title">Building</div><div id="previewKind" class="preview-kind">building</div></div></div><div id="previewDesc" class="preview-desc">Description</div><div class="preview-hint">Press Enter to move to the entrance and open the room panel.</div></div>
+    <div id="toast" class="toast">Loading pixel portfolio village...</div>
+    <div id="avatarIntro" class="pixel-intro"><button type="button" onclick="dismissAvatarIntro()" aria-label="Close introduction">×</button><div class="pixel-intro-title">Hi, I'm Ryul-Hee Kim.</div><div>I am a biomedical science master's student from the Republic of Korea. Welcome to my interactive research portfolio village.</div></div>
     <div id="pc-controls"></div>
 
-    <div id="console-dock" onpointerenter="resetConsoleClosed()" onclick="toggleGameConsole(true,event)">🎮 조작 콘솔</div>
+    <div id="console-dock" onpointerenter="resetConsoleClosed()" onclick="toggleGameConsole(true,event)">🎮 Controls</div>
     <div id="mobile-console">
-      <div class="console-head"><span>CONSOLE</span><button class="console-close" type="button" onclick="toggleGameConsole(false,event)" aria-label="콘솔 닫기">×</button></div>
-      <div class="console-admin">ADMIN PANEL</div>
+      <div class="console-head"><span>CONTROL</span><button class="console-close" type="button" onclick="toggleGameConsole(false,event)" aria-label="Close controls">×</button></div>
+      <div class="console-admin">CONTROL PANEL</div>
       <div class="console-body">
         <div class="console-left">
-          <div class="console-action-row"><button class="console-key" type="button" onclick="mobileDrop(event)">Q</button><div class="console-label">놓기<br>(Drop)</div></div>
+          <div class="console-action-row"><button class="console-key" type="button" onclick="mobileDrop(event)">Q</button><div class="console-label">Drop</div></div>
           <div class="console-divider"></div>
-          <div class="console-action-row"><button class="console-key" type="button" onclick="mobileFish(event)">F</button><div class="console-label">낚기<br>(Fish)</div></div>
+          <div class="console-action-row"><button class="console-key" type="button" onclick="mobileFish(event)">F</button><div class="console-label">Fish</div></div>
         </div>
         <div class="console-right">
           <div class="joystick-wrap">
@@ -166,28 +236,28 @@
               <span class="joy-dot n"></span><span class="joy-dot s"></span><span class="joy-dot w"></span><span class="joy-dot e"></span>
               <div id="joyKnob" class="joy-knob">●</div>
             </div>
-            <div class="joystick-label">360° 이동 조이스틱</div>
+            <div class="joystick-label">Move</div>
           </div>
-          <div class="console-mini-row"><button class="console-mini-key" type="button" onclick="mobileEnter(event)">Enter</button><div class="console-mini-label">입장</div></div>
-          <div class="console-mini-row"><button class="console-mini-key" type="button" onclick="closeRoom()">Esc</button><div class="console-mini-label">복귀</div></div>
+          <div class="console-mini-row"><button class="console-mini-key" type="button" onclick="mobileEnter(event)">Enter</button><div class="console-mini-label">Enter</div></div>
+          <div class="console-mini-row"><button class="console-mini-key" type="button" onclick="closeRoom()">Esc</button><div class="console-mini-label">Back</div></div>
         </div>
       </div>
     </div>
 
-    <div id="roomOverlay" class="room-overlay"><div class="room-panel"><div class="room-panel-head"><div class="room-title-wrap"><div id="roomIcon" class="room-icon">🏠</div><div><div id="roomTitle" class="room-title">Room</div><div id="roomSubtitle" class="room-subtitle">portfolio room</div></div></div><button class="room-close" onclick="closeRoom()">×</button></div><div class="room-section"><h4 id="roomMainHeading">요약</h4><div id="roomMainText" class="room-text">내용이 여기에 표시됩니다.</div><div id="roomTags" class="room-tags"></div></div><div class="room-section"><h4>첨부파일 / 자료 확인</h4><p id="roomFileGuide" class="room-text">PDF, PPT, 이미지, 외부 링크, HTML/TXT 메모를 확인할 수 있습니다.</p><input id="roomFileInput" class="room-file-input admin-only" type="file" multiple onchange="handleRoomFiles(event)" /><div id="attachmentList" class="attachment-list"></div><div id="htmlBoardDock" class="html-board-dock"></div><div id="roomNote" class="room-note admin-only">HTML/TXT 파일은 코드 내용이 저장되어 칠판에서 실행됩니다. PDF/PPT/이미지 파일은 임시 확인용이며, 방문자에게 보이게 하려면 공개 링크를 등록하세요.</div></div><div class="room-actions"><button class="room-action ghost" onclick="closeRoom()">마을로 돌아가기</button></div></div></div>
+    <div id="roomOverlay" class="room-overlay"><div class="room-panel"><div class="room-panel-head"><div class="room-title-wrap"><div id="roomIcon" class="room-icon">🏠</div><div><div id="roomTitle" class="room-title">Room</div><div id="roomSubtitle" class="room-subtitle">portfolio room</div></div></div><button class="room-close" onclick="closeRoom()">×</button></div><div class="room-section"><h4 id="roomMainHeading">Summary</h4><div id="roomMainText" class="room-text">Content will appear here.</div><div id="roomTags" class="room-tags"></div></div><div class="room-section"><h4>Files / Materials</h4><p id="roomFileGuide" class="room-text">You can view PDFs, slides, images, external links, and HTML/TXT notes.</p><input id="roomFileInput" class="room-file-input admin-only" type="file" multiple onchange="handleRoomFiles(event)" /><div id="attachmentList" class="attachment-list"></div><div id="htmlBoardDock" class="html-board-dock"></div><div id="roomNote" class="room-note admin-only">HTML/TXT files are saved as code and can run in the board preview. For public visitors, use stable public links for PDFs, slides, and images.</div></div><div class="room-actions"><button class="room-action ghost" onclick="closeRoom()">Back to Village</button></div></div></div>
   </div></section></main>
   <div id="htmlBoard" class="html-board" aria-hidden="true"></div>
   <aside class="side">
-    <h2>관리자 패널</h2><p class="small"><b>방문자 주소:</b> index.html<br><b>관리자 주소:</b> admin.html<br><br>방향키/WASD 이동 · 빈 땅 드래그로 화면 회전 · 휠 줌 · Enter 입장 · Esc 복귀 · F 낚기 · Q 놓기</p>
-    <div class="panel"><h3>0. 실시간 저장 / 공개 반영</h3><p class="small">건물 크기·위치·색·도로·연못 설정은 Firebase에 저장됩니다. 저장 후 방문자 페이지에도 자동 반영됩니다.</p><div class="btn-row"><button class="btn good" onclick="saveFirebaseVillageData(true)">Firebase 저장</button><button class="btn primary" onclick="reloadVillageDataFromFirebase()">Firebase 다시 불러오기</button><button class="btn ghost" onclick="downloadVillageData()">백업 다운로드</button></div></div>
-    <div class="panel"><h3>1. 선택 항목 편집</h3><label>선택된 항목</label><input id="selectedLabel" readonly placeholder="아직 선택 없음" /><label>표시 이름</label><input id="selectedName" placeholder="건물 이름" /><label>아이콘</label><input id="selectedIcon" placeholder="예: 🧪" maxlength="4" /><label>짧은 설명</label><textarea id="selectedDesc" placeholder="방문자가 건물 근처에 갔을 때 보이는 설명"></textarea><div class="row"><div><label>X</label><input id="selectedX" type="number" step="0.1" /></div><div><label>Z</label><input id="selectedZ" type="number" step="0.1" /></div></div><div class="row"><div><label>크기</label><input id="selectedScale" type="number" min="0.4" max="2.5" step="0.05" /></div><div><label>회전 보정</label><input id="selectedRot" type="number" step="5" /></div></div><label>건물 지붕색</label><input id="selectedRoofColor" type="color" value="#e48643" /><label><input id="selectedLocked" type="checkbox" style="width:auto" /> 위치 고정</label><div class="btn-row"><button class="btn primary" onclick="applySelected()">적용 + 실시간 저장</button><button class="btn good" onclick="saveBuildingDesign()">Firebase 저장</button><button class="btn danger" onclick="deleteSelected()">삭제</button></div></div>
-    <div class="panel"><h3>1-2. 방 내용 / 메모장 자료</h3><p class="small">건물을 선택한 뒤, 방 설명과 HTML/TXT 메모를 저장하세요. 메모는 코드채로 저장되고 우측 칠판에서 실행됩니다.</p><label>방 제목</label><input id="roomHeadingInput" placeholder="예: Research / Projects" /><label>방 본문</label><textarea id="roomTextInput" placeholder="상세 설명"></textarea><label>태그 / 키워드</label><input id="roomTagsInput" placeholder="ECMO, BIA, Sepsis" /><div class="btn-row"><button class="btn primary" onclick="applyRoomInfo()">방 내용 저장</button></div><hr style="border:0;border-top:1px solid #e2e8f0;margin:14px 0;" /><div class="memo-editor"><label>메모 / HTML 제목</label><input id="memoTitleInput" placeholder="예: board.html 또는 칠판 메모" /><label>메모장 코드</label><textarea id="memoCodeInput" placeholder="여기에 HTML 또는 TXT 내용을 적으세요. 저장하면 HTML 칠판 자료로 보입니다."></textarea><div class="btn-row"><button class="btn good" onclick="saveHtmlMemoFromEditor()">메모장 저장</button><button class="btn ghost" onclick="loadSelectedHtmlMemoToEditor()">기존 HTML 불러오기</button></div><div class="hint">.txt 파일을 업로드해도 내용이 그대로 HTML 자료로 저장됩니다. 예: &lt;h1&gt;제목&lt;/h1&gt; 처럼 적으면 칠판에서 실행됩니다.</div></div><hr style="border:0;border-top:1px solid #e2e8f0;margin:14px 0;" /><label>자료 이름</label><input id="attachNameInput" placeholder="예: CV, Poster, GitHub" /><label>자료 링크 URL</label><input id="attachUrlInput" placeholder="https://... 또는 assets/CV.pdf" /><div class="row"><div><label>종류</label><input id="attachTypeInput" placeholder="PDF / PPT / Link / HTML" /></div><div><label>설명 / 텍스트 내용</label><input id="attachSizeInput" placeholder="링크 설명 또는 짧은 텍스트" /></div></div><div class="btn-row"><button class="btn good" onclick="addAttachmentLink()">링크 자료 추가</button><button class="btn ghost" onclick="openSelectedRoom()">선택 건물 방 열기</button></div></div><div class="panel"><h3>1-3. 아바타 프로필</h3><p class="small">이 내용은 About House 안에 공개됩니다. 공개해도 괜찮은 정보만 적으세요.</p><div class="row"><div><label>이름</label><input id="profileName" placeholder="김률희" /></div><div><label>출생연도</label><input id="profileBirthYear" placeholder="예: 2000" /></div></div><div class="row"><div><label>출생/지역</label><input id="profileBirthplace" placeholder="예: 광주" /></div><div><label>성별</label><input id="profileGender" placeholder="예: 여성" /></div></div><label>역할 / 소속</label><input id="profileRole" placeholder="예: 의과학과 석사과정생" /><label>자기소개</label><textarea id="profileIntro" placeholder="아바타를 통해 보여줄 소개 문구"></textarea><div class="row"><div><label>좋아하는 음악 장르</label><input id="profileMusicGenre" placeholder="예: 재즈, 인디, 클래식" /></div><div><label>좋아하는 가수 / 아티스트</label><input id="profileFavoriteArtist" placeholder="예: NewJeans, IU, 백예린" /></div></div><div class="btn-row"><button class="btn primary" onclick="saveProfileInfo()">프로필 저장</button></div></div>
-    <div class="panel"><h3>0. Firebase 관리</h3><p class="small">실수로 데이터가 비어 보이면 아래 버튼으로 현재 화면의 기본값을 다시 Firebase에 저장할 수 있습니다.</p><div class="btn-row"><button class="btn good" onclick="saveFirebaseVillageData(true)">현재 상태 Firebase 저장</button><button class="btn ghost" onclick="reloadVillageDataFromFirebase()">Firebase 다시 불러오기</button><button class="btn danger" onclick="resetFirebaseToDefaults()">기본값으로 복구 저장</button><button class="btn ghost" onclick="deleteSampleAttachmentsAll()">샘플 자료 삭제</button></div></div>
-    <div class="panel"><h3>2. 도로 / 중앙 연못</h3><label>도로 재질</label><select id="roadMaterial"><option value="asphalt">아스팔트</option><option value="stone">돌길</option><option value="gravel">자갈길</option><option value="grass">잔디길</option></select><div class="row"><div><label>도로색 1</label><input id="roadColor1" type="color" /></div><div><label>도로색 2</label><input id="roadColor2" type="color" /></div></div><div class="row"><div><label>물고기 수</label><input id="fishCount" type="number" min="0" max="12" /></div><div><label>물고기 속도</label><input id="fishSpeed" type="number" min="0.2" max="3" step="0.1" /></div></div><div class="btn-row"><button class="btn primary" onclick="applyRoadSettings()">도로 적용</button><button class="btn good" onclick="applyPondSettings()">연못 적용</button></div></div>
-    <div class="panel"><h3>3. 건물 추가</h3><label>건물 종류</label><select id="newBuildingType"><option value="lab">흰색 연구소</option><option value="school">로고형 학교/의대</option><option value="house">집</option><option value="gallery">전시관</option><option value="post">우체국</option></select><label>건물 이름</label><input id="newBuildingName" placeholder="예: New Lab" /><div class="btn-row"><button class="btn good" onclick="addBuilding()">건물 추가</button></div></div>
-    <div class="panel"><h3>4. 나무 / 가로등 추가</h3><label>나무 종류</label><select id="newTreeType"><option value="round">둥근 나무</option><option value="fruit">과일나무</option><option value="pine">침엽수</option></select><div class="btn-row"><button class="btn good" onclick="addTree()">나무 추가</button></div><hr style="border:0;border-top:1px solid #e2e8f0;margin:14px 0;" /><label>가로등 위치</label><div class="row"><div><label>X</label><input id="newLampX" type="number" step="0.1" value="0" /></div><div><label>Z</label><input id="newLampZ" type="number" step="0.1" value="0" /></div></div><div class="btn-row"><button class="btn good" onclick="addLamp()">가로등 추가</button><button class="btn danger" onclick="clearLamps()">가로등 전체 삭제</button></div></div>
-    <div class="panel"><h3>5. 건물 목록</h3><div id="buildingList" class="list"></div></div>
-    <div class="panel"><h3>6. 상태</h3><div class="status-grid"><div class="pill" id="fpsPill">FPS: -</div><div class="pill" id="posPill">Avatar: -</div><div class="pill" id="skyPill">Sky: -</div><div class="pill" id="camPill">Camera: -</div><div class="pill" id="carryPill">Carry: none</div></div></div>
+    <h2>Admin Panel</h2><p class="small"><b>Visitor URL:</b> index.html<br><b>Admin URL:</b> admin.html<br><br>Arrow keys/WASD move · drag empty ground to rotate · wheel zoom · Enter open · Esc back · F fish · Q drop</p>
+    <div class="panel"><h3>0. Live Save / Publish</h3><p class="small">Building size, position, color, road, and pond settings are saved to Firebase and reflected on the visitor page.</p><div class="btn-row"><button class="btn good" onclick="saveFirebaseVillageData(true)">Save to Firebase</button><button class="btn primary" onclick="reloadVillageDataFromFirebase()">Reload Firebase</button><button class="btn ghost" onclick="downloadVillageData()">Download Backup</button></div></div>
+    <div class="panel"><h3>1. Edit Selected Object</h3><label>Selected item</label><input id="selectedLabel" readonly placeholder="Nothing selected yet" /><label>Display name</label><input id="selectedName" placeholder="Building name" /><label>Icon</label><input id="selectedIcon" placeholder="e.g., 🧪" maxlength="4" /><label>Short description</label><textarea id="selectedDesc" placeholder="Description shown near this building"></textarea><div class="row"><div><label>X</label><input id="selectedX" type="number" step="0.1" /></div><div><label>Z</label><input id="selectedZ" type="number" step="0.1" /></div></div><div class="row"><div><label>Scale</label><input id="selectedScale" type="number" min="0.4" max="2.5" step="0.05" /></div><div><label>Rotation</label><input id="selectedRot" type="number" step="5" /></div></div><label>Roof color</label><input id="selectedRoofColor" type="color" value="#e48643" /><label><input id="selectedLocked" type="checkbox" style="width:auto" /> Lock position</label><div class="btn-row"><button class="btn primary" onclick="applySelected()">Apply + Auto-save</button><button class="btn good" onclick="saveBuildingDesign()">Save to Firebase</button><button class="btn danger" onclick="deleteSelected()">Delete</button></div></div>
+    <div class="panel"><h3>1-2. Room Content / Notes</h3><p class="small">Select a building, then save room descriptions and HTML/TXT notes. Notes are saved as code and run in the board preview.</p><label>Room title</label><input id="roomHeadingInput" placeholder="예: Research / Projects" /><label>Room body</label><textarea id="roomTextInput" placeholder="Detailed description"></textarea><label>Tags / Keywords</label><input id="roomTagsInput" placeholder="ECMO, BIA, Sepsis" /><div class="btn-row"><button class="btn primary" onclick="applyRoomInfo()">Save Room Content</button></div><hr style="border:0;border-top:1px solid #e2e8f0;margin:14px 0;" /><div class="memo-editor"><label>Memo / HTML title</label><input id="memoTitleInput" placeholder="e.g., board.html or board memo" /><label>Memo code</label><textarea id="memoCodeInput" placeholder="Write HTML or TXT here. After saving, it appears as an HTML board material."></textarea><div class="btn-row"><button class="btn good" onclick="saveHtmlMemoFromEditor()">Save Memo</button><button class="btn ghost" onclick="loadSelectedHtmlMemoToEditor()">Load Existing HTML</button></div><div class="hint">.txt uploads are also saved as HTML materials. For example, &lt;h1&gt;Title&lt;/h1&gt; will run in the board preview.</div></div><hr style="border:0;border-top:1px solid #e2e8f0;margin:14px 0;" /><label>Material name</label><input id="attachNameInput" placeholder="예: CV, Poster, GitHub" /><label>Material link URL</label><input id="attachUrlInput" placeholder="https://... or assets/CV.pdf" /><div class="row"><div><label>Type</label><input id="attachTypeInput" placeholder="PDF / PPT / Link / HTML" /></div><div><label>Description / text content</label><input id="attachSizeInput" placeholder="Link description or short text" /></div></div><div class="btn-row"><button class="btn good" onclick="addAttachmentLink()">Add Link Material</button><button class="btn ghost" onclick="openSelectedRoom()">Open Selected Room</button></div></div><div class="panel"><h3>1-3. Avatar Profile</h3><p class="small">This information is public inside About House. Only enter information you want to share.</p><div class="row"><div><label>Name</label><input id="profileName" placeholder="Ryul-Hee Kim" /></div><div><label>Birth year</label><input id="profileBirthYear" placeholder="e.g., 2000" /></div></div><div class="row"><div><label>Birthplace / Region</label><input id="profileBirthplace" placeholder="e.g., Gwangju" /></div><div><label>Gender</label><input id="profileGender" placeholder="e.g., Female" /></div></div><label>Role / Affiliation</label><input id="profileRole" placeholder="e.g., Biomedical science master's student" /><label>Introduction</label><textarea id="profileIntro" placeholder="Intro text shown through the avatar"></textarea><div class="row"><div><label>Favorite music genre</label><input id="profileMusicGenre" placeholder="e.g., jazz, indie, classical" /></div><div><label>Favorite singer / artist</label><input id="profileFavoriteArtist" placeholder="e.g., NewJeans, IU, Baek Yerin" /></div></div><div class="btn-row"><button class="btn primary" onclick="saveProfileInfo()">Save Profile</button></div></div>
+    <div class="panel"><h3>0. Firebase Management</h3><p class="small">If the page looks empty, you can save the current defaults back to Firebase.</p><div class="btn-row"><button class="btn good" onclick="saveFirebaseVillageData(true)">현재 상태 Save to Firebase</button><button class="btn ghost" onclick="reloadVillageDataFromFirebase()">Reload Firebase</button><button class="btn danger" onclick="resetFirebaseToDefaults()">Restore Defaults</button><button class="btn ghost" onclick="deleteSampleAttachmentsAll()">샘플 자료 Delete</button></div></div>
+    <div class="panel"><h3>2. Road / Central Pond</h3><label>Road material</label><select id="roadMaterial"><option value="asphalt">Asphalt</option><option value="stone">Stone path</option><option value="gravel">Gravel path</option><option value="grass">Grass path</option></select><div class="row"><div><label>Road color 1</label><input id="roadColor1" type="color" /></div><div><label>Road color 2</label><input id="roadColor2" type="color" /></div></div><div class="row"><div><label>Fish count</label><input id="fishCount" type="number" min="0" max="12" /></div><div><label>Fish speed</label><input id="fishSpeed" type="number" min="0.2" max="3" step="0.1" /></div></div><div class="btn-row"><button class="btn primary" onclick="applyRoadSettings()">Apply Road</button><button class="btn good" onclick="applyPondSettings()">Apply Pond</button></div></div>
+    <div class="panel"><h3>3. Add Building</h3><label>건물 Type</label><select id="newBuildingType"><option value="lab">White lab</option><option value="school">Logo-style school / medical school</option><option value="house">House</option><option value="gallery">Gallery</option><option value="post">Post office</option></select><label>Building name</label><input id="newBuildingName" placeholder="예: New Lab" /><div class="btn-row"><button class="btn good" onclick="addBuilding()">Add Building</button></div></div>
+    <div class="panel"><h3>4. Add Trees / Lamps</h3><label>나무 Type</label><select id="newTreeType"><option value="round">Round tree</option><option value="fruit">Fruit tree</option><option value="pine">Pine tree</option></select><div class="btn-row"><button class="btn good" onclick="addTree()">Add Tree</button></div><hr style="border:0;border-top:1px solid #e2e8f0;margin:14px 0;" /><label>Lamp position</label><div class="row"><div><label>X</label><input id="newLampX" type="number" step="0.1" value="0" /></div><div><label>Z</label><input id="newLampZ" type="number" step="0.1" value="0" /></div></div><div class="btn-row"><button class="btn good" onclick="addLamp()">Add Lamp</button><button class="btn danger" onclick="clearLamps()">가로등 전체 Delete</button></div></div>
+    <div class="panel"><h3>5. Building List</h3><div id="buildingList" class="list"></div></div>
+    <div class="panel"><h3>6. Status</h3><div class="status-grid"><div class="pill" id="fpsPill">FPS: -</div><div class="pill" id="posPill">Avatar: -</div><div class="pill" id="skyPill">Sky: -</div><div class="pill" id="camPill">Camera: -</div><div class="pill" id="carryPill">Carry: none</div></div></div>
   </aside>
 </div>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
@@ -197,7 +267,7 @@
 <script>
 'use strict';
 
-const ADMIN_PASSWORD='19140004'; // 관리자 비밀번호
+const ADMIN_PASSWORD='19140004'; // admin password
 
 const firebaseConfig={
   apiKey:'AIzaSyAHzvpqyXgQkwhT_ZQUMu_PKDeMogSiAvw',
@@ -227,7 +297,7 @@ function detectAdminMode(){
 function authorizeAdminAccess(){
   if(!detectAdminMode()) return false;
   if(!ADMIN_PASSWORD) return true;
-  const input=prompt('관리자 비밀번호를 입력하세요.');
+  const input=prompt('Enter the admin password.');
   return input===ADMIN_PASSWORD;
 }
 function setMode(admin){
@@ -236,42 +306,42 @@ function setMode(admin){
   document.body.classList.toggle('visitor-mode',!isAdminMode);
   const modeText=document.getElementById('modeText');
   const modeButton=document.getElementById('modeButton');
-  if(modeText)modeText.textContent=isAdminMode?'관리자 모드':'방문자 모드';
-  if(modeButton)modeButton.textContent=isAdminMode?'방문자 화면':'관리자';
+  if(modeText)modeText.textContent=isAdminMode?'Admin Mode':'Visitor Mode';
+  if(modeButton)modeButton.textContent=isAdminMode?'Visitor View':'Admin';
   const guide=document.getElementById('roomFileGuide');
-  if(guide)guide.textContent=isAdminMode?'CV, PDF, PPT, Excel, 이미지 파일을 임시로 추가해서 확인할 수 있습니다.':'등록된 자료를 확인할 수 있습니다.';
+  if(guide)guide.textContent=isAdminMode?'You can temporarily add CV, PDF, PPT, Excel, and image files for preview.':'You can view registered materials.';
   if(!isAdminMode&&typeof objectRoot!=='undefined'&&objectRoot){selected=null;drag=null;highlightSelected();renderLists();}
   setTimeout(()=>{ if(typeof onResize==='function') onResize(); },0);
 }
 function toggleAdminMode(){
   if(isAdminMode){
     const url=new URL(location.href);url.searchParams.delete('admin');history.replaceState(null,'',url.pathname+url.search+url.hash.replace('#admin',''));
-    setMode(false);toast.textContent='방문자 화면으로 전환했습니다.';return;
+    setMode(false);toast.textContent='Switched to visitor view.';return;
   }
   if(ADMIN_PASSWORD){
-    const input=prompt('관리자 비밀번호를 입력하세요.');
-    if(input!==ADMIN_PASSWORD){toast.textContent='관리자 비밀번호가 맞지 않습니다.';return;}
+    const input=prompt('Enter the admin password.');
+    if(input!==ADMIN_PASSWORD){toast.textContent='The admin password is incorrect.';return;}
   }
   const url=new URL(location.href);url.searchParams.set('admin','1');history.replaceState(null,'',url.pathname+url.search);
-  setMode(true);toast.textContent='관리자 모드로 전환했습니다.';
+  setMode(true);toast.textContent='Switched to admin mode.';
 }
 
 const state={
   road:{material:'asphalt',color1:'#6b7280',color2:'#4b5563'},pond:{visible:true,fishCount:6,fishSpeed:1.0},
-  cat:{x:-2.2,z:3.9,targetX:-1.2,targetZ:1.4,speed:0.78,mode:'idle',timer:1.5},cat2:{x:0,z:0,targetX:0,targetZ:0,speed:0.92,mode:'sleep',timer:2.0,targetY:1.25,sleepCounter:0,sleepPose:'loaf',catchWindow:0,escapeCooldown:0,visible:true,lastSeenAt:0},avatar:{x:0.2,z:3.45,carry:'none',carryCatKey:null},profile:{name:'김률희',birthYear:'',birthplace:'',gender:'',role:'의과학과 석사과정생',intro:'연구, 프로젝트, 발표 자료를 3D 포트폴리오 빌리지에 정리하고 있습니다.',musicGenre:'',favoriteArtist:''},
+  cat:{x:-2.2,z:3.9,targetX:-1.2,targetZ:1.4,speed:0.78,mode:'idle',timer:1.5},cat2:{x:0,z:0,targetX:0,targetZ:0,speed:0.92,mode:'sleep',timer:2.0,targetY:1.25,sleepCounter:0,sleepPose:'loaf',catchWindow:0,escapeCooldown:0,visible:true,lastSeenAt:0},avatar:{x:0.2,z:3.45,carry:'none',carryCatKey:null},profile:{name:'Ryul-Hee Kim',birthYear:'',birthplace:'',gender:'',role:'의과학과 석사과정생',intro:'연구, 프로젝트, 발표 자료를 3D 포트폴리오 빌리지에 정리하고 있습니다.',musicGenre:'',favoriteArtist:''},
   buildings:[
-    {id:'lab',type:'lab',name:'Research Lab',icon:'🧪',desc:'연구 프로젝트, 논문, 발표 자료를 담아두는 공간입니다.',x:-3.6,z:-1.9,scale:1.05,rot:0,locked:false},
-    {id:'school',type:'school',name:'Medical School',icon:'🎓',desc:'학력, 전공, 연구실 이력을 보여주는 공간입니다.',x:3.6,z:-1.8,scale:1.08,rot:0,locked:false},
-    {id:'gallery',type:'gallery',name:'Gallery',icon:'🖼️',desc:'포스터, Figure, 발표 자료를 전시하는 공간입니다.',x:-4.9,z:2.9,scale:0.95,rot:0,locked:false},
-    {id:'house',type:'house',name:'About House',icon:'🏡',desc:'자기소개, 관심사, 취미를 담는 공간입니다.',x:0.0,z:5.15,scale:0.98,rot:0,locked:false},
-    {id:'post',type:'post',name:'Contact Post',icon:'✉️',desc:'이메일, GitHub, Scholar, ORCID 등의 링크를 담는 공간입니다.',x:4.9,z:2.9,scale:0.90,rot:0,locked:false}
+    {id:'lab',type:'lab',name:'Research Lab',icon:'🧪',desc:'A space for research projects, papers, experiments, and presentation materials.',x:-3.6,z:-1.9,scale:1.05,rot:0,locked:false},
+    {id:'school',type:'school',name:'Medical School',icon:'🎓',desc:'A space for education, academic background, and laboratory experience.',x:3.6,z:-1.8,scale:1.08,rot:0,locked:false},
+    {id:'gallery',type:'gallery',name:'Gallery',icon:'🖼️',desc:'A space for posters, figures, slides, and visual materials.',x:-4.9,z:2.9,scale:0.95,rot:0,locked:false},
+    {id:'house',type:'house',name:'About House',icon:'🏡',desc:'Introduction, 관심사, 취미를 담는 공간입니다.',x:0.0,z:5.15,scale:0.98,rot:0,locked:false},
+    {id:'post',type:'post',name:'Contact Post',icon:'✉️',desc:'A space for email, GitHub, Google Scholar, ORCID, and other links.',x:4.9,z:2.9,scale:0.90,rot:0,locked:false}
   ],
   rooms:{
-    lab:{heading:'Research / Projects',text:'진행 중인 연구, 실험 설계, 논문, 발표자료를 정리하는 공간입니다. 프로젝트별 폴더, PPT, Excel, 코드 파일을 연결할 수 있습니다.',tags:['ECMO','BIA','Sepsis','Python','PPT'],attachments:[]},
-    school:{heading:'Education / Academic History',text:'학력, 전공, 연구실 소속, 지도교수, 학위 과정 정보를 정리하는 공간입니다.',tags:['Master course','Biomedical Science','Medical School'],attachments:[]},
-    gallery:{heading:'Posters / Figures / Slides',text:'학회 포스터, 발표 슬라이드, Figure, 이미지 자료를 전시하는 공간입니다.',tags:['Poster','Figure','Presentation'],attachments:[]},
-    house:{heading:'About Me',text:'자기소개, 관심 분야, 취미, 연구 외 활동을 담는 공간입니다.',tags:['About','Interests','Profile'],attachments:[]},
-    post:{heading:'Contact / Links',text:'이메일, GitHub, Google Scholar, ORCID, LinkedIn 등 외부 링크를 모아두는 공간입니다.',tags:['Email','GitHub','Scholar','ORCID'],attachments:[]}
+    lab:{heading:'Research / Projects',text:'진행 중인 연구, 실험 설계, 논문, 발표자료를 정리하는 공간입니다. 프로젝트별 폴더, PPT, Excel, Code 파일을 연결할 수 있습니다.',tags:['ECMO','BIA','Sepsis','Python','PPT'],attachments:[]},
+    school:{heading:'Education / Academic History',text:'This room summarizes education, major, laboratory affiliation, and degree-course information.',tags:['Master course','Biomedical Science','Medical School'],attachments:[]},
+    gallery:{heading:'Posters / Figures / Slides',text:'This room displays conference posters, presentation slides, figures, and image-based materials.',tags:['Poster','Figure','Presentation'],attachments:[]},
+    house:{heading:'About Me',text:'Introduction, 관심 분야, 취미, 연구 외 활동을 담는 공간입니다.',tags:['About','Interests','Profile'],attachments:[]},
+    post:{heading:'Contact / Links',text:'This room collects email, GitHub, Google Scholar, ORCID, LinkedIn, and other external links.',tags:['Email','GitHub','Scholar','ORCID'],attachments:[]}
   },
   trees:[
     {id:'t1',type:'round',x:-4.95,z:-1.75,scale:.95,rot:0,locked:false},{id:'t2',type:'round',x:-2.55,z:-2.35,scale:.92,rot:0,locked:false},{id:'t3',type:'fruit',x:2.35,z:-2.30,scale:.92,rot:0,locked:false},{id:'t4',type:'round',x:4.85,z:-1.65,scale:.95,rot:0,locked:false},
@@ -281,6 +351,33 @@ const state={
     {id:'l1',x:-3.05,z:.78,scale:1,rot:0,locked:false},{id:'l2',x:3.05,z:.78,scale:1,rot:0,locked:false},{id:'l3',x:-1.95,z:-2.05,scale:1,rot:0,locked:false},{id:'l4',x:1.95,z:-2.05,scale:1,rot:0,locked:false},{id:'l5',x:-4.35,z:2.15,scale:1,rot:0,locked:false},{id:'l6',x:4.35,z:2.15,scale:1,rot:0,locked:false}
   ]
 };
+
+
+function localizePublicData(){
+  const replacements={
+    '연구 프로젝트, 논문, 발표 자료를 담아두는 공간입니다.':'A space for research projects, papers, experiments, and presentation materials.',
+    '학력, 전공, 연구실 이력을 보여주는 공간입니다.':'A space for education, academic background, and laboratory experience.',
+    '포스터, Figure, 발표 자료를 전시하는 공간입니다.':'A space for posters, figures, slides, and visual materials.',
+    '자기소개, 관심사, 취미를 담는 공간입니다.':'A space for a short bio, interests, hobbies, and profile information.',
+    '이메일, GitHub, Scholar, ORCID 등의 링크를 담는 공간입니다.':'A space for email, GitHub, Google Scholar, ORCID, and other links.',
+    '진행 중인 연구, 실험 설계, 논문, 발표자료를 정리하는 공간입니다. 프로젝트별 폴더, PPT, Excel, 코드 파일을 연결할 수 있습니다.':'This room organizes ongoing research, experimental designs, papers, and presentation materials. Project folders, slides, spreadsheets, and code files can be linked here.',
+    '학력, 전공, 연구실 소속, 지도교수, 학위 과정 정보를 정리하는 공간입니다.':'This room summarizes education, major, laboratory affiliation, and degree-course information.',
+    '학회 포스터, 발표 슬라이드, Figure, 이미지 자료를 전시하는 공간입니다.':'This room displays conference posters, presentation slides, figures, and image-based materials.',
+    '자기소개, 관심 분야, 취미, 연구 외 활동을 담는 공간입니다.':'This room contains a short self-introduction, interests, hobbies, and profile information.',
+    '이메일, GitHub, Google Scholar, ORCID, LinkedIn 등 외부 링크를 모아두는 공간입니다.':'This room collects email, GitHub, Google Scholar, ORCID, LinkedIn, and other external links.',
+    '의과학과 석사과정생':'Master\'s student in biomedical science',
+    '연구, 프로젝트, 발표 자료를 3D 포트폴리오 빌리지에 정리하고 있습니다.':'Hi, I am Ryul-Hee Kim. I study biomedical science with an interest in ECMO, bioelectrical impedance analysis, sepsis models, data visualization, and scientific presentation.'
+  };
+  const repl=v=>replacements[v]||v;
+  if(state.profile){
+    if(!state.profile.name || state.profile.name==='김률희') state.profile.name='Ryul-Hee Kim';
+    state.profile.role=repl(state.profile.role||'');
+    state.profile.intro=repl(state.profile.intro||'');
+    if(!state.profile.intro) state.profile.intro='Hi, I am Ryul-Hee Kim. I study biomedical science with an interest in ECMO, bioelectrical impedance analysis, sepsis models, data visualization, and scientific presentation.';
+  }
+  (state.buildings||[]).forEach(b=>{ if(b.desc) b.desc=repl(b.desc); });
+  Object.values(state.rooms||{}).forEach(r=>{ if(r){ if(r.text) r.text=repl(r.text); if(r.heading==='자기소개') r.heading='About Me'; }});
+}
 
 let scene,camera,renderer,raycaster,pointer,groundPlane,root,objectRoot,roadRoot,pondRoot,skyRoot,cloudRoot,seaRoot,avatarGroup,avatarCarryAnchor,catGroup,cat2Group,boatGroup;
 let selected=null,drag=null,activeBuilding=null,roomMode=false,roomBuilding=null,keyState={};
@@ -340,7 +437,7 @@ function cleanupLegacySampleAttachments(){
 function initializeFirebaseVillage(){
   if(firebaseReady) return true;
   if(!window.firebase){
-    console.warn('Firebase SDK를 불러오지 못했습니다.');
+    console.warn('Failed to load Firebase SDK.');
     return false;
   }
   try{
@@ -349,7 +446,7 @@ function initializeFirebaseVillage(){
     firebaseReady=true;
     return true;
   }catch(err){
-    console.error('Firebase 초기화 실패:', err);
+    console.error('Firebase initialization failed:', err);
     return false;
   }
 }
@@ -357,6 +454,7 @@ async function applyInitialVillageData(){
   if(initialVillageDataApplied) return;
   initialVillageDataApplied=true;
   if(window.VILLAGE_DATA) deepMerge(state, window.VILLAGE_DATA);
+  localizePublicData();
   initializeFirebaseVillage();
   if(!firebaseReady) return;
   try{
@@ -365,6 +463,7 @@ async function applyInitialVillageData(){
       const data=snap.val();
       lastRemoteJson=JSON.stringify(data);
       deepMerge(state, data);
+      localizePublicData();
     }else if(isAdminMode){
       cleanupLegacySampleAttachments();
       await villageDb.ref(VILLAGE_DB_PATH).set(getVillageDataSnapshot());
@@ -377,13 +476,14 @@ async function applyInitialVillageData(){
       await villageDb.ref(VILLAGE_DB_PATH).set(cleanedData);
     }
   }catch(err){
-    console.error('Firebase 데이터 불러오기 실패:', err);
+    console.error('Failed to load Firebase data:', err);
   }
 }
 function applyVillageDataToScene(data, message){
   if(!data) return;
   remoteApplyInProgress=true;
   deepMerge(state, data);
+  localizePublicData();
   cleanupLegacySampleAttachments();
   if(objectRoot){
     renderAllObjects();
@@ -408,45 +508,45 @@ function startFirebaseVillageListener(){
     const json=JSON.stringify(data);
     if(json===lastRemoteJson) return;
     lastRemoteJson=json;
-    applyVillageDataToScene(data, isAdminMode?'Firebase 데이터가 동기화되었습니다.':'포트폴리오 정보가 업데이트되었습니다.');
+    applyVillageDataToScene(data, isAdminMode?'Firebase data has been synchronized.':'Portfolio information has been updated.');
   }, err=>{
     console.error('Firebase 실시간 동기화 실패:', err);
-    if(typeof toast!=='undefined') toast.textContent='Firebase 실시간 동기화에 실패했습니다. Rules를 확인하세요.';
+    if(typeof toast!=='undefined') toast.textContent='Firebase live sync failed. Please check the database rules.';
   });
 }
 async function saveFirebaseVillageData(showMessage=false){
   if(!isAdminMode){
-    if(typeof toast!=='undefined') toast.textContent='관리자 모드에서만 저장할 수 있습니다.';
+    if(typeof toast!=='undefined') toast.textContent='Saving is available only in admin mode.';
     return;
   }
   initializeFirebaseVillage();
   if(!firebaseReady){
-    if(typeof toast!=='undefined') toast.textContent='Firebase 연결에 실패했습니다.';
+    if(typeof toast!=='undefined') toast.textContent='Firebase connection failed.';
     return;
   }
   try{
     const data=getVillageDataSnapshot();
     lastRemoteJson=JSON.stringify(data);
     await villageDb.ref(VILLAGE_DB_PATH).set(data);
-    if(showMessage && typeof toast!=='undefined') toast.textContent='Firebase에 저장했습니다. 방문자 페이지에도 반영됩니다.';
+    if(showMessage && typeof toast!=='undefined') toast.textContent='Saved to Firebase. The visitor page will update as well.';
   }catch(err){
-    console.error('Firebase 저장 실패:', err);
-    if(typeof toast!=='undefined') toast.textContent='Firebase 저장 실패. Database Rules를 확인하세요.';
+    console.error('Save to Firebase 실패:', err);
+    if(typeof toast!=='undefined') toast.textContent='Save to Firebase 실패. Database Rules를 확인하세요.';
   }
 }
 async function reloadVillageDataFromFirebase(){
   initializeFirebaseVillage();
-  if(!firebaseReady){toast.textContent='Firebase 연결에 실패했습니다.';return;}
+  if(!firebaseReady){toast.textContent='Firebase connection failed.';return;}
   try{
     const snap=await villageDb.ref(VILLAGE_DB_PATH).get();
     if(snap.exists()){
       const data=snap.val();
       lastRemoteJson=JSON.stringify(data);
-      applyVillageDataToScene(data,'Firebase 데이터를 다시 불러왔습니다.');
-    }else toast.textContent='Firebase에 아직 저장된 데이터가 없습니다.';
+      applyVillageDataToScene(data,'Reloaded Firebase data.');
+    }else toast.textContent='No Firebase data has been saved yet.';
   }catch(err){
     console.error(err);
-    toast.textContent='Firebase 데이터 불러오기 실패. Rules를 확인하세요.';
+    toast.textContent='Failed to load Firebase data. Please check the database rules.';
   }
 }
 function downloadVillageData(){
@@ -459,7 +559,7 @@ function downloadVillageData(){
   document.body.appendChild(a);
   a.click();
   setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},0);
-  if(typeof toast!=='undefined') toast.textContent='백업 파일을 다운로드했습니다. 실시간 반영은 Firebase 저장으로 처리됩니다.';
+  if(typeof toast!=='undefined') toast.textContent='백업 파일을 다운로드했습니다. 실시간 반영은 Save to Firebase으로 처리됩니다.';
 }
 function saveLocalVillageData(showMessage=false){
   return saveFirebaseVillageData(showMessage);
@@ -478,18 +578,18 @@ async function init(){
   const adminRequested=detectAdminMode();
   const adminAllowed=adminRequested && authorizeAdminAccess();
   setMode(adminAllowed);
-  if(adminRequested && !adminAllowed){setTimeout(()=>{toast.textContent='관리자 비밀번호가 맞지 않습니다. 방문자 모드로 열었습니다.';},0);}
+  if(adminRequested && !adminAllowed){setTimeout(()=>{toast.textContent='The admin password is incorrect. Opened in visitor mode.';},0);}
   await applyInitialVillageData();
-  if(!window.THREE){toast.textContent='Three.js를 불러오지 못했습니다. 인터넷 연결을 확인하세요.';return;}
+  if(!window.THREE){toast.textContent='Failed to load Three.js. Please check the internet connection.';return;}
   scene=new THREE.Scene();scene.background=new THREE.Color(0x1187bd);scene.fog=new THREE.Fog(0x79d8ff,28,58);
   const w=viewer.clientWidth,h=viewer.clientHeight;camera=new THREE.PerspectiveCamera(38,w/h,.1,100);camera.position.set(0,12,10);camera.lookAt(0,0,0);applyCameraOrbit();
-  renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));renderer.setSize(w,h);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.domElement.id='threeCanvas';viewer.prepend(renderer.domElement);
+  renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.setSize(w,h);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.domElement.id='threeCanvas';viewer.prepend(renderer.domElement);
   raycaster=new THREE.Raycaster();pointer=new THREE.Vector2();groundPlane=new THREE.Plane(new THREE.Vector3(0,1,0),0);
-  addLights();root=new THREE.Group();scene.add(root);createSky();createClouds();createWorld();chooseBlackSleepSpot();renderAllObjects();fillRoadForm();fillPondForm();setupEvents();updateSkyByKST();setInterval(updateSkyByKST,60000);startFirebaseVillageListener();animate();toast.textContent=firebaseReady?'준비 완료 · Firebase 실시간 동기화 연결됨':'준비 완료 · Firebase 연결 실패, Rules 또는 인터넷을 확인하세요.';
+  addLights();root=new THREE.Group();scene.add(root);createSky();createClouds();createWorld();chooseBlackSleepSpot();renderAllObjects();fillRoadForm();fillPondForm();setupEvents();updateSkyByKST();setInterval(updateSkyByKST,60000);startFirebaseVillageListener();animate();toast.textContent=firebaseReady?'Ready · Firebase live sync connected':'Ready · Firebase connection failed. Check rules or internet.';
 }
 
 function addLights(){scene.add(new THREE.HemisphereLight(0xffffff,0xb6d6a3,2.7));const sun=new THREE.DirectionalLight(0xffffff,2.5);sun.position.set(6,10,8);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.near=.5;sun.shadow.camera.far=35;sun.shadow.camera.left=-12;sun.shadow.camera.right=12;sun.shadow.camera.top=12;sun.shadow.camera.bottom=-12;scene.add(sun);const front=new THREE.DirectionalLight(0xffffff,.9);front.position.set(0,4,8);scene.add(front);}
-function mat(color,rough=.65){return new THREE.MeshStandardMaterial({color,roughness:rough,metalness:.02});}
+function mat(color,rough=.65){return new THREE.MeshStandardMaterial({color,roughness:rough,metalness:.02,flatShading:true});}
 function createSky(){skyRoot=new THREE.Group();scene.add(skyRoot);sunMesh=new THREE.Mesh(new THREE.SphereGeometry(.65,24,18),new THREE.MeshBasicMaterial({color:0xfff3a6}));skyRoot.add(sunMesh);moonMesh=new THREE.Mesh(new THREE.SphereGeometry(.48,24,18),new THREE.MeshBasicMaterial({color:0xf2f4ff}));skyRoot.add(moonMesh);const starMat=new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.8});for(let i=0;i<70;i++){const star=new THREE.Mesh(new THREE.SphereGeometry(.035+Math.random()*.03,8,6),starMat.clone());star.position.set(-10+Math.random()*20,7+Math.random()*8,-18+Math.random()*3);stars.push(star);skyRoot.add(star);}}
 function createClouds(){cloudRoot=new THREE.Group();scene.add(cloudRoot);const cloudCount=10;for(let i=0;i<cloudCount;i++){const c=new THREE.Group();const puffCount=4+Math.floor(Math.random()*4);for(let j=0;j<puffCount;j++){const puff=new THREE.Mesh(new THREE.SphereGeometry(.28+Math.random()*.18,16,10),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.70+Math.random()*.18}));puff.scale.set(1.4+Math.random()*.9,.45+Math.random()*.24,.65+Math.random()*.18);puff.position.set(j*.42-(puffCount*.18),(Math.random()-.5)*.12,(Math.random()-.5)*.22);c.add(puff);}const angle=Math.random()*Math.PI*2,radius=10.5+Math.random()*3.2;c.userData={angle,radius,speed:.035+Math.random()*.045,baseY:6.0+Math.random()*3.8,phase:Math.random()*Math.PI*2,bob:.08+Math.random()*.18,zScale:.82+Math.random()*.10};c.position.set(Math.cos(angle)*radius,c.userData.baseY,Math.sin(angle)*radius*c.userData.zScale);cloudRoot.add(c);}}
 function updateClouds(dt){if(!cloudRoot)return;const t=performance.now()*.001;cloudRoot.children.forEach(c=>{c.userData.angle+=c.userData.speed*dt;c.position.x=Math.cos(c.userData.angle)*c.userData.radius;c.position.z=Math.sin(c.userData.angle)*c.userData.radius*c.userData.zScale;c.position.y=c.userData.baseY+Math.sin(t*1.2+c.userData.phase)*c.userData.bob;});}
@@ -709,17 +809,17 @@ function fillSelectedPanel(){
   fillProfilePanel();
 }
 function highlightSelected(){objectRoot.traverse(o=>{if(o.userData?.ref){const active=selected&&o.userData.kind===selected.kind&&o.userData.id===selected.id;o.traverse(child=>{if(child.isMesh&&child.material?.emissive)child.material.emissive.setHex(active?0x15345f:0x000000);});}});}
-function applySelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('먼저 항목을 선택하세요.');const item=getItem(selected.kind,selected.id);if(!item)return;item.x=Number(document.getElementById('selectedX').value||item.x);item.z=Number(document.getElementById('selectedZ').value||item.z);item.scale=Number(document.getElementById('selectedScale').value||item.scale||1);item.rot=Number(document.getElementById('selectedRot').value||0)*Math.PI/180;if(selected.kind==='building'){item.name=document.getElementById('selectedName').value.trim()||item.name;item.icon=document.getElementById('selectedIcon').value.trim()||item.icon;item.desc=document.getElementById('selectedDesc').value.trim()||item.desc;}if(selected.kind==='tree'){const p=clampDecorationSpot(item.x,item.z,'tree');item.x=p.x;item.z=p.z;}if(selected.kind==='lamp'){const p=clampDecorationSpot(item.x,item.z,'lamp');item.x=p.x;item.z=p.z;}if(selected.kind==='building'){const p=clampToIsland(item.x,item.z,1.05);item.x=p.x;item.z=p.z;item.roofColor=document.getElementById('selectedRoofColor').value;}item.locked=document.getElementById('selectedLocked').checked;renderAllObjects();autoSaveAfterEdit();toast.textContent='선택 항목 적용 완료 · Firebase 저장 중';}
+function applySelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('먼저 항목을 선택하세요.');const item=getItem(selected.kind,selected.id);if(!item)return;item.x=Number(document.getElementById('selectedX').value||item.x);item.z=Number(document.getElementById('selectedZ').value||item.z);item.scale=Number(document.getElementById('selectedScale').value||item.scale||1);item.rot=Number(document.getElementById('selectedRot').value||0)*Math.PI/180;if(selected.kind==='building'){item.name=document.getElementById('selectedName').value.trim()||item.name;item.icon=document.getElementById('selectedIcon').value.trim()||item.icon;item.desc=document.getElementById('selectedDesc').value.trim()||item.desc;}if(selected.kind==='tree'){const p=clampDecorationSpot(item.x,item.z,'tree');item.x=p.x;item.z=p.z;}if(selected.kind==='lamp'){const p=clampDecorationSpot(item.x,item.z,'lamp');item.x=p.x;item.z=p.z;}if(selected.kind==='building'){const p=clampToIsland(item.x,item.z,1.05);item.x=p.x;item.z=p.z;item.roofColor=document.getElementById('selectedRoofColor').value;}item.locked=document.getElementById('selectedLocked').checked;renderAllObjects();autoSaveAfterEdit();toast.textContent='선택 항목 적용 완료 · Save to Firebase 중';}
 function saveBuildingDesign(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected||selected.kind!=='building')return alert('건물을 먼저 선택하세요.');applySelected();saveLocalVillageData(true);}
-function deleteSelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('삭제할 항목을 선택하세요.');if(!confirm('선택한 항목을 삭제할까요?'))return;if(selected.kind==='building')state.buildings=state.buildings.filter(x=>x.id!==selected.id);else if(selected.kind==='lamp')state.lamps=state.lamps.filter(x=>x.id!==selected.id);else state.trees=state.trees.filter(x=>x.id!==selected.id);selected=null;renderAllObjects();autoSaveAfterEdit();}
+function deleteSelected(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!selected)return alert('Delete할 항목을 선택하세요.');if(!confirm('선택한 항목을 Delete할까요?'))return;if(selected.kind==='building')state.buildings=state.buildings.filter(x=>x.id!==selected.id);else if(selected.kind==='lamp')state.lamps=state.lamps.filter(x=>x.id!==selected.id);else state.trees=state.trees.filter(x=>x.id!==selected.id);selected=null;renderAllObjects();autoSaveAfterEdit();}
 function addBuilding(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newBuildingType').value,name=document.getElementById('newBuildingName').value||'New Building',iconMap={lab:'🧪',school:'🎓',house:'🏡',gallery:'🖼️',post:'✉️'};const p=clampToIsland(0,5.3,1.05);const id='b'+Date.now();state.buildings.push({id,type,name,icon:iconMap[type],desc:'새로 추가한 건물입니다.',x:p.x,z:p.z,scale:.9,rot:0,locked:false});state.rooms[id]={heading:name,text:'',tags:[type],attachments:[]};renderAllObjects();autoSaveAfterEdit();}
-function addTree(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newTreeType').value;const p=findTreeSpot();state.trees.push({id:'t'+Date.now(),type,x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();toast.textContent='나무를 건물 옆쪽에 추가했습니다. · Firebase 저장 중';}
-function addLamp(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const rawX=Number(document.getElementById('newLampX').value||0),rawZ=Number(document.getElementById('newLampZ').value||0);const manual=Math.hypot(rawX,rawZ)>.05;const p=manual?snapLampSpot(rawX,rawZ):findLampSpot();state.lamps.push({id:'l'+Date.now(),x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();toast.textContent=manual?'가로등을 가까운 도로/건물 옆으로 보정해 추가했습니다. · Firebase 저장 중':'가로등을 도로 근처에 추가했습니다. · Firebase 저장 중';}
-function clearLamps(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!confirm('가로등을 모두 삭제할까요?'))return;state.lamps=[];renderAllObjects();autoSaveAfterEdit();}
+function addTree(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const type=document.getElementById('newTreeType').value;const p=findTreeSpot();state.trees.push({id:'t'+Date.now(),type,x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();toast.textContent='나무를 건물 옆쪽에 추가했습니다. · Save to Firebase 중';}
+function addLamp(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}const rawX=Number(document.getElementById('newLampX').value||0),rawZ=Number(document.getElementById('newLampZ').value||0);const manual=Math.hypot(rawX,rawZ)>.05;const p=manual?snapLampSpot(rawX,rawZ):findLampSpot();state.lamps.push({id:'l'+Date.now(),x:p.x,z:p.z,scale:1,rot:0,locked:false});renderAllObjects();autoSaveAfterEdit();toast.textContent=manual?'가로등을 가까운 도로/건물 옆으로 보정해 추가했습니다. · Save to Firebase 중':'가로등을 도로 근처에 추가했습니다. · Save to Firebase 중';}
+function clearLamps(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}if(!confirm('가로등을 모두 Delete할까요?'))return;state.lamps=[];renderAllObjects();autoSaveAfterEdit();}
 function fillRoadForm(){document.getElementById('roadMaterial').value=state.road.material;document.getElementById('roadColor1').value=state.road.color1;document.getElementById('roadColor2').value=state.road.color2;}
-function applyRoadSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.road.material=document.getElementById('roadMaterial').value;state.road.color1=document.getElementById('roadColor1').value;state.road.color2=document.getElementById('roadColor2').value;rebuildRoads();autoSaveAfterEdit();toast.textContent='도로 설정 적용 완료 · Firebase 저장 중';}
+function applyRoadSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.road.material=document.getElementById('roadMaterial').value;state.road.color1=document.getElementById('roadColor1').value;state.road.color2=document.getElementById('roadColor2').value;rebuildRoads();autoSaveAfterEdit();toast.textContent='도로 설정 적용 완료 · Save to Firebase 중';}
 function fillPondForm(){document.getElementById('fishCount').value=state.pond.fishCount;document.getElementById('fishSpeed').value=state.pond.fishSpeed;}
-function applyPondSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.pond.fishCount=Number(document.getElementById('fishCount').value||state.pond.fishCount);state.pond.fishSpeed=Number(document.getElementById('fishSpeed').value||state.pond.fishSpeed);rebuildCenterPond();autoSaveAfterEdit();toast.textContent='중앙 연못 설정 적용 완료 · Firebase 저장 중';}
+function applyPondSettings(){if(!isAdminMode){toast.textContent='관리자 모드에서만 수정할 수 있습니다.';return;}state.pond.fishCount=Number(document.getElementById('fishCount').value||state.pond.fishCount);state.pond.fishSpeed=Number(document.getElementById('fishSpeed').value||state.pond.fishSpeed);rebuildCenterPond();autoSaveAfterEdit();toast.textContent='중앙 연못 설정 적용 완료 · Save to Firebase 중';}
 
 
 function stopMobileControlEvent(event){if(event){event.preventDefault();event.stopPropagation();}}
@@ -761,10 +861,12 @@ function joystickEnd(event){
   if(knob)knob.style.transform='translate(-50%,-50%)';
 }
 
-function mobileMoveStart(key,event){stopMobileControlEvent(event);keyState[key]=true;if(event?.currentTarget?.setPointerCapture&&event.pointerId!==undefined){try{event.currentTarget.setPointerCapture(event.pointerId);}catch(e){}}}
+function dismissAvatarIntro(){const intro=document.getElementById('avatarIntro');if(!intro)return;intro.classList.add('hiding');setTimeout(()=>{if(intro&&intro.parentNode)intro.remove();},180);}
+
+function mobileMoveStart(key,event){dismissAvatarIntro();stopMobileControlEvent(event);keyState[key]=true;if(event?.currentTarget?.setPointerCapture&&event.pointerId!==undefined){try{event.currentTarget.setPointerCapture(event.pointerId);}catch(e){}}}
 function mobileMoveEnd(key,event){stopMobileControlEvent(event);keyState[key]=false;if(event?.currentTarget?.releasePointerCapture&&event.pointerId!==undefined){try{event.currentTarget.releasePointerCapture(event.pointerId);}catch(e){}}}
-function mobileEnter(event){stopMobileControlEvent(event);checkPreview();if(activeBuilding&&!roomMode)openBuilding(activeBuilding.id);else toast.textContent='건물 가까이 가서 입장을 눌러주세요.';}
-function mobileFish(event){stopMobileControlEvent(event);tryFishing();}
+function mobileEnter(event){dismissAvatarIntro();stopMobileControlEvent(event);checkPreview();if(activeBuilding&&!roomMode)openBuilding(activeBuilding.id);else toast.textContent='건물 가까이 가서 입장을 눌러주세요.';}
+function mobileFish(event){dismissAvatarIntro();stopMobileControlEvent(event);tryFishing();}
 function dropCarry(){
   if(state.avatar.carry==='none'){toast.textContent='지금은 내려놓을 것이 없습니다.';return;}
   const carried=state.avatar.carry;
@@ -780,10 +882,10 @@ function dropCarry(){
   updateCarryVisual();
   toast.textContent=carried==='cat'?'고양이를 내려놓았습니다 🐱':'물고기를 내려놓았습니다 🐟';
 }
-function mobileDrop(event){stopMobileControlEvent(event);dropCarry();}
-function mobileRotate(delta,event){stopMobileControlEvent(event);cameraOrbit.yaw+=delta;applyCameraOrbit();}
-function mobileTilt(delta,event){stopMobileControlEvent(event);cameraOrbit.pitch=Math.max(-.55,Math.min(.65,cameraOrbit.pitch+delta));applyCameraOrbit();}
-function mobileZoom(delta,event){stopMobileControlEvent(event);cameraOrbit.distance=Math.max(7.5,Math.min(24,cameraOrbit.distance+delta));applyCameraOrbit();}
+function mobileDrop(event){dismissAvatarIntro();stopMobileControlEvent(event);dropCarry();}
+function mobileRotate(delta,event){dismissAvatarIntro();stopMobileControlEvent(event);cameraOrbit.yaw+=delta;applyCameraOrbit();}
+function mobileTilt(delta,event){dismissAvatarIntro();stopMobileControlEvent(event);cameraOrbit.pitch=Math.max(-.55,Math.min(.65,cameraOrbit.pitch+delta));applyCameraOrbit();}
+function mobileZoom(delta,event){dismissAvatarIntro();stopMobileControlEvent(event);cameraOrbit.distance=Math.max(7.5,Math.min(24,cameraOrbit.distance+delta));applyCameraOrbit();}
 function setupEvents(){
   window.addEventListener('resize',onResize);
   window.addEventListener('keydown',e=>{
@@ -797,7 +899,8 @@ function setupEvents(){
     if(code==='ArrowDown')keyState.arrowdown=true;
     if(code==='ArrowLeft')keyState.arrowleft=true;
     if(code==='ArrowRight')keyState.arrowright=true;
-    if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Enter','Escape','Space','KeyF','KeyQ'].includes(code)||['arrowup','arrowdown','arrowleft','arrowright','enter','escape',' ','f','q'].includes(key))e.preventDefault();
+    if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Enter','Escape','Space','KeyF','KeyQ','KeyW','KeyA','KeyS','KeyD'].includes(code)||['arrowup','arrowdown','arrowleft','arrowright','enter','escape',' ','f','q','w','a','s','d'].includes(key))e.preventDefault();
+    if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','KeyW','KeyA','KeyS','KeyD'].includes(code)||['arrowup','arrowdown','arrowleft','arrowright','w','a','s','d'].includes(key))dismissAvatarIntro();
     if((code==='Enter'||key==='enter')&&activeBuilding&&!roomMode)openBuilding(activeBuilding.id);
     if((code==='Escape'||key==='escape')&&roomMode)closeRoom();
     if(code==='KeyF'||key==='f'||key==='ㄹ')tryFishing();
@@ -818,15 +921,15 @@ function setupEvents(){
   renderer.domElement.addEventListener('wheel',onWheel,{passive:false});
   renderer.domElement.addEventListener('contextmenu',e=>e.preventDefault());
 }
-function onResize(){const w=viewer.clientWidth,h=viewer.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);}
+function onResize(){const w=viewer.clientWidth,h=viewer.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.setSize(w,h);}
 function applyCameraOrbit(){if(!camera)return;const y=cameraOrbit.targetY+Math.sin(cameraOrbit.pitch)*cameraOrbit.distance,flat=Math.cos(cameraOrbit.pitch)*cameraOrbit.distance,x=Math.sin(cameraOrbit.yaw)*flat,z=Math.cos(cameraOrbit.yaw)*flat;camera.position.set(x,y,z);camera.lookAt(0,cameraOrbit.targetY,0);const pill=document.getElementById('camPill');if(pill)pill.textContent=`Camera: ${Math.round(cameraOrbit.yaw*180/Math.PI)}°`;}
 function pointerToNDC(event){const rect=renderer.domElement.getBoundingClientRect();pointer.x=(event.clientX-rect.left)/rect.width*2-1;pointer.y=-(event.clientY-rect.top)/rect.height*2+1;}
 function getGroundPoint(event){pointerToNDC(event);raycaster.setFromCamera(pointer,camera);const p=new THREE.Vector3();raycaster.ray.intersectPlane(groundPlane,p);return p;}
 function findPick(event){pointerToNDC(event);raycaster.setFromCamera(pointer,camera);const candidates=[];objectRoot.traverse(o=>{let p=o.parent;while(p&&!p.userData?.ref)p=p.parent;if(o.isMesh&&p?.userData?.ref)candidates.push(o);});const hits=raycaster.intersectObjects(candidates,false);if(!hits.length)return null;let obj=hits[0].object;while(obj&&!obj.userData?.ref)obj=obj.parent;return obj;}
-function onPointerDown(event){const picked=findPick(event);if(!isAdminMode){cameraOrbit.dragging=true;cameraOrbit.lastX=event.clientX;cameraOrbit.lastY=event.clientY;if(picked?.userData?.kind==='building'){const b=state.buildings.find(x=>x.id===picked.userData.id);if(b){activeBuilding=b;document.getElementById('previewIcon').textContent=b.icon;document.getElementById('previewTitle').textContent=b.name;document.getElementById('previewKind').textContent=b.type;document.getElementById('previewDesc').textContent=b.desc;preview.classList.add('open');toast.textContent='Enter를 누르면 해당 건물 자료창이 열립니다.';}}return;}if(!picked){selected=null;fillSelectedPanel();highlightSelected();renderLists();cameraOrbit.dragging=true;cameraOrbit.lastX=event.clientX;cameraOrbit.lastY=event.clientY;return;}const{kind,id,ref}=picked.userData;selectItem(kind,id);if(ref.locked)return;const p=getGroundPoint(event);drag={kind,id,offsetX:p.x-ref.x,offsetZ:p.z-ref.z};}
+function onPointerDown(event){dismissAvatarIntro();const picked=findPick(event);if(!isAdminMode){cameraOrbit.dragging=true;cameraOrbit.lastX=event.clientX;cameraOrbit.lastY=event.clientY;if(picked?.userData?.kind==='building'){const b=state.buildings.find(x=>x.id===picked.userData.id);if(b){activeBuilding=b;document.getElementById('previewIcon').textContent=b.icon;document.getElementById('previewTitle').textContent=b.name;document.getElementById('previewKind').textContent=b.type;document.getElementById('previewDesc').textContent=b.desc;preview.classList.add('open');toast.textContent='Enter를 누르면 해당 건물 자료창이 열립니다.';}}return;}if(!picked){selected=null;fillSelectedPanel();highlightSelected();renderLists();cameraOrbit.dragging=true;cameraOrbit.lastX=event.clientX;cameraOrbit.lastY=event.clientY;return;}const{kind,id,ref}=picked.userData;selectItem(kind,id);if(ref.locked)return;const p=getGroundPoint(event);drag={kind,id,offsetX:p.x-ref.x,offsetZ:p.z-ref.z};}
 function onPointerMove(event){if(cameraOrbit.dragging&&!drag&&!roomMode){const dx=event.clientX-cameraOrbit.lastX,dy=event.clientY-cameraOrbit.lastY;cameraOrbit.lastX=event.clientX;cameraOrbit.lastY=event.clientY;cameraOrbit.yaw-=dx*.006;cameraOrbit.pitch=clamp(cameraOrbit.pitch+dy*.004,-.25,.55);applyCameraOrbit();return;}if(!drag)return;const item=getItem(drag.kind,drag.id);if(!item||item.locked)return;const p=getGroundPoint(event);let nx=clamp(p.x-drag.offsetX,-6.2,6.2);let nz=clamp(p.z-drag.offsetZ,-5.1,6);if(drag.kind==='tree'){const fixed=clampDecorationSpot(nx,nz,'tree');nx=fixed.x;nz=fixed.z;if(!canOccupy(nx,nz,'tree',item.id)){toast.textContent='나무는 건물/연못 위에 놓을 수 없습니다.';return;}}if(drag.kind==='lamp'){const fixed=clampDecorationSpot(nx,nz,'lamp');nx=fixed.x;nz=fixed.z;}if(drag.kind==='building'){const fixed=clampToIsland(nx,nz,1.05);nx=fixed.x;nz=fixed.z;}item.x=nx;item.z=nz;const obj=objectRoot.getObjectByName(item.id);if(obj)obj.position.set(item.x,drag.kind==='building'?BUILDING_Y:GROUND_Y,item.z);fillSelectedPanel();}
 function onPointerUp(){cameraOrbit.dragging=false;if(drag){drag=null;renderLists();}}
-function onWheel(event){if(roomMode)return;event.preventDefault();cameraOrbit.distance=clamp(cameraOrbit.distance+event.deltaY*.01,9.5,24);applyCameraOrbit();}
+function onWheel(event){dismissAvatarIntro();if(roomMode)return;event.preventDefault();cameraOrbit.distance=clamp(cameraOrbit.distance+event.deltaY*.01,9.5,24);applyCameraOrbit();}
 
 function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
 function ellipseValue(x,z,cx,cz,rx,rz){return ((x-cx)*(x-cx))/(rx*rx)+((z-cz)*(z-cz))/(rz*rz);}
@@ -931,7 +1034,7 @@ function moveAvatar(dt){
     avatarGroup.rotation.y=Math.atan2(worldDx,worldDz);
 
     if(fixed.x===oldX&&fixed.z===oldZ){
-      toast.textContent='막혀 있어요. 건물, 나무, 연못은 통과할 수 없습니다.';
+      toast.textContent='Blocked. Buildings, trees, and ponds cannot be crossed.';
     }
   }
   document.getElementById('posPill').textContent=`Avatar: ${state.avatar.x.toFixed(1)}, ${state.avatar.z.toFixed(1)}`;
@@ -1095,9 +1198,9 @@ function openBuilding(id){
   renderRoomPanel(b);
   const overlay=document.getElementById('roomOverlay');
   if(overlay) overlay.classList.add('open');
-  toast.textContent=`${b.name} 앞 보기 모드입니다. 우측 상태창에서 정보를 확인하세요.`;
+  toast.textContent=`${b.name} 앞 보기 모드입니다. room panel에서 정보를 확인하세요.`;
 }
-function closeRoom(){roomMode=false;roomBuilding=null;if(avatarGroup)avatarGroup.scale.setScalar(1);document.getElementById('roomOverlay').classList.remove('open');applyCameraOrbit();toast.textContent='마을로 돌아왔습니다.';}
+function closeRoom(){roomMode=false;roomBuilding=null;if(avatarGroup)avatarGroup.scale.setScalar(1);document.getElementById('roomOverlay').classList.remove('open');applyCameraOrbit();toast.textContent='Back to the village.';}
 function roomDataFor(building){return state.rooms[building.id]||{heading:building.name,text:building.desc,tags:[building.type],attachments:[]};}
 function renderRoomPanel(building){
   const room=roomDataFor(building);
@@ -1125,18 +1228,18 @@ function formatHouseText(baseText){
   const rows=[];
   const isDefaultAboutText=(txt)=>{
     const v=String(txt||'').trim();
-    return !v || v==='자기소개, 관심 분야, 취미, 연구 외 활동을 담는 공간입니다.' || v==='소개';
+    return !v || v==='Introduction, 관심 분야, 취미, 연구 외 활동을 담는 공간입니다.' || v==='소개';
   };
   const add=(key,value)=>{const v=String(value||'').trim();if(v)rows.push(`<div class="profile-row"><div class="profile-key">${escapeHtml(key)}</div><div class="profile-value">${escapeHtml(v)}</div></div>`);};
   if(!isDefaultAboutText(baseText)) add('소개', baseText);
-  add('이름', p.name);
-  add('출생연도', p.birthYear);
-  add('출생/지역', p.birthplace);
-  add('성별', p.gender);
+  add('Name', p.name);
+  add('Birth year', p.birthYear);
+  add('Birthplace / Region', p.birthplace);
+  add('Gender', p.gender);
   add('역할/소속', p.role);
-  add('좋아하는 음악 장르', p.musicGenre);
+  add('Favorite music genre', p.musicGenre);
   add('좋아하는 가수/아티스트', p.favoriteArtist);
-  add('자기소개', p.intro);
+  add('Introduction', p.intro);
   return rows.length?`<div class="profile-table">${rows.join('')}</div>`:'';
 }
 function iconForAttachment(file){const name=(file.name||'').toLowerCase(),type=(file.type||'').toLowerCase();if(name.endsWith('.ppt')||name.endsWith('.pptx')||type.includes('presentation')||type.includes('ppt'))return'📽️';if(name.endsWith('.xls')||name.endsWith('.xlsx')||type.includes('excel')||type.includes('sheet'))return'📊';if(name.endsWith('.pdf')||type.includes('pdf'))return'📄';if(name.endsWith('.png')||name.endsWith('.jpg')||name.endsWith('.jpeg')||type.includes('image'))return'🖼️';if(name.endsWith('.py')||name.endsWith('.js')||name.endsWith('.html')||name.endsWith('.ipynb'))return'💻';if(name.startsWith('http')||name.endsWith('.url')||type.includes('link'))return'🔗';return'📎';}
@@ -1144,7 +1247,7 @@ function renderAttachments(building){
   const room=roomDataFor(building),list=document.getElementById('attachmentList');
   list.innerHTML='';
   if(!(room.attachments||[]).length){
-    list.innerHTML='<div class="room-note">등록된 자료가 없습니다.</div>';
+    list.innerHTML='<div class="room-note">No materials have been registered yet.</div>';
     renderHtmlBoard(building);
     return;
   }
@@ -1152,10 +1255,10 @@ function renderAttachments(building){
     const card=document.createElement('div');
     card.className='attachment-card';
     const isHtml=isHtmlAttachment(file);
-    const primaryLabel=isHtml?'실행':'열기';
+    const primaryLabel=isHtml?'Run':'Open';
     const openButton=`<button class="attachment-open" onclick="openAttachment('${building.id}',${idx})">${primaryLabel}</button>`;
-    const adminButtons=isAdminMode?`<button class="attachment-open ghost" onclick="renameAttachment('${building.id}',${idx})">수정</button><button class="attachment-open danger" onclick="deleteAttachment('${building.id}',${idx})">삭제</button>`:'';
-    const meta=isHtml?'HTML 코드 · 우측 칠판에서 실행':escapeHtml(file.type||'file')+' · '+escapeHtml(file.size||file.url||file.content||'');
+    const adminButtons=isAdminMode?`<button class="attachment-open ghost" onclick="renameAttachment('${building.id}',${idx})">수정</button><button class="attachment-open danger" onclick="deleteAttachment('${building.id}',${idx})">Delete</button>`:'';
+    const meta=isHtml?'HTML Code · board preview에서 실행':escapeHtml(file.type||'file')+' · '+escapeHtml(file.size||file.url||file.content||'');
     card.innerHTML=`<div class="attachment-icon">${iconForAttachment(file)}</div><div><div class="attachment-name">${escapeHtml(file.name||'Untitled')}</div><div class="attachment-meta">${meta}</div></div><div class="attachment-actions">${openButton}${adminButtons}</div>`;
     list.appendChild(card);
   });
@@ -1176,7 +1279,7 @@ function normalizeTextOrHtmlFileAsHtmlAttachment(file,content){
   let name=file.name||'memo.html';
   if(lower.endsWith('.txt')) name=name.replace(/\.txt$/i,'.html');
   if(!/\.html?$/i.test(name)) name=name+'.html';
-  return {name,type:'HTML',kind:'html',size:formatFileSize(file.size)+' · 코드 저장',content:String(content||'')};
+  return {name,type:'HTML',kind:'html',size:formatFileSize(file.size)+' · Code 저장',content:String(content||'')};
 }
 function renderHtmlBoard(building,forceIndex=null){
   const board=document.getElementById('htmlBoard');
@@ -1197,7 +1300,7 @@ function renderHtmlBoard(building,forceIndex=null){
   board.style.left='';board.style.bottom='';
   const safeTitle=escapeHtml(file.name||'HTML Preview');
   const safeCode=escapeHtml(file.content||'');
-  board.innerHTML=`<div class="html-board-head" onpointerdown="startHtmlBoardDrag(event)"><div class="html-board-title">🧑‍💻 ${safeTitle}</div><div class="html-board-actions"><button class="html-board-popout" onclick="toggleHtmlBoardFullscreen(event)">큰화면으로 보기</button><button class="html-board-toggle" onclick="toggleHtmlCodeView(event)">코드</button><button class="html-board-close" onclick="closeHtmlBoard(event)" aria-label="HTML 미리보기 닫기">×</button></div></div><iframe class="html-board-frame" sandbox="allow-scripts allow-forms allow-popups allow-modals" srcdoc="${escapeAttribute(file.content||'')}"></iframe><pre class="html-board-code">${safeCode}</pre><div class="html-board-resize-hint">↘</div>`;
+  board.innerHTML=`<div class="html-board-head" onpointerdown="startHtmlBoardDrag(event)"><div class="html-board-title">🧑‍💻 ${safeTitle}</div><div class="html-board-actions"><button class="html-board-popout" onclick="toggleHtmlBoardFullscreen(event)">Full screen</button><button class="html-board-toggle" onclick="toggleHtmlCodeView(event)">Code</button><button class="html-board-close" onclick="closeHtmlBoard(event)" aria-label="Close HTML preview">×</button></div></div><iframe class="html-board-frame" sandbox="allow-scripts allow-forms allow-popups allow-modals" srcdoc="${escapeAttribute(file.content||'')}"></iframe><pre class="html-board-code">${safeCode}</pre><div class="html-board-resize-hint">↘</div>`;
 }
 function toggleHtmlCodeView(event){
   if(event)event.stopPropagation();
@@ -1210,7 +1313,7 @@ function toggleHtmlBoardFullscreen(event){
   if(!board)return;
   board.classList.toggle('fullscreen');
   const btn=board.querySelector('.html-board-popout');
-  if(btn)btn.textContent=board.classList.contains('fullscreen')?'작은화면으로 보기':'큰화면으로 보기';
+  if(btn)btn.textContent=board.classList.contains('fullscreen')?'작은화면으로 보기':'Full screen';
 }
 function closeHtmlBoard(event){
   if(event)event.stopPropagation();
@@ -1244,16 +1347,16 @@ function endHtmlBoardDrag(){
 }
 function openAttachment(buildingId,idx){
   const file=state.rooms?.[buildingId]?.attachments?.[idx];
-  if(!file){toast.textContent='자료를 찾을 수 없습니다.';return;}
+  if(!file){toast.textContent='Material not found.';return;}
   if(isHtmlAttachment(file)&&file.content){
     const b=state.buildings.find(x=>x.id===buildingId)||roomBuilding;
     if(b)renderHtmlBoard(b,idx);
-    toast.textContent='HTML 코드를 우측 칠판에서 실행했습니다.';
+    toast.textContent='HTML Code를 board preview에서 실행했습니다.';
     return;
   }
   if(file.url){window.open(file.url,'_blank');return;}
-  const msg=file.content||file.size||file.desc||'URL 없이 등록된 텍스트 자료입니다.';
-  alert((file.name||'자료')+'\n\n'+msg);
+  const msg=file.content||file.size||file.desc||'This text material was registered without a URL.';
+  alert((file.name||'Material')+'\n\n'+msg);
 }
 
 function ensureRoomForBuilding(buildingId){
@@ -1263,7 +1366,7 @@ function ensureRoomForBuilding(buildingId){
   return state.rooms[buildingId];
 }
 function handleRoomFiles(event){
-  if(!isAdminMode){toast.textContent='방문자 화면에서는 파일을 추가할 수 없습니다.';return;}
+  if(!isAdminMode){toast.textContent='Files can be added only in admin mode.';return;}
   if(!roomBuilding)return;
   const room=ensureRoomForBuilding(roomBuilding.id);
   const files=Array.from(event.target.files||[]);
@@ -1275,7 +1378,7 @@ function handleRoomFiles(event){
       renderAttachments(roomBuilding);
       autoSaveAfterEdit();
       event.target.value='';
-      toast.textContent='파일을 추가했습니다. HTML/TXT 파일은 코드가 저장되고 우측 칠판에서 실행됩니다.';
+      toast.textContent='파일을 추가했습니다. HTML/TXT 파일은 Code가 저장되고 board preview에서 실행됩니다.';
     }
   };
   files.forEach(file=>{
@@ -1287,13 +1390,13 @@ function handleRoomFiles(event){
         finish();
       };
       reader.onerror=()=>{
-        room.attachments.push({name:file.name,type:'HTML',kind:'html',size:'읽기 실패',content:'<!-- HTML 파일을 읽지 못했습니다. -->'});
+        room.attachments.push({name:file.name,type:'HTML',kind:'html',size:'Read failed',content:'<!-- Failed to read the HTML file. -->'});
         finish();
       };
       reader.readAsText(file);
     }else{
       const url=URL.createObjectURL(file);
-      room.attachments.push({name:file.name,type:file.type||'local file',size:formatFileSize(file.size)+' · 임시 파일',url});
+      room.attachments.push({name:file.name,type:file.type||'local file',size:formatFileSize(file.size)+' · temporary file',url});
       finish();
     }
   });
@@ -1323,13 +1426,13 @@ function addAttachmentLink(){
   let url=document.getElementById('attachUrlInput').value.trim();
   const type=document.getElementById('attachTypeInput').value.trim()||'Link';
   const size=document.getElementById('attachSizeInput').value.trim();
-  if(!name)return alert('자료 이름을 입력하세요.');
+  if(!name)return alert('Material name을 입력하세요.');
   if(!url&&!size)return alert('URL을 넣거나, 설명/텍스트 내용을 입력하세요.');
   if(url&&!/^https?:\/\//i.test(url)&&!url.startsWith('assets/')) url='https://'+url;
   const room=ensureRoomForBuilding(selected.id);
   const isHtmlType=type.toLowerCase().includes('html')||name.toLowerCase().endsWith('.html')||name.toLowerCase().endsWith('.htm');
   const item={name,type:isHtmlType?'HTML':type,size:size||'linked resource'};
-  if(isHtmlType&&!url){item.kind='html';item.content=size||'<!-- HTML 코드를 여기에 입력하세요. -->';}
+  if(isHtmlType&&!url){item.kind='html';item.content=size||'<!-- HTML Code를 여기에 입력하세요. -->';}
   else if(url)item.url=url; else item.content=size;
   room.attachments.push(item);
   ['attachNameInput','attachUrlInput','attachTypeInput','attachSizeInput'].forEach(id=>document.getElementById(id).value='');
@@ -1349,16 +1452,16 @@ function saveHtmlMemoFromEditor(){
   if(!b)return alert('먼저 건물을 선택하세요.');
   const title=(document.getElementById('memoTitleInput')?.value||'memo.html').trim()||'memo.html';
   const content=document.getElementById('memoCodeInput')?.value||'';
-  if(!content.trim())return alert('저장할 메모/HTML 코드를 입력하세요.');
+  if(!content.trim())return alert('저장할 메모/HTML Code를 입력하세요.');
   const room=ensureRoomForBuilding(b.id);
   let name=title;
   if(!/\.html?$/i.test(name))name=name+'.html';
   const existing=room.attachments.findIndex(f=>isHtmlAttachment(f)&&String(f.name||'')===name);
-  const item={name,type:'HTML',kind:'html',size:'메모장 저장 · 코드 저장',content};
+  const item={name,type:'HTML',kind:'html',size:'Save Memo · Code 저장',content};
   if(existing>=0)room.attachments[existing]=item; else room.attachments.push(item);
   if(roomMode&&roomBuilding&&roomBuilding.id===b.id)renderAttachments(roomBuilding);
   autoSaveAfterEdit();
-  toast.textContent='메모장 내용을 HTML 칠판 자료로 저장했습니다.';
+  toast.textContent='메모장 내용을 HTML board 자료로 저장했습니다.';
 }
 function loadSelectedHtmlMemoToEditor(){
   if(!isAdminMode)return;
@@ -1375,10 +1478,10 @@ function loadSelectedHtmlMemoToEditor(){
 function renameAttachment(buildingId,idx){
   if(!isAdminMode)return;
   const room=ensureRoomForBuilding(buildingId), file=room.attachments[idx];if(!file)return;
-  const name=prompt('자료 이름/제목을 수정하세요.',file.name||'');if(name===null)return;
+  const name=prompt('Material name/제목을 수정하세요.',file.name||'');if(name===null)return;
   file.name=name.trim()||file.name;
   if(isHtmlAttachment(file)){
-    const content=prompt('HTML 코드를 수정하세요.',file.content||'');
+    const content=prompt('HTML Code를 수정하세요.',file.content||'');
     if(content!==null){file.kind='html';file.type='HTML';file.content=content;}
   }else{
     const url=prompt('자료 URL을 수정하세요. 텍스트 자료면 비워도 됩니다.',file.url||'');if(url===null)return;
@@ -1394,9 +1497,9 @@ function renameAttachment(buildingId,idx){
 function deleteAttachment(buildingId,idx){
   if(!isAdminMode)return;
   const room=ensureRoomForBuilding(buildingId);if(!room.attachments?.[idx])return;
-  if(!confirm('이 자료를 삭제할까요?'))return;
+  if(!confirm('이 자료를 Delete할까요?'))return;
   room.attachments.splice(idx,1);
-  renderAttachments(state.buildings.find(b=>b.id===buildingId)||roomBuilding);autoSaveAfterEdit();toast.textContent='자료를 삭제했습니다.';
+  renderAttachments(state.buildings.find(b=>b.id===buildingId)||roomBuilding);autoSaveAfterEdit();toast.textContent='자료를 Delete했습니다.';
 }
 function openSelectedRoom(){
   if(!selected||selected.kind!=='building')return alert('먼저 건물을 선택하세요.');
@@ -1424,16 +1527,16 @@ function saveProfileInfo(){
 }
 function deleteSampleAttachmentsAll(){
   if(!isAdminMode)return;
-  if(!confirm('기본 샘플 자료를 모두 삭제할까요?'))return;
+  if(!confirm('기본 샘플 자료를 모두 Delete할까요?'))return;
   const changed=cleanupLegacySampleAttachments();
   if(roomMode&&roomBuilding)renderAttachments(roomBuilding);
   renderAllObjects();
   autoSaveAfterEdit();
-  toast.textContent=changed?'샘플 자료를 삭제하고 Firebase에 저장 중입니다.':'삭제할 샘플 자료가 없습니다.';
+  toast.textContent=changed?'샘플 자료를 Delete하고 Firebase에 저장 중입니다.':'Delete할 샘플 자료가 없습니다.';
 }
 function resetFirebaseToDefaults(){
   if(!isAdminMode)return;
-  if(!confirm('Firebase 데이터를 현재 파일의 기본값으로 다시 저장할까요? 기존 수정 내용은 덮어써집니다.'))return;
+  if(!confirm('Firebase 데이터를 현재 파일의 기본값으로 다시 저장할까요? 기존 수정 내용은 덮어써House니다.'))return;
   localStorage.removeItem('portfolioVillageData');
   cleanupLegacySampleAttachments();
   saveFirebaseVillageData(true);
